@@ -2,6 +2,10 @@
 
 ## 2.3.0 - 2026-09-22
 
+- A JavaScript-free reading edition of every material at `materials/<id>/` plus a materials index: the full guide and research layers, key figures, table of contents, FAQ, sources and citation, with canonical URLs, Open Graph metadata, Article, FAQPage and BreadcrumbList structured data. The sitemap now lists 202 URLs, and each interactive profile links to its reading edition.
+- Sort orders across the site: Z to A in the atlas list and journeys, family and most-journeys in the atlas list, fewest stages and material name for journeys, most sources first in the library, and best match, A to Z, Z to A and by topic in the glossary and histories.
+- Editorial emphasis in profile and glossary prose: species names in italics, legal and standard citations in medium weight, up to three key figures per paragraph in semibold and a lead sentence.
+
 - The site is now a multi-file static build: a small HTML shell with content-hashed script and stylesheet assets, glossary pages that share the stylesheet, and generated research content stored as JSON under `src/data/`. Build output is no longer committed (CI builds and deploys it); `dist/offline.html` remains available as a single-file offline copy.
 
 - Every material gains a reader guide: types and grades, fabrics and products, how to judge quality, advantages and drawbacks, environmental and social footprint, a detailed care guide, an FAQ and notable facts, with references. Profiles reorganize into Overview, Types & fabrics, Buying & care, History, Science, Journeys, Labeling & law and a printable Full profile. Library cards show two key figures, and search covers the new sections (a search for denim finds cotton).

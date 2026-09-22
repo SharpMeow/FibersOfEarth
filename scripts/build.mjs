@@ -24,5 +24,12 @@ await fs.mkdir('dist/geo',{recursive:true});
 for(const name of ['countries-50m.json','countries-10m.json'])await fs.copyFile('node_modules/world-atlas/'+name,'dist/geo/'+name);
 const kb=s=>Math.round(Buffer.byteLength(s)/1024)+' KB';
 console.log(`Built dist/index.html (${kb(page)}), ${jsFile} (${kb(js)}), ${cssFile} (${kb(css)}) and dist/offline.html (${kb(offline)})`);
-const {buildGlossary}=await import('./glossary-build.mjs');
-await buildGlossary(cssFile);
+// Reading editions and sitemap share one canonical base.
+const base=new URL(process.env.SITE_URL||'https://sharpmeow.github.io/FibersOfEarth/');
+if(!['http:','https:'].includes(base.protocol)||base.search||base.hash)throw Error('SITE_URL must be an HTTP(S) site URL without a query or fragment');
+if(!base.pathname.endsWith('/'))base.pathname+='/';
+const {buildGlossary}=await import('./glossary-build.mjs'),{buildMaterials}=await import('./materials-build.mjs'),{reviewed}=await import('../src/glossary.js');
+const paths=['',...await buildMaterials(cssFile,base),...await buildGlossary(cssFile,base)];
+const esc=s=>s.replace(/&/g,'&amp;').replace(/</g,'&lt;');
+await fs.writeFile('dist/sitemap.xml',`<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${paths.map(p=>`<url><loc>${esc(new URL(p,base).href)}</loc><lastmod>${reviewed}</lastmod></url>`).join('')}</urlset>`);
+console.log(`Sitemap: ${paths.length} URLs for ${base.href}`);

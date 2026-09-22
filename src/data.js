@@ -53,6 +53,7 @@ export function getMaterials({q='',family='All materials',sort='featured',mapped
  if(sort==='az')list.sort((a,b)=>a.name.localeCompare(b.name));
  if(sort==='za')list.sort((a,b)=>b.name.localeCompare(a.name));
  if(sort==='family')list.sort((a,b)=>a.family.localeCompare(b.family)||a.name.localeCompare(b.name));
+ if(sort==='sources'){const n=m=>new Set([...m.sources,...(m.detail?.refs||[]).map(r=>r.url),...(m.guide?.refs||[]).map(r=>r.url)]).size;list.sort((a,b)=>n(b)-n(a)||a.name.localeCompare(b.name));}
  if(sort==='routes')list.sort((a,b)=>journeys.filter(j=>j.fiber===b.id).length-journeys.filter(j=>j.fiber===a.id).length||a.name.localeCompare(b.name));
  return list;
 }
