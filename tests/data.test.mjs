@@ -32,6 +32,10 @@ test('glossary preserves terms, valid references, detailed content and composed 
 test('every catalog entry has a complete, sourced research profile',()=>{
  for(const m of materials){const d=m.detail;assert.ok(d,m.id+' detail');for(const k of ['origin','structure','process','performance','identify','labeling','past'])assert.ok(words(d[k])>=30,`${m.id}: ${k}`);assert.ok(Array.isArray(d.facts)&&d.facts.length>=2,m.id+' facts');for(const f of d.facts)assert.ok(f.length===2&&f[0]&&f[1],m.id+' fact');assert.ok(d.refs.length>=1,m.id+' refs');for(const r of d.refs){assert.ok(r.title);assert.equal(new URL(r.url).protocol,'https:');}assert.ok(['verified','editorial'].includes(d.evidence),m.id+' evidence');assert.ok(noDash(d),m.id+' dash');}
 });
+test('every catalog entry has a complete reader guide',()=>{
+ for(const m of materials){const g=m.guide;assert.ok(g,m.id+' guide');for(const k of ['types','fabrics','quality','impact','care'])assert.ok(words(g[k])>=40,`${m.id}: ${k}`);for(const k of ['pros','cons'])assert.ok(g[k].length>=3,`${m.id}: ${k}`);assert.ok(g.notable.length>=2,m.id+' notable');assert.ok(g.faq.length>=3&&g.faq.every(([q,a])=>q&&words(a)>=12),m.id+' faq');assert.ok(g.refs.length>=1&&g.refs.every(r=>new URL(r.url).protocol==='https:'),m.id+' refs');assert.ok(noDash(g),m.id+' dash');}
+ assert.ok(searchMaterials('denim').slice(0,2).some(r=>r.material.id==='cotton'));assert.equal(searchMaterials('charmeuse')[0].material.id,'silk');
+});
 test('ranked search tolerates typos and spelling variants and supports phrases, exclusions and fields',()=>{
  assert.equal(editDistance('cashmer','cashmere'),1);assert.equal(editDistance('ab','ba'),1);assert.equal(editDistance('wool','silk',1),2);
  assert.deepEqual(tokenize('Colour of the fibres'),['color','fiber']);

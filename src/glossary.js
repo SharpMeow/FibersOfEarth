@@ -1,5 +1,6 @@
 import {glossary as definitions} from './content.js';
-import {glossaryAdditions,glossaryDepth} from './glossary-extended.js';
+import extension from './data/glossary-extended.json' with {type:'json'};
+const {additions:glossaryAdditions,depth:glossaryDepth}=extension;
 import {createIndex} from './search.js';
 export const reviewed='2026-09-22';
 const cw=(slug,title)=>({title:'CottonWorks: '+title,url:'https://cottonworks.com/encyclopedia-item/'+slug+'/'});

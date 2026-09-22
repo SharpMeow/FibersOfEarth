@@ -1,11 +1,16 @@
 import {geoOrthographic,geoNaturalEarth1,geoPath,geoGraticule,geoGraticule10,geoDistance,geoInterpolate,geoRotation,geoCentroid,geoBounds,geoArea} from 'd3-geo';
 import {feature,mesh} from 'topojson-client';
 import world from 'world-atlas/countries-110m.json' with {type:'json'};
-import detailed from 'world-atlas/countries-50m.json' with {type:'json'};
-import finest from 'world-atlas/countries-10m.json' with {type:'json'};
-// Level of detail rises with zoom: Natural Earth 1:110m for the whole globe, 1:50m from 1.8x and 1:10m from 4x.
-// Detailed tiers draw only countries whose bounding cap reaches the visible part of the globe.
-const TIERS=[{zoom:0,topo:world},{zoom:1.8,topo:detailed},{zoom:4,topo:finest}];
+// Level of detail rises with zoom: Natural Earth 1:110m for the whole globe (bundled, works offline), then
+// 1:50m from 1.8x and 1:10m from 4x, fetched from the same site the first time they are needed. When they
+// cannot load (for example when opened from a local file), the globe keeps the best detail it has.
+// Detailed tiers draw only polygons whose bounding cap reaches the visible part of the globe.
+const TIERS=[{zoom:0,topo:world},{zoom:1.8,url:'geo/countries-50m.json'},{zoom:4,url:'geo/countries-10m.json'}];
+const loading=new Map();
+function loadTier(i){const t=TIERS[i];if(t.topo)return Promise.resolve(true);if(t.failed)return Promise.resolve(false);
+ if(!loading.has(i))loading.set(i,(typeof fetch==='function'&&typeof location!=='undefined'&&location.protocol!=='file:'?fetch(new URL(t.url,document.baseURI)).then(r=>{if(!r.ok)throw Error('HTTP '+r.status);return r.json();}):Promise.reject(Error('offline file'))).then(j=>{t.topo=j;return true;}).catch(()=>{t.failed=true;return false;}));
+ return loading.get(i);}
+const loadedTier=i=>{while(i>0&&!TIERS[i].topo)i--;return i;};
 const DETAIL_ZOOM=TIERS[1].zoom,cache=[];
 // While dragging or swaying, lighter geometry keeps frames fast; 1:50m is used in motion only once the view is small.
 const MOTION_DETAIL_ZOOM=8;
@@ -35,6 +40,9 @@ function geometry(i,center,R){const L=layer(i);if(i===0)return {land:{type:'Feat
  const cap=visibleCap(R),feats=L.feats.filter(x=>geoDistance(center,x.c)-x.radius<cap+.03);
  return {land:{type:'FeatureCollection',features:feats.map(x=>x.f)},borders:null,feats};}
 // Finer grid lines as zoom rises, generated only for the visible patch so close zoom stays fast.
+// Scale bar: a round distance whose length on screen at the globe's center falls between 60 and 140 px.
+const EARTH_KM=6371;
+function scaleBar(R){const kmPerPx=EARTH_KM/R;for(const mag of [1,10,100,1000,10000])for(const m of [1,2,5]){const km=m*mag,px=km/kmPerPx;if(px>=60&&px<=140)return {km,px};}return {km:1000,px:1000/kmPerPx};}
 function graticuleFor(zoom,center){
  if(zoom<DETAIL_ZOOM)return geoGraticule10();
  const step=zoom>=8?1:5,cap=visibleCap(BASE*zoom)*180/Math.PI+step;
@@ -47,7 +55,8 @@ const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'
 const CX=350,CY=287,BASE=235,SAMPLES=56;
 const ZOOM_MIN=.6,ZOOM_MAX=16,TRAVEL_MS=2800,MIN_ARC_PX=40; // Arcs shorter than MIN_ARC_PX on screen get no arrows.
 const stageColor=t=>t===1?'#285942':t===2?'#ad773f':'#68888b';
-const reducedMotion=()=>typeof matchMedia==='function'&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+// Motion is reduced when the operating system asks for it or the reader turns it off in Display settings.
+const reducedMotion=()=>(typeof document!=='undefined'&&document.documentElement.classList.contains('a11y-still'))||(typeof matchMedia==='function'&&matchMedia('(prefers-reduced-motion: reduce)').matches);
 let instances=0;
 // Route arcs are drawn in three dimensions: each great-circle sample is lifted above the sphere by a
 // height that grows with the route's angular length, then projected orthographically. A lifted point
@@ -104,14 +113,17 @@ function toPath(pts){let d='',pen=false;for(const p of pts){if(!p.visible){pen=f
 // A chevron at the arc's visible midpoint points in the direction of travel, even without animation.
 function chevron(pts){const i=SAMPLES/2;const a=pts[i-2],b=pts[i+2];if(!pts[i].visible||!a.visible||!b.visible)return null;return {x:pts[i].x,y:pts[i].y,angle:Math.atan2(b.y-a.y,b.x-a.x)*180/Math.PI};}
 export class Globe{
- constructor(el,network,journey,onSelect,{spin=true}={}){this.el=el;this.n=network;this.j=journey;this.onSelect=onSelect;this.home=homeView(journey.keys.map(k=>network.nodes[k]).filter(Boolean));this.rotation=[...this.home.rotation];this.zoom=this.home.zoom;this.swayBase=this.rotation[0];this.swayT=0;this.flat=false;this.all=false;this.drag=null;this.hover=false;this.raf=0;this.spinning=false;this.arcs=[];this.uid='g'+(++instances);this.motion=!reducedMotion();this.render();if(spin&&this.motion)this.spinning=true;if(this.motion)this.startLoop();}
+ constructor(el,network,journey,onSelect,{spin=true,onStatus=()=>{},onSpin=()=>{}}={}){this.el=el;this.onStatus=onStatus;this.onSpin=onSpin;this.pointers=new Map();this.n=network;this.j=journey;this.onSelect=onSelect;this.home=homeView(journey.keys.map(k=>network.nodes[k]).filter(Boolean));this.rotation=[...this.home.rotation];this.zoom=this.home.zoom;this.swayBase=this.rotation[0];this.swayT=0;this.flat=false;this.all=false;this.drag=null;this.hover=false;this.raf=0;this.spinning=false;this.arcs=[];this.uid='g'+(++instances);this.motion=!reducedMotion();this.render();if(spin&&this.motion)this.spinning=true;if(this.motion)this.startLoop();}
  projection(){return this.flat?geoNaturalEarth1().fitExtent([[18,82],[682,500]],{type:'Sphere'}):geoOrthographic().translate([CX,CY]).scale(BASE*this.zoom).rotate(this.rotation).clipAngle(90).clipExtent(CLIP);}
  edges(){const active=new Set(this.j.keys.slice(1).map((k,i)=>this.j.keys[i]+'|'+k));return this.n.flows.filter(f=>this.all||active.has(f[0]+'|'+f[1])).map(([a,b,t])=>({a,b,t,active:active.has(a+'|'+b),step:this.j.keys.indexOf(b)}));}
  arc(proj,e){const x=this.n.nodes[e.a],y=this.n.nodes[e.b];return this.flat?flatArc(proj,x,y):arcGeometry(x,y,this.rotation,BASE*this.zoom,this.zoom);}
  render(){
   if(!this.el.isConnected)return;
   const w=700,h=590,r=BASE*this.zoom,proj=this.projection(),path=geoPath(proj),center=[-this.rotation[0],-this.rotation[1]];
-  const tier=this.flat?0:tierFor(this.zoom),geo=geometry(tier,center,r),detail=tier>0;
+  const want=this.flat?0:tierFor(this.zoom),tier=loadedTier(want),geo=geometry(tier,center,r),detail=tier>0;
+  if(tier<want)loadTier(want).then(ok=>{if(ok&&this.el.isConnected&&!this.flat&&tierFor(this.zoom)>=want)this.render();});
+  const bar=scaleBar(r),stops=[...new Set(this.j.keys)].map(k=>this.n.nodes[k]).filter(Boolean);
+  const summary=`Route: ${stops.map(n=>`${n.name}, ${n.country} (${n.role}${n.sub?', '+n.sub:''})`).join(', then ')}.`;
   const visible=n=>this.flat||geoDistance(center,[n.lon,n.lat])<Math.PI/2-.025;
   const nodes=Object.values(this.n.nodes).filter(n=>(this.all||this.j.keys.includes(n.id))&&visible(n));
   const colors={Origin:'#245640',Processing:'#ab733d',Destination:'#547782'};this.arcs=[];
@@ -123,16 +135,27 @@ export class Globe{
   const dotSVG=nodes.sort((a,b)=>Number(this.j.keys.includes(b.id))-Number(this.j.keys.includes(a.id))).map(n=>{const [x,y]=proj([n.lon,n.lat]);const label=n.name;const left=x>510;const lx=left?x-12:x+12;const width=label.length*6.2+12;let ly=y-12;let box;let show=false;
    for(const off of [-12,24,-30,42]){ly=y+off;box={l:left?lx-width:lx,r:left?lx:lx+width,t:ly-12,b:ly+9};if(box.l>8&&box.r<692&&box.t>70&&box.b<515&&!boxes.some(b=>box.l<b.r+4&&box.r>b.l-4&&box.t<b.b+4&&box.b>b.t-4)){show=true;boxes.push(box);break;}}
    return `<g class="map-node" role="button" tabindex="0" aria-label="Explore ${esc(n.name)}, ${esc(n.sub)}" data-node="${esc(n.id)}"><title>${esc(n.name)} · ${esc(n.sub)}</title><circle cx="${x}" cy="${y}" r="15" fill="transparent"/><circle cx="${x}" cy="${y}" r="7" fill="${colors[n.role]}" fill-opacity=".13"/><circle cx="${x}" cy="${y}" r="3.3" fill="${colors[n.role]}" stroke="#fcfcf5" stroke-width="1.5"/>${show?`<text x="${lx}" y="${ly}" text-anchor="${left?'end':'start'}" class="city-label">${esc(n.name)}${!this.flat&&this.zoom>=DETAIL_ZOOM&&n.sub?`<tspan class="city-sub" x="${lx}" dy="12">${esc(n.sub)}</tspan>`:''}</text>`:''}</g>`;}).join('');
-  this.el.innerHTML=`<svg class="globe-svg" viewBox="0 0 ${w} ${h}" role="group" aria-label="Interactive ${this.flat?'world map':'globe'} showing an illustrative fiber journey. Raised arcs and moving arrows show the direction of travel from origin to destination. Use rotate and zoom buttons or drag to explore."><defs><radialGradient id="ocean" cx="36%" cy="30%" r="80%"><stop offset="0" stop-color="#f3f6ed"/><stop offset=".74" stop-color="#e8eee1"/><stop offset="1" stop-color="#d6dfcc"/></radialGradient><radialGradient id="shade" cx="35%" cy="28%" r="75%"><stop offset=".7" stop-color="#173f30" stop-opacity="0"/><stop offset="1" stop-color="#173f30" stop-opacity=".13"/></radialGradient><filter id="shadow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="12"/></filter></defs>${!this.flat?`<ellipse cx="360" cy="536" rx="173" ry="13" fill="#536648" opacity=".12" filter="url(#shadow)"/>${this.zoom<=1.2?`<circle cx="${CX}" cy="${CY}" r="${r+15}" class="orbit"/><circle cx="${CX}" cy="${CY}" r="${r+27}" class="orbit outer"/>`:''}`:''}<path class="sphere" d="${path({type:'Sphere'})}" fill="url(#ocean)" stroke="#c5cfbc" stroke-width=".8"/><path class="graticule" d="${path(this.flat?geoGraticule10():graticuleFor(this.zoom,center))}"/><path class="land" d="${path(geo.land)}" fill="#b7c9ac" stroke="${detail?'#edf2e8':'#aabf9f'}" stroke-width="${detail?.6:.35}"/><path class="borders" d="${geo.borders?path(geo.borders):''}" fill="none" stroke="#edf2e8" stroke-width=".55"/>${detail?countryLabels(geo.feats,proj,center,r,boxes):''}${!this.flat?`<path class="terminator" d="${path({type:'Sphere'})}" fill="url(#shade)" pointer-events="none"/>`:''}${dotSVG}${lineSVG}<text class="ocean-label" x="350" y="566" text-anchor="middle">${this.flat?'THE WORLD, CONNECTED':'ONE PLANET. COUNTLESS THREADS.'}</text></svg>`;
+  this.el.innerHTML=`<svg class="globe-svg" viewBox="0 0 ${w} ${h}" role="application" tabindex="0" aria-roledescription="${this.flat?'world map':'globe'}" aria-keyshortcuts="ArrowLeft ArrowRight ArrowUp ArrowDown + - 0 P" aria-label="${esc(`Interactive ${this.flat?'world map':'globe'} of an illustrative fiber journey. ${summary} Arrow keys rotate, plus and minus zoom, 0 resets, P pauses motion.`)}"><defs><radialGradient id="ocean" cx="36%" cy="30%" r="80%"><stop offset="0" stop-color="#f3f6ed"/><stop offset=".74" stop-color="#e8eee1"/><stop offset="1" stop-color="#d6dfcc"/></radialGradient><radialGradient id="shade" cx="35%" cy="28%" r="75%"><stop offset=".7" stop-color="#173f30" stop-opacity="0"/><stop offset="1" stop-color="#173f30" stop-opacity=".13"/></radialGradient><filter id="shadow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="12"/></filter></defs>${!this.flat?`<ellipse cx="360" cy="536" rx="173" ry="13" fill="#536648" opacity=".12" filter="url(#shadow)"/>${this.zoom<=1.2?`<circle cx="${CX}" cy="${CY}" r="${r+15}" class="orbit"/><circle cx="${CX}" cy="${CY}" r="${r+27}" class="orbit outer"/>`:''}`:''}<path class="sphere" d="${path({type:'Sphere'})}" fill="url(#ocean)" stroke="#c5cfbc" stroke-width=".8"/><path class="graticule" d="${path(this.flat?geoGraticule10():graticuleFor(this.zoom,center))}"/><path class="land" d="${path(geo.land)}" fill="#b7c9ac" stroke="${detail?'#edf2e8':'#aabf9f'}" stroke-width="${detail?.6:.35}"/><path class="borders" d="${geo.borders?path(geo.borders):''}" fill="none" stroke="#edf2e8" stroke-width=".55"/>${detail?countryLabels(geo.feats,proj,center,r,boxes):''}${!this.flat?`<path class="terminator" d="${path({type:'Sphere'})}" fill="url(#shade)" pointer-events="none"/>`:''}${dotSVG}${lineSVG}${this.flat?'':`<g class="scale-bar" aria-hidden="true" transform="translate(24 548)"><path d="M0 -5V0H${bar.px.toFixed(1)}V-5"/><text x="0" y="-9">${bar.km.toLocaleString('en-US')} km</text></g>`}<text class="ocean-label" x="350" y="566" text-anchor="middle">${this.flat?'THE WORLD, CONNECTED':'ONE PLANET. COUNTLESS THREADS.'}</text></svg>`;
   const svg=this.el.querySelector('svg');
   // Routes sit above the markers visually but must not block clicks on them.
   svg.querySelectorAll('.route').forEach(g=>g.setAttribute('pointer-events','none'));
-  svg.addEventListener('pointerdown',e=>{if(e.target.closest('[data-node]')||this.flat)return;e.preventDefault();this.drag=[e.clientX,e.clientY,...this.rotation];svg.setPointerCapture(e.pointerId);svg.classList.add('dragging');});
-  svg.addEventListener('pointermove',e=>{if(!this.drag)return;const [x,y,a,b]=this.drag;const k=.28/this.zoom;this.rotation=[a+(e.clientX-x)*k,Math.max(-80,Math.min(80,b-(e.clientY-y)*k)),0];this.paint();});
-  // Pinch on a trackpad (ctrl+wheel) or ctrl/cmd+wheel zooms; plain wheel keeps scrolling the page. Double-click zooms in.
-  svg.addEventListener('wheel',e=>{if(this.flat||!(e.ctrlKey||e.metaKey))return;e.preventDefault();this.setZoom(this.zoom*Math.exp(-e.deltaY*.01));},{passive:false});
-  svg.addEventListener('dblclick',e=>{if(this.flat||e.target.closest('[data-node]'))return;e.preventDefault();this.setZoom(this.zoom*(e.shiftKey?.6:1.6));});
-  const end=()=>{if(this.drag){this.drag=null;this.anchor();this.render();}};svg.addEventListener('pointerup',end);svg.addEventListener('pointercancel',end);
+  // One pointer drags to rotate; two pointers pinch to zoom around their midpoint.
+  const local=(x,y)=>{const m=svg.getScreenCTM();if(!m)return [CX,CY];const pt=svg.createSVGPoint();pt.x=x;pt.y=y;const q=pt.matrixTransform(m.inverse());return [q.x,q.y];};
+  svg.addEventListener('pointerdown',e=>{if(e.target.closest('[data-node]')||this.flat)return;e.preventDefault();this.pointers.set(e.pointerId,[e.clientX,e.clientY]);svg.setPointerCapture(e.pointerId);
+   if(this.pointers.size===2){const [a,b]=[...this.pointers.values()];this.drag=null;this.pinch={dist:Math.hypot(a[0]-b[0],a[1]-b[1])||1,zoom:this.zoom};}
+   else{this.drag=[e.clientX,e.clientY,...this.rotation];svg.classList.add('dragging');}});
+  svg.addEventListener('pointermove',e=>{if(!this.pointers.has(e.pointerId))return;this.pointers.set(e.pointerId,[e.clientX,e.clientY]);
+   if(this.pinch&&this.pointers.size===2){const [a,b]=[...this.pointers.values()];const mid=local((a[0]+b[0])/2,(a[1]+b[1])/2);this.zoomAt(this.pinch.zoom*Math.hypot(a[0]-b[0],a[1]-b[1])/this.pinch.dist,mid,true);return;}
+   if(!this.drag)return;const [x,y,a,b]=this.drag;const k=.28/this.zoom;this.rotation=[a+(e.clientX-x)*k,Math.max(-80,Math.min(80,b-(e.clientY-y)*k)),0];this.paint();});
+  // The scroll wheel zooms toward the pointer; at the zoom limits the page scrolls as usual. Double-click zooms in.
+  svg.addEventListener('wheel',e=>{if(this.flat)return;const dir=Math.sign(e.deltaY);if((dir<0&&this.zoom>=ZOOM_MAX)||(dir>0&&this.zoom<=ZOOM_MIN))return;e.preventDefault();
+   const dy=e.deltaMode===1?e.deltaY*16:e.deltaMode===2?e.deltaY*400:e.deltaY;this.zoomAt(this.zoom*Math.exp(-Math.max(-120,Math.min(120,dy))*.0018),local(e.clientX,e.clientY),true);},{passive:false});
+  svg.addEventListener('dblclick',e=>{if(this.flat||e.target.closest('[data-node]'))return;e.preventDefault();this.zoomAt(this.zoom*(e.shiftKey?.6:1.6),local(e.clientX,e.clientY));});
+  const end=e=>{this.pointers.delete(e.pointerId);if(this.pinch&&this.pointers.size<2){this.pinch=null;this.drag=null;this.anchor();this.render();this.status();return;}if(this.drag){this.drag=null;this.anchor();this.render();}};svg.addEventListener('pointerup',end);svg.addEventListener('pointercancel',end);
+  svg.addEventListener('keydown',e=>{if(e.target!==svg||e.altKey||e.ctrlKey||e.metaKey)return;const step=12/Math.sqrt(this.zoom);let handled=true;
+   switch(e.key){case 'ArrowLeft':this.rotate(step);break;case 'ArrowRight':this.rotate(-step);break;case 'ArrowUp':this.tilt(-step);break;case 'ArrowDown':this.tilt(step);break;
+    case '+':case '=':this.scale(1);break;case '-':case '_':this.scale(-1);break;case '0':case 'Home':this.reset();break;case 'p':case 'P':this.toggleSpin();this.onSpin(this.spinning);break;default:handled=false;}
+   if(handled){e.preventDefault();this.status();this.el.querySelector('svg')?.focus({preventScroll:true});}});
   // Pause the spin while the pointer or keyboard focus is on the globe, so markers hold still to be chosen.
   svg.addEventListener('pointerenter',()=>{this.hover=true;});svg.addEventListener('pointerleave',()=>{this.hover=false;});
   svg.addEventListener('focusin',()=>{this.hover=true;});svg.addEventListener('focusout',()=>{this.hover=false;});
@@ -142,7 +165,9 @@ export class Globe{
   const svg=this.el.querySelector('svg');if(!svg||this.flat)return;
   const p=this.projection(),path=geoPath(p),center=[-this.rotation[0],-this.rotation[1]];
   svg.querySelector('.sphere').setAttribute('d',path({type:'Sphere'}));svg.querySelector('.terminator')?.setAttribute('d',path({type:'Sphere'}));
-  svg.querySelector('.graticule').setAttribute('d',path(this.zoom>=MOTION_DETAIL_ZOOM?graticuleFor(this.zoom,center):geoGraticule10()));const g=geometry(this.zoom>=MOTION_DETAIL_ZOOM?1:0,center,BASE*this.zoom);svg.querySelector('.land').setAttribute('d',path(g.land));svg.querySelector('.borders').setAttribute('d',g.borders?path(g.borders):'');svg.querySelector('.country-labels')?.setAttribute('visibility','hidden');
+  svg.querySelector('.graticule').setAttribute('d',path(this.zoom>=MOTION_DETAIL_ZOOM?graticuleFor(this.zoom,center):geoGraticule10()));const g=geometry(this.zoom>=MOTION_DETAIL_ZOOM?loadedTier(1):0,center,BASE*this.zoom);svg.querySelector('.land').setAttribute('d',path(g.land));svg.querySelector('.borders').setAttribute('d',g.borders?path(g.borders):'');svg.querySelector('.country-labels')?.setAttribute('visibility','hidden');
+  const sb=svg.querySelector('.scale-bar');if(sb){const bar=scaleBar(BASE*this.zoom);sb.querySelector('path').setAttribute('d',`M0 -5V0H${bar.px.toFixed(1)}V-5`);sb.querySelector('text').textContent=bar.km.toLocaleString('en-US')+' km';}
+  svg.querySelectorAll('.orbit').forEach((o,i)=>o.setAttribute('r',BASE*this.zoom+(i?27:15)));
   const routes=svg.querySelectorAll('.route');
   this.arcs=[];
   this.edges().forEach((e,i)=>{const g=routes[i];if(!g)return;const x=this.n.nodes[e.a],y=this.n.nodes[e.b],pts=this.arc(p,e),d=toPath(pts),big=visibleLength(pts)>=MIN_ARC_PX;this.arcs.push(pts);
@@ -166,10 +191,20 @@ export class Globe{
  stopSpin(){this.spinning=false;}
  toggleSpin(){if(this.spinning)this.stopSpin();else this.startSpin();return this.spinning;}
  setZoom(z){this.zoom=Math.max(ZOOM_MIN,Math.min(ZOOM_MAX,z));this.render();}
+ // Zoom keeping the geographic point under (x, y) in view space fixed; light repaints while a gesture runs,
+ // then one detailed render once it settles.
+ zoomAt(z,[x,y],live=false){if(this.flat)return;z=Math.max(ZOOM_MIN,Math.min(ZOOM_MAX,z));const before=this.projection().invert([x,y]);this.zoom=z;
+  if(before&&Number.isFinite(before[0]))for(let k=0;k<3;k++){const after=this.projection().invert([x,y]);if(!after||!Number.isFinite(after[0]))break;this.rotation=[this.rotation[0]+(after[0]-before[0]),Math.max(-80,Math.min(80,this.rotation[1]+(after[1]-before[1]))),0];}
+  this.anchor();if(!live){this.render();this.status();return;}
+  this.paint();clearTimeout(this.settle);this.settle=setTimeout(()=>{this.render();this.status();},180);}
+ tilt(amount){this.rotation[1]=Math.max(-80,Math.min(80,this.rotation[1]+amount));this.render();}
+ // A short, human-readable description of the current view for the live region.
+ status(){const [lon,lat]=[-this.rotation[0],-this.rotation[1]],ew=((lon%360)+540)%360-180,fmt=(v,p,n)=>`${Math.abs(v).toFixed(0)} degrees ${v>=0?p:n}`;
+  this.onStatus(this.flat?'World map view.':`Zoom ${this.zoom.toFixed(1)} times, centered near ${fmt(lat,'north','south')}, ${fmt(ew,'east','west')}.`);}
  anchor(){this.swayBase=this.rotation[0];this.swayT=0;}
  rotate(amount){this.rotation[0]+=amount;this.anchor();this.render();}
- scale(amount){this.setZoom(this.zoom*(amount>0?1.35:1/1.35));}
- reset(){this.rotation=[...this.home.rotation];this.zoom=this.home.zoom;this.anchor();this.render();}
+ scale(amount){this.setZoom(this.zoom*(amount>0?1.35:1/1.35));this.status();}
+ reset(){this.rotation=[...this.home.rotation];this.zoom=this.home.zoom;this.anchor();this.render();this.status();}
  focus(n){this.stopSpin();this.rotation=[-n.lon,-n.lat,0];this.anchor();this.render();}
  destroy(){this.stopSpin();this.looping=false;cancelAnimationFrame(this.raf);}
 }

@@ -14,7 +14,6 @@ jobs:
       - run: npm ci
       - run: npm test
       - run: npm run build
-      - run: git diff --exit-code -- index.html glossary sitemap.xml
       - run: npx playwright install --with-deps chromium
       - run: npm run test:browser
       - uses: actions/upload-artifact@v4

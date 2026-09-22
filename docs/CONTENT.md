@@ -31,7 +31,7 @@ The reference is broad, not exhaustive across every botanical species, polymer g
 
 ## Research profiles (edition 2.2)
 
-Every catalog entry has a research profile in `src/details.js` with seven sections (source and geography, structure and chemistry, processing route, performance in use, identification, labeling law and standards, and deeper history), two to six key figures stated with their conditions, and two to five entry-specific references. The profiles hold 588 unique references across the detail layer and glossary additions, 291 of them peer-reviewed articles cited by DOI.
+Every catalog entry has a research profile in `src/data/details.json` with seven sections (source and geography, structure and chemistry, processing route, performance in use, identification, labeling law and standards, and deeper history), two to six key figures stated with their conditions, and two to five entry-specific references. The profiles hold 588 unique references across the detail layer and glossary additions, 291 of them peer-reviewed articles cited by DOI.
 
 Each profile carries an evidence level:
 

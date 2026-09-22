@@ -7,3 +7,8 @@ work/
 playwright-report/
 test-results/
 docs/screenshots/failure.png
+
+# Build output is generated in CI; see scripts/build.mjs
+/index.html
+/glossary/
+/sitemap.xml

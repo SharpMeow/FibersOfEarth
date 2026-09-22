@@ -20,7 +20,7 @@ This follows [Google's JavaScript SEO guidance](https://developers.google.com/se
 
 The default canonical base is `https://sharpmeow.github.io/FibersOfEarth/`. Set `SITE_URL` before building if the actual hosting address differs. GitHub Pages has been enabled with GitHub Actions as its deployment source. Committing HTML alone does not deploy it; run the Deploy site workflow after merging. Deploy the complete `dist/` directory, verify the production address, then submit its sitemap through the site's search-console account if desired. Search-engine indexing and rankings are external decisions.
 
-For an offline copy, open root `index.html` for the interactive app or `glossary/index.html` for the reading edition. Keep the glossary directory with the latter. No external scripts, fonts or services are required to read definitions.
+For an offline copy, open `dist/offline.html` for the interactive app, or serve `dist/` locally with `npm run dev` for the reading edition. No external scripts, fonts or services are required to read definitions.
 
 ## Edition 2.2 expansion
 

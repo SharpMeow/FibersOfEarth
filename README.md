@@ -5,26 +5,27 @@
 [![Checks](https://github.com/SharpMeow/FibersOfEarth/actions/workflows/check.yml/badge.svg)](https://github.com/SharpMeow/FibersOfEarth/actions/workflows/check.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-294e3c)](LICENSE)
 
-Explore 100 material, fiber and technology profiles, 115 illustrative supply-chain journeys, and the science and history of textiles. The site works offline from a single HTML file, with no account, API key or application server.
+Explore 100 material, fiber and technology profiles, 115 illustrative supply-chain journeys, and the science and history of textiles. It is a static site with no account, API key or application server. Visit the hosted atlas, or build it locally.
 
 ![Fibers of Earth desktop atlas](docs/screenshots/atlas-desktop.png)
 
 ## Open the atlas
 
-Download the repository and open **index.html** in a modern browser. All map geometry, styles, content and JavaScript are bundled. External references require a network connection when you choose to open them.
+Visit [sharpmeow.github.io/FibersOfEarth](https://sharpmeow.github.io/FibersOfEarth/), or run `npm ci && npm run build && npm run dev` and open http://127.0.0.1:4173. The build also writes `dist/offline.html`, a single-file copy that opens without a server (base world map only). External references require a network connection when you choose to open them.
 
 ## Find your way around
 
 | Section | What you can do |
 | --- | --- |
-| Atlas | Choose from 30 mapped materials, watch raised route arcs animate in the direction of travel, rotate, pause or zoom the globe, switch to a flat map, inspect locations and choose a journey. |
-| Materials | Read 100 research profiles (structure and chemistry, processing, performance, identification, labeling law, deeper history, key figures and references). Ranked, typo-tolerant search covers every section, with phrases, exclusions and field filters such as `law:cites`. Cite any profile in APA or BibTeX. |
+| Atlas | Choose from 30 mapped materials. Each globe opens centered on its trade route; raised arcs animate the direction of travel. Zoom with the wheel, pinch, buttons or keyboard (0.6x to 16x) for finer coastlines, country names and grids; go full screen; switch to a flat map. |
+| Materials | 100 profiles with a reader guide (types and grades, fabrics, buying cues, pros and cons, footprint, care, FAQ, notable facts) and a research layer (structure and chemistry, processing, performance, identification, labeling law, deeper history, key figures, references). Ranked, typo-tolerant search covers every section. Cite in APA or BibTeX, or print the full profile. |
 | Brands & technologies | Distinguish 20 proprietary offerings from their underlying fiber, feedstock or yarn process. |
 | Compare | Put three materials side by side across composition, history, care, uses and sourcing questions. |
 | Journeys | Search 115 illustrative routes by place or material; sort by estimated distance or stage count; export a route. |
 | Learn | Read eight field notes, 100 historical summaries and a 99-term glossary with the science, numbers and origins behind each term. |
 | Science lab | Change weave diagrams, calculate ideal filament diameter, and convert yarn counts (tex, dtex, denier, Nm, Ne) and fabric weights (g/m², oz/yd², momme). |
 | Saved | Keep a local collection of materials in your browser. |
+| Display settings | Reduce motion, enlarge text, raise contrast or underline links from the header; choices stay in your browser. |
 
 Press `/` to search the atlas. Links preserve views using URL fragments. Browser Back and Forward navigate between sections. Saved items stay on your device.
 
@@ -45,7 +46,7 @@ npm run build
 npm run dev
 ```
 
-Open http://127.0.0.1:4173. Rebuild after source changes and restart the preview server. `npm run build` produces `dist/index.html` and the standalone root `index.html`.
+Open http://127.0.0.1:4173. Rebuild after source changes and restart the preview server. `npm run build` writes the site to `dist/`: a small `index.html`, content-hashed `assets/app-*.js` and `assets/styles-*.css`, the glossary reading edition, the sitemap, on-demand map geometry in `geo/`, and `offline.html`. Build output is not committed; CI builds and deploys it.
 
 For browser and accessibility checks:
 
@@ -72,4 +73,4 @@ Created by **Chaos**. Original application code and original editorial text are 
 
 ### Detailed textile glossary
 
-[Read the glossary](glossary/index.html) or use the interactive glossary to search by aliases and filter by topic or letter. All 99 terms include explanations, the science and numbers, practical examples, distinctions, origins, related terms and sources. The build creates 100 JavaScript-free glossary pages plus a sitemap for static hosting. [Research and SEO notes](docs/GLOSSARY-RESEARCH.md) explain the source methodology and deployment requirements. The site is published through GitHub Pages at [sharpmeow.github.io/FibersOfEarth](https://sharpmeow.github.io/FibersOfEarth/). Search indexing is controlled by search engines.
+[Read the glossary](https://sharpmeow.github.io/FibersOfEarth/glossary/) or use the interactive glossary to search by aliases and filter by topic or letter. All 99 terms include explanations, the science and numbers, practical examples, distinctions, origins, related terms and sources. The build creates 100 JavaScript-free glossary pages plus a sitemap for static hosting. [Research and SEO notes](docs/GLOSSARY-RESEARCH.md) explain the source methodology and deployment requirements. The site is published through GitHub Pages at [sharpmeow.github.io/FibersOfEarth](https://sharpmeow.github.io/FibersOfEarth/). Search indexing is controlled by search engines.
