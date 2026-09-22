@@ -17,13 +17,13 @@ Download the repository and open **index.html** in a modern browser. All map geo
 
 | Section | What you can do |
 | --- | --- |
-| Atlas | Choose from 30 mapped materials, rotate and zoom the globe, switch to a flat map, inspect locations and choose a journey. |
-| Materials | Search 100 profiles by name, use or alias; filter by family; sort alphabetically, by family or by mapped coverage. |
+| Atlas | Choose from 30 mapped materials, watch raised route arcs animate in the direction of travel, rotate, pause or zoom the globe, switch to a flat map, inspect locations and choose a journey. |
+| Materials | Read 100 research profiles (structure and chemistry, processing, performance, identification, labeling law, deeper history, key figures and references). Ranked, typo-tolerant search covers every section, with phrases, exclusions and field filters such as `law:cites`. Cite any profile in APA or BibTeX. |
 | Brands & technologies | Distinguish 20 proprietary offerings from their underlying fiber, feedstock or yarn process. |
 | Compare | Put three materials side by side across composition, history, care, uses and sourcing questions. |
 | Journeys | Search 115 illustrative routes by place or material; sort by estimated distance or stage count; export a route. |
-| Learn | Read eight field notes, 100 historical summaries and a 32-term glossary. |
-| Science lab | Change weave diagrams and calculate ideal filament diameter from denier and density. |
+| Learn | Read eight field notes, 100 historical summaries and a 99-term glossary with the science, numbers and origins behind each term. |
+| Science lab | Change weave diagrams, calculate ideal filament diameter, and convert yarn counts (tex, dtex, denier, Nm, Ne) and fabric weights (g/m², oz/yd², momme). |
 | Saved | Keep a local collection of materials in your browser. |
 
 Press `/` to search the atlas. Links preserve views using URL fragments. Browser Back and Forward navigate between sections. Saved items stay on your device.
@@ -72,4 +72,4 @@ Created by **Chaos**. Original application code and original editorial text are 
 
 ### Detailed textile glossary
 
-[Read the glossary](glossary/index.html) or use the interactive glossary to search by aliases and filter by topic or letter. All 32 terms now include explanations, practical examples, distinctions, related terms and sources. The build creates 33 JavaScript-free glossary pages plus a sitemap for static hosting. [Research and SEO notes](docs/GLOSSARY-RESEARCH.md) explain the source methodology and deployment requirements. The site is published through GitHub Pages at [sharpmeow.github.io/FibersOfEarth](https://sharpmeow.github.io/FibersOfEarth/). Search indexing is controlled by search engines.
+[Read the glossary](glossary/index.html) or use the interactive glossary to search by aliases and filter by topic or letter. All 99 terms include explanations, the science and numbers, practical examples, distinctions, origins, related terms and sources. The build creates 100 JavaScript-free glossary pages plus a sitemap for static hosting. [Research and SEO notes](docs/GLOSSARY-RESEARCH.md) explain the source methodology and deployment requirements. The site is published through GitHub Pages at [sharpmeow.github.io/FibersOfEarth](https://sharpmeow.github.io/FibersOfEarth/). Search indexing is controlled by search engines.

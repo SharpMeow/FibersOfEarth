@@ -7,12 +7,15 @@ FibersOfEarth is a local-first static application. ES modules are bundled with e
 | File | Responsibility |
 | --- | --- |
 | src/app.js | Hash router, page rendering, search, filtering, saved materials, downloads and dialogs. |
-| src/globe.js | D3 orthographic and Natural Earth projections, topology conversion, map controls and node selection. |
-| src/data.js | Unified catalog, illustrative networks, route derivation, distances and search normalization. |
+| src/globe.js | D3 orthographic and Natural Earth projections, topology conversion, raised 3D route arcs, direction-of-travel animation, auto-rotation, map controls and node selection. |
+| src/data.js | Unified catalog, research details, illustrative networks, route derivation, distances and the material search index. |
+| src/search.js | Offline ranked search engine: tokenizer, spelling folding, BM25 scoring, typo tolerance, query syntax, suggestions and snippets. |
+| src/details.js | Generated research profiles for every catalog entry, with key figures, references and evidence levels. |
+| src/glossary.js, src/glossary-extended.js, src/glossary-render.js | Glossary data, research additions, ranked term search, shared HTML rendering and automatic term links. |
 | src/content.js | Core material descriptions, articles, regions, references and glossary. |
 | src/extended.js | Additional fibers, histories, aliases and reference entries. |
 | src/brands.js | Proprietary names, underlying-material links and producer references. |
-| src/science.js | Educational science topics, chemistry categories and dimensional calculations. |
+| src/science.js | Educational science topics, chemistry categories, dimensional calculations and unit converters. |
 | src/legacy.json | Reduced original map data: nodes, edges, geographic labels and initial views. Original app code and review pages are excluded. |
 | src/styles.css | Responsive design, focus states, reduced-motion behavior and print styling. |
 
@@ -36,8 +39,12 @@ Filters and shareable choices live in URL fragments. Bookmarks are a list of kno
 
 Views escape interpolated strings before placing them in HTML. Search inputs do not generate executable HTML. Routes select only known material and journey IDs. No original archive scripts are executed.
 
+## Search
+
+`src/search.js` builds an in-memory inverted index when a search first runs. Documents and queries share one normalizer: accent folding, British to American spelling (fibre, colour, woollen, -isation), light plural stemming and stop words. Scoring is field-weighted BM25 (k1 1.2, b 0.75): each field saturates separately and is then weighted, so a name or alias match outranks many mentions deep in long research paragraphs. The last query term also matches as a prefix while typing. A term missing from the vocabulary expands to vocabulary words within Damerau-Levenshtein distance 1 (4 to 7 letters) or 2 (8 or more) at reduced weight. Every positive term must match. Quoted phrases must match contiguously, `-term` excludes, and `field:term` restricts a term to one field (for example `law:cites`, `chemistry:keratin`, `history:dupont`, `family:plant`). Results carry the fields they matched, which drive the highlighted snippets. With no results, the engine suggests the closest vocabulary correction.
+
 ## Geometry and calculations
 
-D3 projects bundled World Atlas country geometry. Connections are great-circle lines clipped to the visible globe. Pointer dragging and explicit rotation/zoom controls provide separate interaction paths. The flat map shows the entire modeled journey.
+D3 projects bundled World Atlas country geometry. Connections are drawn twice: a faint great-circle ground track clipped to the visible globe, and a raised arc. The raised arc samples the great circle, lifts each sample by a height proportional to sin(pi t) and to the route's angular length, and projects it orthographically. A raised point is hidden only when it is behind the globe and inside its silhouette. Animated dashes and a traveling arrow follow each arc from origin to destination, and a chevron marks direction without animation. The globe rotates slowly until paused, pauses while hovered or focused, and does not animate when the reader prefers reduced motion. Pointer dragging and explicit rotation/zoom controls provide separate interaction paths. The flat map shows the entire modeled journey.
 
-Distance uses a 6,371 km spherical Earth radius. The filament model derives cross-sectional area from linear density and mass density. It assumes a solid circular single filament; it is not appropriate for hollow fibers or multifilament yarns without adjustment.
+Distance uses a 6,371 km spherical Earth radius. The filament model derives cross-sectional area from linear density and mass density. It assumes a solid circular single filament; it is not appropriate for hollow fibers or multifilament yarns without adjustment. Count conversions pass through tex: Nm = 1000/tex and Ne = 590.54/tex (840-yard hanks per pound). Fabric weight uses 1 oz/yd2 = 33.906 g/m2 and 1 momme = 4.340 g/m2 (one pound per 45 in by 100 yd piece).

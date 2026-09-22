@@ -28,3 +28,14 @@ Maintain source IDs and relationships, then run unit and browser tests. Route ad
 ## Scope limits
 
 The reference is broad, not exhaustive across every botanical species, polymer grade or trademark. Care advice is general; the complete product's label and manufacturer guidance govern. Technical and historical materials are included for context, not as recommendations for household processing or protective applications.
+
+## Research profiles (edition 2.2)
+
+Every catalog entry has a research profile in `src/details.js` with seven sections (source and geography, structure and chemistry, processing route, performance in use, identification, labeling law and standards, and deeper history), two to six key figures stated with their conditions, and two to five entry-specific references. The profiles hold 588 unique references across the detail layer and glossary additions, 291 of them peer-reviewed articles cited by DOI.
+
+Each profile carries an evidence level:
+
+- **verified** (96 entries): specific numbers, dates, names, ownership events and legal points were checked against the listed references. Sources are primary and institutional where possible: eCFR and FTC pages for US rules (16 CFR Parts 260, 300, 301 and 303), EUR-Lex for Regulation (EU) No 1007/2011, CITES, IWTO and Woolmark technical pages, Textile Exchange standards, museums and peer-reviewed literature. Producer statements are attributed to the producer.
+- **editorial** (4 entries: PVC, PBI, Nuyarn and ZQ): conservative, textbook-level context where public primary evidence is thin. These entries avoid unsupported dates and figures and say what could not be verified.
+
+Research took place on September 22, 2026. Web searches verified the first part of the pass. When the session's search allowance was exhausted, verification continued against PubMed records (abstracts and, where available, full text) and a pool of sources already confirmed in the same pass. Facts that could not be checked either way were omitted or stated qualitatively; several entries say explicitly what remains unverified (for example, some rare trade names, some Annex I name assignments and some craft histories). Key figures are approximate, drawn from cited studies or rules, and depend on the stated conditions and product. Legal descriptions explain what a rule covers; they are not legal advice, and current rule text controls. Corporate ownership reflects sources available in September 2026 and can change.
