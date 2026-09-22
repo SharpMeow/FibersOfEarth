@@ -1,0 +1,10 @@
+import {build} from 'esbuild';
+import fs from 'node:fs/promises';
+import {Script} from 'node:vm';
+const result=await build({entryPoints:['src/app.js'],bundle:true,write:false,format:'iife',target:['es2022'],minify:true,legalComments:'eof'});
+const css=await fs.readFile('src/styles.css','utf8');
+let html=await fs.readFile('src/index.html','utf8');
+html=html.replace('<!--STYLE-->',()=>'<style>'+css+'</style>').replace('<!--SCRIPT-->',()=>'<script>'+result.outputFiles[0].text.replaceAll('</script','<\\/script')+'</script>');
+new Script(html.match(/<script>([\s\S]*)<\/script>/)[1]);
+await fs.mkdir('dist',{recursive:true});await fs.writeFile('dist/index.html',html);await fs.writeFile('index.html',html);
+console.log('Built offline-ready dist/index.html ('+Math.round(Buffer.byteLength(html)/1024)+' KB)');

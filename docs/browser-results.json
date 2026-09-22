@@ -1,0 +1,16 @@
+{
+  "date": "2026-09-22",
+  "browser": "Chromium",
+  "results": [
+    "Atlas: globe/map, zoom/reset and node details",
+    "Library: search aliases, filter, sort, save and reload persistence",
+    "Comparison selects update URL and content",
+    "Science: weave switching, invalid values and numeric output",
+    "Global search routes and closes its dialog",
+    "All 100 material profiles and 115 journey detail routes render",
+    "All main sections checked at 1440, 768 and 390 pixels",
+    "Unknown routes and escaped search input handled",
+    "Standalone HTML opens offline with populated library",
+    "No browser JavaScript errors"
+  ]
+}
