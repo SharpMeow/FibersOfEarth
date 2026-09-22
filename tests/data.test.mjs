@@ -11,7 +11,7 @@ test('editorial cross references and public text are safe and coherent',()=>{for
 import {glossaryEntries,glossarySources,findTerms,searchTerms,suggestTerms} from '../src/glossary.js';
 import {termRefs,linkTerms} from '../src/glossary-render.js';
 import {glossary as originalTerms} from '../src/content.js';
-import {searchMaterials,suggestMaterials} from '../src/data.js';
+import {searchMaterials,suggestMaterials,propertyColumns,propertyCell} from '../src/data.js';
 import {toTex,fromTex,toGsm,fromGsm} from '../src/science.js';
 import {editDistance,parseQuery,tokenize} from '../src/search.js';
 const words=s=>String(s).split(/\s+/).filter(Boolean).length;
@@ -35,6 +35,13 @@ test('every catalog entry has a complete, sourced research profile',()=>{
 test('every catalog entry has a complete reader guide',()=>{
  for(const m of materials){const g=m.guide;assert.ok(g,m.id+' guide');for(const k of ['types','fabrics','quality','impact','care'])assert.ok(words(g[k])>=40,`${m.id}: ${k}`);for(const k of ['pros','cons'])assert.ok(g[k].length>=3,`${m.id}: ${k}`);assert.ok(g.notable.length>=2,m.id+' notable');assert.ok(g.faq.length>=3&&g.faq.every(([q,a])=>q&&words(a)>=12),m.id+' faq');assert.ok(g.refs.length>=1&&g.refs.every(r=>new URL(r.url).protocol==='https:'),m.id+' refs');assert.ok(noDash(g),m.id+' dash');}
  assert.ok(searchMaterials('denim').slice(0,2).some(r=>r.material.id==='cotton'));assert.equal(searchMaterials('charmeuse')[0].material.id,'silk');
+});
+test('data sheets cite a valid source for every property, event and production figure',()=>{
+ let rows=0;for(const m of materials){const d=m.data;if(!d)continue;for(const r of d.refs)assert.equal(new URL(r.url).protocol,'https:',m.id);const ok=i=>Number.isInteger(i)&&i>=0&&i<d.refs.length;
+  for(const p of d.properties){assert.ok(p.label&&p.value&&ok(p.ref),m.id+' property');rows++;}for(const t of d.timeline)assert.ok(t.year&&t.event&&ok(t.ref),m.id+' event');if(d.production)assert.ok(d.production.figure&&ok(d.production.ref),m.id+' production');assert.ok(noDash(d),m.id+' dash');}
+ assert.ok(rows>=100);
+ const tex=propertyCell({data:{properties:[{key:'tenacity',label:'Tenacity',value:'2 to 4',unit:'g/denier',conditions:'',ref:0}],refs:[{title:'t',url:'https://x.org'}]}},propertyColumns.find(c=>c.key==='tenacity'));
+ assert.ok(Math.abs(tex.value-26.49)<.01);
 });
 test('ranked search tolerates typos and spelling variants and supports phrases, exclusions and fields',()=>{
  assert.equal(editDistance('cashmer','cashmere'),1);assert.equal(editDistance('ab','ba'),1);assert.equal(editDistance('wool','silk',1),2);

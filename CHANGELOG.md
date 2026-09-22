@@ -1,5 +1,10 @@
 # Changelog
 
+## 2.4.0 - 2026-09-22
+
+- Data sheets: sourced physical properties (density, moisture regain, tenacity, elongation, melting or decomposition, limiting oxygen index and more) with test conditions, a dated timeline of verified milestones, and world production figures with year and scope, each linked to its reference. Shown in the Science, History and Overview tabs and on every material reading page.
+- Compare properties (`#/properties`): one table of every material with published values, sortable by any column in either direction and filterable by family. Values are normalized to one unit per column (tenacity in cN/tex) and ranges sort by midpoint; published values and conditions stay visible.
+
 ## 2.3.0 - 2026-09-22
 
 - A JavaScript-free reading edition of every material at `materials/<id>/` plus a materials index: the full guide and research layers, key figures, table of contents, FAQ, sources and citation, with canonical URLs, Open Graph metadata, Article, FAQPage and BreadcrumbList structured data. The sitemap now lists 202 URLs, and each interactive profile links to its reading edition.
