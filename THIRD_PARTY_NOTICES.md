@@ -1,6 +1,6 @@
 # Third-party notices
 
-Runtime components retain their original licenses below. World Atlas redistributes generalized Natural Earth map data. Natural Earth data is public domain. Referenced publications and trademarks remain the property of their owners; no source articles or brand logos are bundled.
+Runtime components retain their original licenses below. World Atlas redistributes generalized Natural Earth map data; the bundle includes its 1:110m, 1:50m and 1:10m country files. Natural Earth data is public domain. Referenced publications and trademarks remain the property of their owners; no source articles or brand logos are bundled.
 
 ## d3-geo
 

@@ -11,6 +11,7 @@
     "All main sections checked at 1440, 768 and 390 pixels",
     "Unknown routes and escaped search input handled",
     "Glossary: aliases, topic/letter filters, 99 detail routes, 100 JavaScript-free pages, related links, metadata, structured data, sitemap and accessibility",
+    "Every mapped fiber opens centered with all route stops visible",
     "Research layer: detail sections, key figures, glossary links, citations, ranked typo-tolerant search, converters, raised routes and spin control",
     "Standalone HTML opens offline with populated library",
     "No browser JavaScript errors"
