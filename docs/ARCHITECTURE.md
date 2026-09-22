@@ -9,7 +9,7 @@ FibersOfEarth is a local-first static application. ES modules are bundled with e
 | src/app.js | Hash router, page rendering, search, filtering, saved materials, downloads and dialogs. |
 | src/globe.js | D3 orthographic and Natural Earth projections, topology conversion, raised 3D route arcs, direction-of-travel animation, auto-rotation, map controls and node selection. |
 | src/data.js | Unified catalog, research details, illustrative networks, route derivation, distances and the material search index. |
-| src/search.js | Offline ranked search engine: tokenizer, spelling folding, BM25F scoring, typo tolerance, query syntax, suggestions and snippets. |
+| src/search.js | Offline ranked search engine: tokenizer, spelling folding, BM25 scoring, typo tolerance, query syntax, suggestions and snippets. |
 | src/details.js | Generated research profiles for every catalog entry, with key figures, references and evidence levels. |
 | src/glossary.js, src/glossary-extended.js, src/glossary-render.js | Glossary data, research additions, ranked term search, shared HTML rendering and automatic term links. |
 | src/content.js | Core material descriptions, articles, regions, references and glossary. |
@@ -41,7 +41,7 @@ Views escape interpolated strings before placing them in HTML. Search inputs do 
 
 ## Search
 
-`src/search.js` builds an in-memory inverted index when a search first runs. Documents and queries share one normalizer: accent folding, British to American spelling (fibre, colour, woollen, -isation), light plural stemming and stop words. Scoring is BM25F (k1 1.2, b 0.75) with per-field weights, so a name or alias match outranks a mention deep in a history paragraph. The last query term also matches as a prefix while typing. A term missing from the vocabulary expands to vocabulary words within Damerau-Levenshtein distance 1 (4 to 7 letters) or 2 (8 or more) at reduced weight. Every positive term must match. Quoted phrases must match contiguously, `-term` excludes, and `field:term` restricts a term to one field (for example `law:cites`, `chemistry:keratin`, `history:dupont`, `family:plant`). Results carry the fields they matched, which drive the highlighted snippets. With no results, the engine suggests the closest vocabulary correction.
+`src/search.js` builds an in-memory inverted index when a search first runs. Documents and queries share one normalizer: accent folding, British to American spelling (fibre, colour, woollen, -isation), light plural stemming and stop words. Scoring is field-weighted BM25 (k1 1.2, b 0.75): each field saturates separately and is then weighted, so a name or alias match outranks many mentions deep in long research paragraphs. The last query term also matches as a prefix while typing. A term missing from the vocabulary expands to vocabulary words within Damerau-Levenshtein distance 1 (4 to 7 letters) or 2 (8 or more) at reduced weight. Every positive term must match. Quoted phrases must match contiguously, `-term` excludes, and `field:term` restricts a term to one field (for example `law:cites`, `chemistry:keratin`, `history:dupont`, `family:plant`). Results carry the fields they matched, which drive the highlighted snippets. With no results, the engine suggests the closest vocabulary correction.
 
 ## Geometry and calculations
 

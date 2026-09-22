@@ -8,8 +8,10 @@ const ambiguous=new Set(['Hand','Top']);
 const linkable=[...glossaryEntries].filter(t=>t.term.length>3&&!ambiguous.has(t.term)).sort((a,b)=>b.term.length-a.term.length);
 const linkPattern=new RegExp('\\b('+linkable.map(t=>reEscape(escapeHTML(t.term))).join('|')+')\\b','gi');
 const byLower=Object.fromEntries(linkable.map(t=>[escapeHTML(t.term).toLowerCase(),t]));
+// Same word, different science: keratin "intermediate filaments" are not textile filaments.
+const notTextile=(t,before)=>t.term==='Filament'&&/intermediate\s$/i.test(before);
 export function linkTerms(html,link=id=>'#/glossary/'+id,used=new Set(),skip=''){
- return html.replace(linkPattern,match=>{const t=byLower[match.toLowerCase()];if(!t||t.id===skip||used.has(t.id))return match;used.add(t.id);return `<a class="term-link" href="${escapeHTML(link(t.id))}" title="${escapeHTML(t.definition)}">${match}</a>`;});
+ return html.replace(linkPattern,(match,_,offset,whole)=>{const t=byLower[match.toLowerCase()];if(!t||t.id===skip||used.has(t.id)||notTextile(t,whole.slice(Math.max(0,offset-14),offset)))return match;used.add(t.id);return `<a class="term-link" href="${escapeHTML(link(t.id))}" title="${escapeHTML(t.definition)}">${match}</a>`;});
 }
 export function termRefs(t){return [...t.sources.map(id=>glossarySources[id]),...(t.refs||[])].filter(Boolean).filter((s,i,a)=>a.findIndex(x=>x.url===s.url)===i);}
 export function termBody(t,link=id=>'#/glossary/'+id){

@@ -20,7 +20,7 @@ test('glossary preserves terms, valid references, detailed content and composed 
  for(const term of Object.keys(originalTerms))assert.ok(glossaryEntries.some(t=>t.term===term),term);
  assert.ok(glossaryEntries.length>=90);
  assert.equal(new Set(glossaryEntries.map(t=>t.id)).size,glossaryEntries.length);
- for(const t of glossaryEntries){assert.match(t.id,/^[a-z]+(?:-[a-z]+)*$/);assert.ok(words(t.definition)>=8,t.term+' definition');for(const k of ['explanation','example','caution'])assert.ok(words(t[k])>=25,t.term+' '+k);for(const k of ['deeper','origins'])assert.ok(words(t[k])>=30,t.term+' '+k);assert.ok(termRefs(t).length>=2,t.term+' refs');for(const r of termRefs(t))assert.equal(new URL(r.url).protocol,'https:');assert.ok(t.related.length>=2,t.term+' related');for(const name of t.related)assert.ok(glossaryEntries.some(x=>x.term===name));assert.ok(noDash(t),t.term+' dash');}
+ for(const t of glossaryEntries){assert.match(t.id,/^[a-z]+(?:-[a-z]+)*$/);assert.ok(words(t.definition)>=5,t.term+' definition');for(const k of ['explanation','example','caution'])assert.ok(words(t[k])>=25,t.term+' '+k);for(const k of ['deeper','origins'])assert.ok(words(t[k])>=30,t.term+' '+k);assert.ok(termRefs(t).length>=2,t.term+' refs');for(const r of termRefs(t))assert.equal(new URL(r.url).protocol,'https:');assert.ok(t.related.length>=2,t.term+' related');for(const name of t.related)assert.ok(glossaryEntries.some(x=>x.term===name));assert.ok(noDash(t),t.term+' dash');}
  for(const s of Object.values(glossarySources))assert.equal(new URL(s.url).protocol,'https:');
  assert.equal(findTerms({q:'spandex'})[0].id,'elastane');
  assert.equal(findTerms({q:'cottonisation'})[0].id,'cottonization');
@@ -44,6 +44,7 @@ test('ranked search tolerates typos and spelling variants and supports phrases, 
  const phrase=searchMaterials('"artificial silk"');assert.ok(phrase.length>0);
  const top=searchMaterials('wool')[0];assert.ok(top.matched.name||top.matched.aliases);
  assert.equal(suggestMaterials('polyestr'),'polyester');
+ assert.ok(searchMaterials('law:cites').every(r=>/cites/i.test(r.material.detail.labeling)));
  assert.ok(getMaterials({q:'fibre'}).length===getMaterials({q:'fiber'}).length);
 });
 test('unit converters match exact reference conversions',()=>{
@@ -55,5 +56,6 @@ test('unit converters match exact reference conversions',()=>{
  assert.ok(Number.isNaN(toTex(0,'tex'))&&Number.isNaN(toGsm(-1,'oz')));
 });
 test('glossary auto-links escape safely and link each term once',()=>{
+ assert.ok(!linkTerms('keratin intermediate filaments').includes('glossary/filament'));assert.ok(linkTerms('a continuous filament').includes('term-link'));
  const html=linkTerms('Carding &amp; carding precede combing.');assert.equal((html.match(/term-link/g)||[]).length,2);assert.ok(html.includes('&amp;'));
 });

@@ -4,7 +4,7 @@
 
 - Added a research profile to all 100 catalog entries: source and geography, structure and chemistry, processing route, performance in use, identification, labeling law and standards, a deeper history, key figures with conditions, and entry-specific references with an evidence level.
 - Expanded the glossary from 32 to 99 terms across fiber science, yarn formation, measurement, construction, coloration, claims and labeling law. Every term now includes "The science and numbers" and "Origins and history" sections and inline-linked references.
-- Replaced substring matching with a ranked, offline search engine: field-weighted BM25F scoring, typo tolerance, prefix completion, British and American spelling folding, quoted phrases, exclusions, field filters such as `law:` and `chemistry:`, match snippets and "did you mean" suggestions.
+- Replaced substring matching with a ranked, offline search engine: field-weighted BM25 scoring, typo tolerance, prefix completion, British and American spelling folding, quoted phrases, exclusions, field filters such as `law:` and `chemistry:`, match snippets and "did you mean" suggestions.
 - Added "Cite this profile" (APA and BibTeX), automatic glossary links in profile and glossary prose, research rows in comparisons, and glossary data in the JSON export.
 - Added yarn-count (tex, dtex, denier, Nm, Ne) and fabric-weight (g/m2, oz/yd2, momme) converters to the science lab.
 - Raised route arcs above the globe with ground shadows, direction chevrons, flowing dashes and traveling arrows, plus a pausable slow globe rotation that respects reduced-motion settings.

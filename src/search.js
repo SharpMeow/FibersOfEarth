@@ -1,11 +1,13 @@
-// Offline ranked search. Field-weighted BM25F scoring with typo tolerance, prefix completion,
+// Offline ranked search. Field-weighted BM25 scoring with typo tolerance, prefix completion,
 // quoted phrases, exclusions and field filters. Documents and queries share one normalizer,
 // so British and American spellings and simple plurals meet in the same index.
 const STOP=new Set('a an and are as at be by for from has have in into is it its of on or that the their this to was were which with'.split(' '));
 const SPELLING=[[/fibre/g,'fiber'],[/colour/g,'color'],[/lustre/g,'luster'],[/metre/g,'meter'],[/centre/g,'center'],[/grey/g,'gray'],[/mould/g,'mold'],[/woollen/g,'woolen'],[/isation/g,'ization'],[/ise(d|s)?$/,'ize$1'],[/yse(d|s)?$/,'yze$1']];
 export const fold=s=>String(s??'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
+// Acronyms that end in s (conventions, standards) must not be stemmed into ordinary words.
+const PROTECTED=new Set(['cites','gots','ocs','rws','grs','rcs','ras','rms','rds','fsc','pefc','ddt']);
 export function stem(t){
- if(/^\d/.test(t))return t;
+ if(/^\d/.test(t)||PROTECTED.has(t))return t;
  for(const [re,to] of SPELLING)t=t.replace(re,to);
  if(t.length>4&&t.endsWith('ies'))return t.slice(0,-3)+'y';
  if(t.length>4&&/(sses|xes|ches|shes)$/.test(t))return t.slice(0,-2);
@@ -67,7 +69,9 @@ export function createIndex(docs,fields,{aliases={},k1=1.2,b=0.75}={}){
   if(!out.size&&lim)for(const v of vocab){const d=editDistance(term,v,lim);if(d<=lim)out.set(v,d===1?.55:.35);}
   return out;
  }
- function fieldScore(rec,t,only){let tf=0;for(const [k,n] of Object.entries(rec.tf[t]||{}))if(!only||only===k)tf+=fields[k]*n/(1-b+b*rec.len[k]/avg[k]);return tf?idf(t)*tf*(k1+1)/(tf+k1):0;}
+ // Each field saturates on its own before weighting, so a title match keeps its full weight even when
+ // long descriptive fields elsewhere mention the same word many times.
+ function fieldScore(rec,t,only){let score=0;for(const [k,n] of Object.entries(rec.tf[t]||{}))if(!only||only===k)score+=fields[k]*n*(k1+1)/(n+k1*(1-b+b*rec.len[k]/avg[k]));return score*idf(t);}
  function search(q,{filter=()=>true}={}){
   const pq=parseQuery(q,fieldAliases);
   if(!pq.terms.length&&!pq.phrases.length&&!pq.fields.length&&!pq.exclude.length)return docs.filter(filter).map(doc=>({doc,score:0,matched:{}}));
@@ -84,6 +88,7 @@ export function createIndex(docs,fields,{aliases={},k1=1.2,b=0.75}={}){
    for(const ex of pq.exclude){const needle=' '+ex.join(' ')+' ';if(keys.some(k=>rec.text[k].includes(needle)))return;}
    // Title boosts use each group's best-scoring expansion, so a corrected typo still ranks its exact name first.
    const title=keys[0],qt=hits.join(' ');
+   if(qt&&rec.doc.id!=null&&tokenize(String(rec.doc.id),{keepStop:true}).join(' ')===qt)score*=2.5;
    if(qt&&rec.text[title].trim()===qt)score*=3;else if(qt&&rec.text[title].startsWith(' '+qt))score*=1.8;else if(hits.length&&hits.every(t=>rec.tf[t]?.[title]))score*=1.5;
    results.push({doc:rec.doc,score,matched:Object.fromEntries(Object.entries(matched).map(([k,v])=>[k,[...v]]))});
   });
