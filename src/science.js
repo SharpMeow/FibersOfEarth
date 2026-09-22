@@ -24,3 +24,15 @@ export function scienceFor(m){
  if(['acetate','triacetate'].includes(m.id))return ['Cellulose ester','Cellulose is chemically modified by acetylation. This is different from regenerating cellulose as viscose or lyocell.'];
  return chemistry[m.family]||['Product-specific structure','Follow the linked underlying material, then consult the exact producer specification.'];
 }
+// Yarn and fiber linear density. Direct systems (mass per length) and indirect systems (length per mass)
+// all pass through tex, grams per 1,000 meters. Ne: 840-yard hanks per pound, so tex = 453.59237/(0.9144*840)*1000/Ne.
+const NE=453.59237e3/(0.9144*840);
+export const countUnits=[['tex','tex (g per 1,000 m)'],['dtex','dtex (g per 10,000 m)'],['denier','denier (g per 9,000 m)'],['nm','Nm, metric count (km per kg)'],['ne','Ne, English cotton count']];
+export function toTex(value,unit){const v=Number(value);if(!(v>0))return NaN;return {tex:v,dtex:v/10,denier:v/9,nm:1000/v,ne:NE/v}[unit]??NaN;}
+export function fromTex(tex,unit){if(!(tex>0))return NaN;return {tex,dtex:tex*10,denier:tex*9,nm:1000/tex,ne:NE/tex}[unit]??NaN;}
+// Fabric mass per area. 1 oz/yd2 = 28.349523125 g / 0.83612736 m2. One momme is the weight in pounds of a
+// piece 45 inches by 100 yards, which works out to about 4.34 g/m2.
+const OZ=28.349523125/0.83612736,MOMME=453.59237/(1.143*91.44);
+export const weightUnits=[['gsm','g/m² (GSM)'],['oz','oz/yd²'],['momme','momme (silk)']];
+export function toGsm(value,unit){const v=Number(value);if(!(v>0))return NaN;return {gsm:v,oz:v*OZ,momme:v*MOMME}[unit]??NaN;}
+export function fromGsm(gsm,unit){if(!(gsm>0))return NaN;return {gsm,oz:gsm/OZ,momme:gsm/MOMME}[unit]??NaN;}

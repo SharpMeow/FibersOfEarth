@@ -1,4 +1,6 @@
 import {glossary as definitions} from './content.js';
+import {glossaryAdditions,glossaryDepth} from './glossary-extended.js';
+import {createIndex} from './search.js';
 export const reviewed='2026-09-22';
 const cw=(slug,title)=>({title:'CottonWorks: '+title,url:'https://cottonworks.com/encyclopedia-item/'+slug+'/'});
 export const glossarySources={
@@ -156,8 +158,22 @@ const rows=[
 'A worsted yarn can be used in different fabric constructions. When reading a supplier’s description, separate the processing route from fiber composition, yarn count and the eventual knitted or woven structure. That prevents one familiar word from standing in for a complete specification.',
 'Hand-knitting labels also use “worsted weight” as a yarn-size category. That usage does not establish that the yarn was manufactured by the worsted wool-processing route. Confirm which meaning the speaker intends.',['Top','Combing','Carding'],['iwto','top','weights']]
 ];
-export const glossaryEntries=rows.map(([term,category,aliases,explanation,example,caution,related,sources])=>({id:term.toLowerCase().replace(/ & /g,'-and-').replace(/[^a-z0-9]+/g,'-'),term,category,aliases:aliases.split(', '),definition:definitions[term],explanation,example,caution,related,sources,reviewed}));
+const slug=term=>term.toLowerCase().replace(/ & /g,'-and-').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
+const base=rows.map(([term,category,aliases,explanation,example,caution,related,sources])=>({term,category,aliases:aliases.split(', '),definition:definitions[term],explanation,example,caution,related,sources}));
+const added=glossaryAdditions.map(t=>({...t,sources:[]}));
+export const glossaryEntries=[...base,...added].map(t=>{const d=glossaryDepth[t.term]||{};return {...t,id:slug(t.term),deeper:t.deeper||d.deeper||'',origins:t.origins||d.origins||'',related:[...new Set([...t.related,...(d.related_add||[])])],refs:[...(t.refs||[]),...(d.refs||[])],reviewed};});
+const known=new Set(glossaryEntries.map(t=>t.term));
+for(const t of glossaryEntries)t.related=t.related.filter(name=>known.has(name)&&name!==t.term);
 export const glossaryById=Object.fromEntries(glossaryEntries.map(t=>[t.id,t]));
 export const glossaryCategories=[...new Set(glossaryEntries.map(t=>t.category))].sort();
-const normalize=s=>s.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
-export function findTerms({q='',category='',letter=''}={}){return glossaryEntries.filter(t=>(!category||t.category===category)&&(!letter||t.term[0]===letter)&&normalize([t.term,...t.aliases,t.definition,t.explanation,t.example,t.caution].join(' ')).includes(normalize(q))).sort((a,b)=>a.term.localeCompare(b.term,'en'));}
+export const glossaryFieldLabels={term:'Term',aliases:'Also searched as',definition:'Short answer',category:'Topic',explanation:'In detail',deeper:'The science and numbers',origins:'Origins and history',example:'A practical example',caution:'What to distinguish'};
+let termIndex;
+const index=()=>termIndex??=createIndex(glossaryEntries,{term:10,aliases:7,definition:3,category:1,explanation:1.2,deeper:1,origins:.8,example:.6,caution:.6},{aliases:{topic:'category',category:'category',history:'origins',science:'deeper'}});
+// Ranked search with the fields each term matched; without a query, terms are alphabetical.
+export function searchTerms({q='',category='',letter=''}={}){
+ const keep=t=>(!category||t.category===category)&&(!letter||t.term[0]===letter);
+ if(!String(q).trim())return glossaryEntries.filter(keep).sort((a,b)=>a.term.localeCompare(b.term,'en')).map(term=>({term,score:0,matched:{}}));
+ return index().search(q,{filter:keep}).map(r=>({term:r.doc,score:r.score,matched:r.matched}));
+}
+export function findTerms(opts={}){return searchTerms(opts).map(r=>r.term);}
+export function suggestTerms(q){return index().suggest(q);}

@@ -2,7 +2,7 @@
 
 Verification date: September 22, 2026.
 
-Run `npm ci`, `npm test`, and `npm run build`. Install a browser with `npx playwright install chromium`, then run `npm run test:browser`. To use installed Google Chrome locally, set `BROWSER_CHANNEL=chrome`.
+Run `npm ci`, `npm test`, and `npm run build`. Install a browser with `npx playwright install chromium`, then run `npm run test:browser`. To use installed Google Chrome locally, set `BROWSER_CHANNEL=chrome`. To use a specific Chromium binary, set `BROWSER_EXECUTABLE=/path/to/chromium`.
 
 The five data tests cover catalog completeness, unique identifiers, source references, valid route coordinates, combined search/filter/sort behavior, distance and filament calculations, and editorial links.
 
@@ -14,6 +14,10 @@ See [browser-results.json](browser-results.json) and [screenshots](screenshots/)
 
 These checks are not a full accessibility audit, screen-reader study, scientific peer review, or verification of real-world supply chains. Routes are illustrative and historical summaries have the source limitations described in [CONTENT.md](CONTENT.md).
 
+## Research layer verification
+
+Unit tests require every one of the 100 entries to carry all seven research sections with substantial text, at least two key figures, HTTPS references and an evidence level, with no em or en dashes. Every glossary term must keep the original 32 names, include the science and origins sections, have at least two HTTPS references and valid related terms. Search tests cover edit distance, spelling folding, query parsing, typo recovery, exclusions, field filters, phrases and suggestions. Converter tests compare against exact reference conversions and round trips. Browser tests open research sections, key figures, glossary links and citations, run typo and field searches, exercise the converters, and check raised routes and the spin control.
+
 ## Expanded glossary verification
 
-The additional glossary data test checks preservation of all 32 original terms, references, related terms, substantial explanations, alias search, and combined topic/letter filters. Browser coverage includes all 32 interactive definition routes and all 32 static definition pages with JavaScript disabled, the static index, relative related-term navigation, canonical URLs, structured-data consistency, sitemap entries, missing-page 404s, mobile layout, and axe checks for both reading modes.
+The glossary data test checks preservation of all 32 original terms among the expanded set, references, related terms, substantial explanations, alias search, and combined topic/letter filters. Browser coverage includes every interactive definition route and every static definition page with JavaScript disabled, the static index, relative related-term navigation, canonical URLs, structured-data consistency, sitemap entries, missing-page 404s, mobile layout, and axe checks for both reading modes.
