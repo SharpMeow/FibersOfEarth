@@ -1,5 +1,15 @@
 # Changelog
 
+## 2.2.1 - 2026-09-22
+
+- Each fiber's globe now opens centered on its trade route, zoomed so every stop fits; Reset returns to that view.
+- The idle motion sways gently around the route instead of spinning it out of view; it holds still from 1.8x so detailed coastlines stay sharp.
+- Zoom range widened to 0.6x to 16x, with ctrl/cmd+wheel, trackpad pinch and double-click zoom.
+- Detail rises with zoom: Natural Earth 1:50m coastlines and borders, country names, a 5 degree grid and stage descriptions under place names from 1.8x; 1:10m coastlines from 4x; a 1 degree grid from 8x. Only polygons reaching the visible part of the globe are drawn, and a few reversed-winding 1:10m islets are corrected so they cannot flood the view.
+- Home views center each route on the smallest spherical cap holding its stops, so wide routes such as New Zealand to Europe stay on one face of the globe.
+- Traveling arrows are placed by one animation loop on the current arc, fixing arrows that flickered on short arcs or stuck in the top-left corner; arcs shorter than 40 px show no arrows.
+- Removed the tap highlight, click focus ring and text selection when clicking or dragging the globe (keyboard focus still shows).
+
 ## 2.2.0 - 2026-09-22
 
 - Added a research profile to all 100 catalog entries: source and geography, structure and chemistry, processing route, performance in use, identification, labeling law and standards, a deeper history, key figures with conditions, and entry-specific references with an evidence level.

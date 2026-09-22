@@ -51,3 +51,11 @@ button.text-link{font-size:inherit;padding:0;color:var(--green)}
 .route-traveler path{fill:var(--route);stroke:#fdfcf7;stroke-width:1}
 .route-traveler .traveler-glow{fill:var(--route);opacity:.2}
 @media(prefers-reduced-motion:reduce){.route-flow{animation:none;stroke-dasharray:none;opacity:0}}
+/* The globe is a drag surface: no tap highlight, text selection or click focus ring (keyboard focus still shows). */
+.globe,.globe *{-webkit-tap-highlight-color:transparent}
+.globe,.globe-svg{-webkit-user-select:none;user-select:none;outline:none}
+.globe-svg:focus,.globe:focus,.map-node:focus:not(:focus-visible){outline:none}
+#main:focus{outline:none}
+/* Zoom detail: country names and stage descriptions under place names */
+.country-label{font-size:9.5px;letter-spacing:.16em;fill:#5f7258;fill-opacity:.8;font-weight:500;paint-order:stroke;stroke:#eef2e7;stroke-width:3px;stroke-linejoin:round}
+.city-sub{font-size:9px;fill:#536252;font-weight:400;letter-spacing:.02em}

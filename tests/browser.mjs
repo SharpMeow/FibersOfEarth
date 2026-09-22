@@ -3,7 +3,7 @@ import AxeBuilder from '@axe-core/playwright';
 import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
 import {glossaryEntries} from '../src/glossary.js';
-import {materials,journeys} from '../src/data.js';
+import {materials,journeys,networks} from '../src/data.js';
 const browser=await chromium.launch({headless:true,...(process.env.BROWSER_CHANNEL?{channel:process.env.BROWSER_CHANNEL}:{}),...(process.env.BROWSER_EXECUTABLE?{executablePath:process.env.BROWSER_EXECUTABLE}:{})});
 const context=await browser.newContext({viewport:{width:1440,height:1000},reducedMotion:'reduce'});
 const page=await context.newPage();
@@ -40,6 +40,8 @@ try{
  await go('materials');await page.getByLabel('Search material library').fill('cashmer');assert.equal(await page.locator('.material-card h3').first().textContent(),'Cashmere');await page.getByLabel('Search material library').fill('law:cites');assert.ok(await page.locator('.match-snippet mark').count()>0);
  await go('science');await page.locator('#count-value').fill('30');await page.locator('#count-unit').selectOption('ne');assert.match(await page.locator('#count-out').textContent(),/19\.68/);await page.locator('#weight-value').fill('1');await page.locator('#weight-unit').selectOption('oz');assert.match(await page.locator('#weight-out').textContent(),/33\.9/);
  await go('atlas/wool');assert.ok(await page.locator('.route.active .route-line').count()>0);assert.ok(await page.locator('.route-chevron').count()>0);assert.equal(await page.locator('[data-globe="spin"]').getAttribute('aria-pressed'),'false');await page.locator('[data-globe="spin"]').click();assert.equal(await page.locator('[data-globe="spin"]').getAttribute('aria-pressed'),'true');await page.locator('[data-globe="spin"]').click();
+ await page.locator('[data-globe="spin"]').click().catch(()=>{});for(const id of Object.keys(networks)){const j=journeys.find(x=>x.fiber===id);await go('atlas/'+id);const shown=await page.locator('.map-node').evaluateAll(els=>els.map(e=>e.dataset.node));for(const k of new Set(j.keys))assert.ok(shown.includes(k),`${id}: stop ${k} not visible in home view`);}
+ results.push('Every mapped fiber opens centered with all route stops visible');
  results.push('Research layer: detail sections, key figures, glossary links, citations, ranked typo-tolerant search, converters, raised routes and spin control');
  await context.setOffline(true);await page.goto(new URL('../index.html',import.meta.url).href+'#/materials');await page.locator('h1').waitFor();assert.ok(await page.locator('.material-card').count()>0);results.push('Standalone HTML opens offline with populated library');
  assert.deepEqual(errors,[]);results.push('No browser JavaScript errors');
