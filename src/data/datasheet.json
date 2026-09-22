@@ -197,6 +197,231 @@
    }
   ]
  },
+ "linen": {
+  "properties": [
+   {
+    "key": "density",
+    "label": "Density",
+    "value": "about 1.50",
+    "unit": "g/cm3",
+    "conditions": "flax fiber, compiled literature value",
+    "ref": 0
+   },
+   {
+    "key": "elongation",
+    "label": "Elongation at break",
+    "value": "1 to 4",
+    "unit": "%",
+    "conditions": "flax fiber, compiled literature range",
+    "ref": 0
+   },
+   {
+    "key": "decomposition",
+    "label": "Thermal decomposition",
+    "value": "about 220 to 350",
+    "unit": "C",
+    "conditions": "thermogravimetry; onset of hemicellulose and amorphous cellulose breakdown about 220 to 250 C, main cellulose mass loss about 300 to 350 C (review value shared by cotton, flax, jute, hemp and sisal)",
+    "ref": 0
+   },
+   {
+    "key": "fiber_diameter",
+    "label": "Elementary fiber diameter",
+    "value": "about 14 to 16",
+    "unit": "microns",
+    "conditions": "flax cultivar Agatha, compiled literature value",
+    "ref": 0
+   },
+   {
+    "key": "staple_length",
+    "label": "Elementary fiber length",
+    "value": "17 to 25",
+    "unit": "mm",
+    "conditions": "single flax cells; spun as longer technical bundles",
+    "ref": 1
+   },
+   {
+    "key": "tensile_strength",
+    "label": "Tensile strength",
+    "value": "345 to 2000",
+    "unit": "MPa",
+    "conditions": "single fiber, compiled literature range",
+    "ref": 0
+   }
+  ],
+  "timeline": [
+   {
+    "year": "c. 32,000 to 26,000 BP",
+    "event": "Spun, dyed and knotted wild flax fibers were recovered from Upper Paleolithic layers at Dzudzuana Cave in Georgia, radiocarbon dated as early as about 32,000 to 26,000 years before present.",
+    "ref": 2
+   },
+   {
+    "year": "c. 1850",
+    "event": "Hand hackling pins held by the Irish Linen Centre and Lisburn Museum, dated about 1850, record the combing of scutched flax into line fiber and tow.",
+    "ref": 3
+   },
+   {
+    "year": "2025",
+    "event": "From January 2025 the European Flax certification was renamed Masters of FLAX FIBRE, covering flax grown and scutched in Europe without irrigation.",
+    "ref": 4
+   },
+   {
+    "year": "2025",
+    "event": "The Alliance for European Flax-Linen and Hemp reported 38 Masters of LINEN certified companies in eight European countries in December 2025.",
+    "ref": 5
+   },
+   {
+    "year": "2025",
+    "event": "European scutching mills produced a record of about 190,000 tonnes of long flax fiber, up from about 116,000 tonnes in 2024, according to the Alliance.",
+    "ref": 6
+   }
+  ],
+  "production": {
+   "figure": "about 190,000 tonnes of scutched long fiber (about 116,000 tonnes in 2024)",
+   "year": "2025",
+   "scope": "European scutched long flax fiber only, not a world total; short fiber and tow excluded",
+   "countries": "France, Belgium, Netherlands",
+   "ref": 6
+  },
+  "refs": [
+   {
+    "title": "RSC Advances (2026): Natural fibers in sustainable materials, extraction technologies, fiber modification and performance-sustainability relationships",
+    "url": "https://doi.org/10.1039/d5ra09029f"
+   },
+   {
+    "title": "Plants (2026): Improving ramie fiber, current progress and future directions in molecular breeding",
+    "url": "https://doi.org/10.3390/plants15101435"
+   },
+   {
+    "title": "Science (2009): 30,000-year-old wild flax fibers (Kvavadze et al.)",
+    "url": "https://doi.org/10.1126/science.1175404"
+   },
+   {
+    "title": "Irish Linen Centre and Lisburn Museum: Hackling pins for combing flax, c.1850",
+    "url": "https://www.lisburnmuseum.com/virtual-museum-lisburn/object-hackling-pins-for-combing-flax-c-1850/"
+   },
+   {
+    "title": "Alliance for European Flax-Linen and Hemp: European Flax becomes Masters of FLAX FIBRE from January 2025",
+    "url": "https://allianceflaxlinenhemp.eu/en/masters-of-flax-fibre-certification"
+   },
+   {
+    "title": "Alliance for European Flax-Linen and Hemp: Masters of LINEN certification",
+    "url": "https://allianceflaxlinenhemp.eu/en/masters-of-linen-certification"
+   },
+   {
+    "title": "Alliance for European Flax-Linen and Hemp: Economic situation of the European flax and hemp market",
+    "url": "https://allianceflaxlinenhemp.eu/en/flax-linen-hemp-economic-observatory"
+   }
+  ]
+ },
+ "cotton": {
+  "properties": [
+   {
+    "key": "density",
+    "label": "Density",
+    "value": "1.50 to 1.60",
+    "unit": "g/cm3",
+    "conditions": "single fiber, compiled literature range",
+    "ref": 0
+   },
+   {
+    "key": "elongation",
+    "label": "Elongation at break",
+    "value": "3 to 10",
+    "unit": "%",
+    "conditions": "single fiber, compiled literature range",
+    "ref": 0
+   },
+   {
+    "key": "decomposition",
+    "label": "Thermal decomposition",
+    "value": "about 220 to 350",
+    "unit": "C",
+    "conditions": "thermogravimetry; onset of hemicellulose and amorphous cellulose breakdown about 220 to 250 C, main cellulose mass loss about 300 to 350 C (review value shared by cotton, flax, jute, hemp and sisal)",
+    "ref": 0
+   },
+   {
+    "key": "staple_length",
+    "label": "Staple length",
+    "value": "about 22 to 33 (Upland); about 32 to 40 (Gossypium barbadense, extra long staple)",
+    "unit": "mm",
+    "conditions": "converted from about 7/8 to 1 5/16 in and 1 1/4 to 1 9/16 in",
+    "ref": 1
+   },
+   {
+    "key": "tensile_strength",
+    "label": "Tensile strength",
+    "value": "200 to 800",
+    "unit": "MPa",
+    "conditions": "single fiber, compiled literature range",
+    "ref": 0
+   }
+  ],
+  "timeline": [
+   {
+    "year": "1793",
+    "event": "Eli Whitney applied for a patent on a mechanical cotton gin on 28 October 1793.",
+    "ref": 2
+   },
+   {
+    "year": "1794",
+    "event": "The cotton gin patent was granted on 14 March 1794, making short staple upland cotton far cheaper to clean of seed.",
+    "ref": 2
+   },
+   {
+    "year": "1844",
+    "event": "John Mercer of Lancashire treated cotton with sodium hydroxide, the process later called mercerization; his original method used no tension.",
+    "ref": 3
+   },
+   {
+    "year": "1889 to 1890",
+    "event": "Horace Lowe showed that holding cotton under tension during caustic treatment produces the lustrous finish now associated with mercerized cotton.",
+    "ref": 3
+   },
+   {
+    "year": "2016",
+    "event": "Target reported that sheets sold as Egyptian cotton and made by its supplier Welspun contained other cotton, putting origin testing in the spotlight.",
+    "ref": 4
+   },
+   {
+    "year": "2024",
+    "event": "Textile Exchange reported that cotton output fell about 1% to roughly 24.5 million tonnes in the 2023/24 season, about 19% of all fiber produced.",
+    "ref": 5
+   }
+  ],
+  "production": {
+   "figure": "about 24.5 million tonnes",
+   "year": "2023/24 season (reported for 2024)",
+   "scope": "global cotton production, about 19% of all fiber produced",
+   "countries": "China, India, Brazil, United States",
+   "ref": 5
+  },
+  "refs": [
+   {
+    "title": "RSC Advances (2026): Natural fibers in sustainable materials, extraction technologies, fiber modification and performance-sustainability relationships",
+    "url": "https://doi.org/10.1039/d5ra09029f"
+   },
+   {
+    "title": "ScienceDirect Topics: Gossypium barbadense",
+    "url": "https://www.sciencedirect.com/topics/agricultural-and-biological-sciences/gossypium-barbadense"
+   },
+   {
+    "title": "US National Archives, Milestone Documents: Patent for Cotton Gin (1794)",
+    "url": "https://www.archives.gov/milestone-documents/patent-for-cotton-gin"
+   },
+   {
+    "title": "ScienceDirect Topics: Mercerisation, an overview",
+    "url": "https://www.sciencedirect.com/topics/engineering/mercerisation"
+   },
+   {
+    "title": "Farm Progress: Dirty linen, a sheets scandal is roiling the cotton industry (2016)",
+    "url": "https://www.farmprogress.com/cotton/dirty-linen-a-sheets-scandal-is-roiling-the-cotton-industry"
+   },
+   {
+    "title": "Textile Exchange: Materials Market Report 2025",
+    "url": "https://textileexchange.org/knowledge-center/reports/materials-market-report-2025/"
+   }
+  ]
+ },
  "silk": {
   "properties": [
    {
@@ -801,6 +1026,213 @@
    {
     "title": "Ecology and Evolution: Qiviut trace and macro element profile reflects muskox population trends (2025)",
     "url": "https://doi.org/10.1002/ece3.71020"
+   }
+  ]
+ },
+ "hemp": {
+  "properties": [
+   {
+    "key": "density",
+    "label": "Density",
+    "value": "1.40 to 1.50",
+    "unit": "g/cm3",
+    "conditions": "compiled literature range",
+    "ref": 0
+   },
+   {
+    "key": "elongation",
+    "label": "Elongation at break",
+    "value": "1 to 4",
+    "unit": "%",
+    "conditions": "compiled literature range",
+    "ref": 0
+   },
+   {
+    "key": "decomposition",
+    "label": "Thermal decomposition",
+    "value": "about 220 to 350",
+    "unit": "C",
+    "conditions": "thermogravimetry; onset of hemicellulose and amorphous cellulose breakdown about 220 to 250 C, main cellulose mass loss about 300 to 350 C (review value shared by cotton, flax, jute, hemp and sisal)",
+    "ref": 0
+   },
+   {
+    "key": "staple_length",
+    "label": "Elementary fiber length",
+    "value": "15 to 25",
+    "unit": "mm",
+    "conditions": "single bast cells; technical fibers are much longer bundles",
+    "ref": 1
+   },
+   {
+    "key": "tensile_strength",
+    "label": "Tensile strength",
+    "value": "270 to 1110",
+    "unit": "MPa",
+    "conditions": "compiled literature range",
+    "ref": 0
+   }
+  ],
+  "timeline": [
+   {
+    "year": "Early Neolithic",
+    "event": "Whole-genome resequencing of 110 accessions indicates that Cannabis sativa was first domesticated in East Asia in early Neolithic times.",
+    "ref": 2
+   },
+   {
+    "year": "1937",
+    "event": "The US Marihuana Tax Act of 1937 burdened cannabis cultivation, including fiber hemp.",
+    "ref": 3
+   },
+   {
+    "year": "1942",
+    "event": "The US government released the film Hemp for Victory urging farmers to grow hemp for rope and cordage while imported fibers were scarce.",
+    "ref": 3
+   },
+   {
+    "year": "2018",
+    "event": "The 2018 Farm Bill defined hemp as Cannabis sativa with no more than 0.3% delta-9 THC on a dry weight basis, separating it from marijuana in federal law.",
+    "ref": 4
+   },
+   {
+    "year": "2019",
+    "event": "World production of hemp fiber and tow was about 60,000 tonnes, about 1.7% of natural fibers and about 0.05% of all textile fibers.",
+    "ref": 5
+   }
+  ],
+  "production": {
+   "figure": "about 60,000 tonnes of hemp fiber and tow",
+   "year": "2019",
+   "scope": "global hemp fiber and tow",
+   "countries": "",
+   "ref": 5
+  },
+  "refs": [
+   {
+    "title": "RSC Advances (2026): Natural fibers in sustainable materials, extraction technologies, fiber modification and performance-sustainability relationships",
+    "url": "https://doi.org/10.1039/d5ra09029f"
+   },
+   {
+    "title": "Plants (2026): Improving ramie fiber, current progress and future directions in molecular breeding",
+    "url": "https://doi.org/10.3390/plants15101435"
+   },
+   {
+    "title": "Science Advances (2021): Large-scale whole-genome resequencing unravels the domestication history of Cannabis sativa",
+    "url": "https://doi.org/10.1126/sciadv.abg2286"
+   },
+   {
+    "title": "Wikipedia: Hemp for Victory (1942 film)",
+    "url": "https://en.wikipedia.org/wiki/Hemp_for_Victory"
+   },
+   {
+    "title": "Congressional Research Service: The 2018 Farm Bill's Hemp Definition and Legal Challenges to State Laws",
+    "url": "https://www.congress.gov/crs-product/R48637"
+   },
+   {
+    "title": "Materials (2022): Hemp fibre properties and processing target textile, a review",
+    "url": "https://doi.org/10.3390/ma15051901"
+   }
+  ]
+ },
+ "jute": {
+  "properties": [
+   {
+    "key": "density",
+    "label": "Density",
+    "value": "1.30 to 1.50",
+    "unit": "g/cm3",
+    "conditions": "compiled literature range",
+    "ref": 0
+   },
+   {
+    "key": "elongation",
+    "label": "Elongation at break",
+    "value": "1.5 to 3",
+    "unit": "%",
+    "conditions": "compiled literature range",
+    "ref": 0
+   },
+   {
+    "key": "decomposition",
+    "label": "Thermal decomposition",
+    "value": "about 220 to 350",
+    "unit": "C",
+    "conditions": "thermogravimetry; onset of hemicellulose and amorphous cellulose breakdown about 220 to 250 C, main cellulose mass loss about 300 to 350 C (review value shared by cotton, flax, jute, hemp and sisal)",
+    "ref": 0
+   },
+   {
+    "key": "fiber_diameter",
+    "label": "Fiber diameter",
+    "value": "25 to 200",
+    "unit": "microns",
+    "conditions": "technical fiber, compiled literature range",
+    "ref": 0
+   },
+   {
+    "key": "staple_length",
+    "label": "Elementary fiber length",
+    "value": "1.5 to 5",
+    "unit": "mm",
+    "conditions": "single cells; jute is spun as lignified multicellular strands",
+    "ref": 1
+   },
+   {
+    "key": "tensile_strength",
+    "label": "Tensile strength",
+    "value": "200 to 800",
+    "unit": "MPa",
+    "conditions": "compiled literature range",
+    "ref": 0
+   }
+  ],
+  "timeline": [
+   {
+    "year": "1830s",
+    "event": "Dundee spinners learned to soften raw Bengal jute with a whale oil and water emulsion so it could run on machinery built for flax.",
+    "ref": 2
+   },
+   {
+    "year": "1855",
+    "event": "The first jute mill in Bengal opened at Rishra on the Hooghly River near Calcutta.",
+    "ref": 3
+   },
+   {
+    "year": "c. 1895",
+    "event": "Bengal mills overtook the Scottish jute industry, moving manufacture to the region where the crop was grown.",
+    "ref": 3
+   },
+   {
+    "year": "2023",
+    "event": "A life cycle study from Indian researchers reported net negative greenhouse gas results for jute and kenaf carrier bags by crediting carbon taken up during crop growth.",
+    "ref": 4
+   }
+  ],
+  "production": {
+   "figure": "about 2.3 million tonnes",
+   "year": "not stated in source (compiled in a 2026 review)",
+   "scope": "world jute production",
+   "countries": "India, Bangladesh, China",
+   "ref": 0
+  },
+  "refs": [
+   {
+    "title": "RSC Advances (2026): Natural fibers in sustainable materials, extraction technologies, fiber modification and performance-sustainability relationships",
+    "url": "https://doi.org/10.1039/d5ra09029f"
+   },
+   {
+    "title": "Plants (2026): Improving ramie fiber, current progress and future directions in molecular breeding",
+    "url": "https://doi.org/10.3390/plants15101435"
+   },
+   {
+    "title": "The Open University, OpenLearn: Dundee, jute and empire, Why jute? Why Dundee?",
+    "url": "https://www.open.edu/openlearn/history-the-arts/history/dundee-jute-and-empire/content-section-3.1"
+   },
+   {
+    "title": "Banglapedia: Jute Industry",
+    "url": "https://en.banglapedia.org/index.php/Jute_Industry"
+   },
+   {
+    "title": "Environmental Science and Pollution Research (2023): Jute and kenaf carrier bags, an eco-friendly alternative to plastic bags in India",
+    "url": "https://doi.org/10.1007/s11356-023-26436-0"
    }
   ]
  },
@@ -1412,6 +1844,110 @@
    }
   ]
  },
+ "ramie": {
+  "properties": [
+   {
+    "key": "density",
+    "label": "Density",
+    "value": "about 1.50",
+    "unit": "g/cm3",
+    "conditions": "compiled literature value",
+    "ref": 0
+   },
+   {
+    "key": "elongation",
+    "label": "Elongation at break",
+    "value": "1.2 to 4",
+    "unit": "%",
+    "conditions": "compiled literature range",
+    "ref": 0
+   },
+   {
+    "key": "staple_length",
+    "label": "Elementary fiber length",
+    "value": "20 to 250",
+    "unit": "mm",
+    "conditions": "degummed single cells",
+    "ref": 1
+   },
+   {
+    "key": "tensile_strength",
+    "label": "Tensile strength",
+    "value": "400 to 938",
+    "unit": "MPa",
+    "conditions": "compiled literature range",
+    "ref": 0
+   },
+   {
+    "key": "microfibril_angle",
+    "label": "Microfibril angle",
+    "value": "3 to 7.5",
+    "unit": "degrees",
+    "conditions": "literature range",
+    "ref": 1
+   }
+  ],
+  "timeline": [
+   {
+    "year": "1986",
+    "event": "US legislation ended the quota-free status that had let garments of more than 50% ramie enter the United States outside textile import quotas.",
+    "ref": 2
+   },
+   {
+    "year": "2000",
+    "event": "Researchers reported enzymatic degumming of ramie bast fibers as an alternative to hot alkali treatment.",
+    "ref": 3
+   },
+   {
+    "year": "2016",
+    "event": "A study evaluated braided ramie fiber as a surgical suture biomaterial.",
+    "ref": 4
+   },
+   {
+    "year": "2018",
+    "event": "World ramie output was about 100,000 tonnes, below flax at about 310,000 tonnes, though ramie production value was higher than hemp or flax.",
+    "ref": 1
+   },
+   {
+    "year": "2023",
+    "event": "Structural analysis of ramie pectin was used to design a tailored enzyme cocktail for more efficient degumming.",
+    "ref": 5
+   }
+  ],
+  "production": {
+   "figure": "about 100,000 tonnes",
+   "year": "2018",
+   "scope": "world ramie fiber production",
+   "countries": "",
+   "ref": 1
+  },
+  "refs": [
+   {
+    "title": "RSC Advances (2026): Natural fibers in sustainable materials, extraction technologies, fiber modification and performance-sustainability relationships",
+    "url": "https://doi.org/10.1039/d5ra09029f"
+   },
+   {
+    "title": "Plants (2026): Improving ramie fiber, current progress and future directions in molecular breeding",
+    "url": "https://doi.org/10.3390/plants15101435"
+   },
+   {
+    "title": "The Washington Post (1986): Popularity of ramie may weave fiber into US textile quotas",
+    "url": "https://www.washingtonpost.com/archive/business/1986/05/04/popularity-of-ramie-may-weave-fiber-into-us-textile-quotas/5183d110-d9e9-4c51-b358-46282c9c6ed5/"
+   },
+   {
+    "title": "Journal of Biotechnology (2000): Enzymatic degumming of ramie bast fibers",
+    "url": "https://doi.org/10.1016/s0168-1656(99)00175-3"
+   },
+   {
+    "title": "Materials Science and Engineering C (2016): Fiber from ramie plant (Boehmeria nivea), a novel suture biomaterial",
+    "url": "https://doi.org/10.1016/j.msec.2016.02.040"
+   },
+   {
+    "title": "Carbohydrate Polymers (2023): Elucidating structure of pectin in ramie fiber to customize enzyme cocktail for high-efficiency enzymatic degumming",
+    "url": "https://doi.org/10.1016/j.carbpol.2023.120954"
+   }
+  ]
+ },
  "recycled-wool": {
   "properties": [],
   "timeline": [
@@ -1689,6 +2225,1247 @@
    {
     "title": "EFSA Journal: Welfare of American mink, red and Arctic foxes, raccoon dog and chinchilla kept for fur production (2025)",
     "url": "https://doi.org/10.2903/j.efsa.2025.9519"
+   }
+  ]
+ },
+ "yangir": {
+  "properties": [],
+  "timeline": [
+   {
+    "year": "2002",
+    "event": "Tonin and colleagues showed that differential scanning calorimetry could distinguish yangir, cashmere and shahtoosh fibers, even after dehairing.",
+    "ref": 0
+   }
+  ],
+  "production": null,
+  "refs": [
+   {
+    "title": "FAO AGRIS: Differentiating fine hairs from wild and domestic species, investigations of shatoosh, yangir and cashmere fibers (Tonin et al., 2002)",
+    "url": "https://agris.fao.org/agris-search/search.do?recordID=US201800264515"
+   }
+  ]
+ },
+ "cervelt": {
+  "properties": [
+   {
+    "key": "fiber_diameter",
+    "label": "Fiber diameter",
+    "value": "about 13",
+    "unit": "microns",
+    "conditions": "producer data, not independently verified",
+    "ref": 0
+   },
+   {
+    "key": "yield_per_animal",
+    "label": "Fiber yield per deer",
+    "value": "about 20",
+    "unit": "g",
+    "conditions": "producer data, pure fiber per animal",
+    "ref": 0
+   }
+  ],
+  "timeline": [
+   {
+    "year": "2010",
+    "event": "An AgResearch electron microscopy study (not specific to Cervelt) showed that red deer underhair has a wool-like bilateral cortex with orthocortex and paracortex.",
+    "ref": 1
+   }
+  ],
+  "production": null,
+  "refs": [
+   {
+    "title": "Journal of Morphology (2010): Morphology and ultrastructure of antler velvet hair and body hair from red deer",
+    "url": "https://doi.org/10.1002/jmor.10893"
+   },
+   {
+    "title": "Journal of Experimental Zoology (1995): Manipulating melatonin in red deer, differences in the response to food restriction and lactation",
+    "url": "https://doi.org/10.1002/jez.1402730103"
+   }
+  ]
+ },
+ "abaca": {
+  "properties": [
+   {
+    "key": "density",
+    "label": "Density",
+    "value": "about 1.50",
+    "unit": "g/cm3",
+    "conditions": "compiled literature value",
+    "ref": 0
+   },
+   {
+    "key": "elongation",
+    "label": "Elongation at break",
+    "value": "about 3.3 to 4.3",
+    "unit": "%",
+    "conditions": "single fibers 180 to 280 microns across, untreated and 5% NaOH treated, 10 mm gauge",
+    "ref": 1
+   },
+   {
+    "key": "tensile_strength",
+    "label": "Tensile strength",
+    "value": "about 400 to 1,400",
+    "unit": "MPa",
+    "conditions": "fiber bundles; published values vary strongly with cross-section method",
+    "ref": 1
+   }
+  ],
+  "timeline": [
+   {
+    "year": "2007",
+    "event": "Abaca bunchy top virus was formally described as a new babuvirus, distinct from banana bunchy top virus.",
+    "ref": 3
+   },
+   {
+    "year": "2016",
+    "event": "Philippine standard PNS/BAFS 180:2016 set grading and classification for hand-stripped and spindle-stripped abaca fiber.",
+    "ref": 4
+   },
+   {
+    "year": "2018",
+    "event": "The Philippine Department of Agriculture abaca roadmap for 2018 to 2022 put the country at roughly 85 to 87% of world abaca fiber supply.",
+    "ref": 2
+   }
+  ],
+  "production": {
+   "figure": "around 70,000 tonnes a year",
+   "year": "not stated in source (recent annual estimate in a 2026 review)",
+   "scope": "world abaca fiber production",
+   "countries": "Philippines, Ecuador, Costa Rica",
+   "ref": 0
+  },
+  "refs": [
+   {
+    "title": "RSC Advances (2026): Natural fibers in sustainable materials, extraction technologies, fiber modification and performance-sustainability relationships",
+    "url": "https://doi.org/10.1039/d5ra09029f"
+   },
+   {
+    "title": "Materials (2021): Influence of alkali treatment on the microstructure and mechanical properties of coir and abaca fibers",
+    "url": "https://doi.org/10.3390/ma14102636"
+   },
+   {
+    "title": "Department of Agriculture (Philippines): Philippine Abaca Industry Roadmap 2018-2022",
+    "url": "https://www.da.gov.ph/wp-content/uploads/2019/06/Philippine-Abaca-Industry-Roadmap-2018-2022.pdf"
+   },
+   {
+    "title": "Archives of Virology (2007): Abaca bunchy top virus, a new member of the genus Babuvirus",
+    "url": "https://doi.org/10.1007/s00705-007-1077-z"
+   },
+   {
+    "title": "PhilFIDA: PNS/BAFS 180:2016 Abaca fiber, grading and classification (hand-stripped and spindle/machine-stripped)",
+    "url": "https://philfida.da.gov.ph/images/Publications/PNS/PNSBAFS1802016AbacaFiberHandstrippedandMachineStripped.pdf"
+   }
+  ]
+ },
+ "sisal": {
+  "properties": [
+   {
+    "key": "density",
+    "label": "Density",
+    "value": "1.30 to 1.50",
+    "unit": "g/cm3",
+    "conditions": "compiled literature range",
+    "ref": 0
+   },
+   {
+    "key": "moisture_regain",
+    "label": "Moisture regain",
+    "value": "about 11.1",
+    "unit": "%",
+    "conditions": "pectinase-treated fiber, 8 h enzyme treatment, laboratory study",
+    "ref": 1
+   },
+   {
+    "key": "tenacity",
+    "label": "Tenacity",
+    "value": "about 38.5",
+    "unit": "cN/tex",
+    "conditions": "pectinase-treated fiber, linear density about 5.8 tex, laboratory study",
+    "ref": 1
+   },
+   {
+    "key": "elongation",
+    "label": "Elongation at break",
+    "value": "2 to 7",
+    "unit": "%",
+    "conditions": "compiled literature range",
+    "ref": 0
+   },
+   {
+    "key": "decomposition",
+    "label": "Thermal decomposition",
+    "value": "about 220 to 350",
+    "unit": "C",
+    "conditions": "thermogravimetry; onset of hemicellulose and amorphous cellulose breakdown about 220 to 250 C, main cellulose mass loss about 300 to 350 C (review value shared by cotton, flax, jute, hemp and sisal)",
+    "ref": 0
+   },
+   {
+    "key": "tensile_strength",
+    "label": "Tensile strength",
+    "value": "350 to 855",
+    "unit": "MPa",
+    "conditions": "compiled literature range",
+    "ref": 0
+   }
+  ],
+  "timeline": [
+   {
+    "year": "1978",
+    "event": "A study of six Tanzanian sisal factories found byssinosis in about 48% of brushing department workers but about 5% of spinning workers.",
+    "ref": 2
+   },
+   {
+    "year": "2017",
+    "event": "A life cycle assessment showed that sisal fiber greenhouse gas results depend on local practice, including wet or dry disposal of leaf residues.",
+    "ref": 3
+   },
+   {
+    "year": "2024",
+    "event": "A review assessed sisal fiber as reinforcement for geopolymer building materials.",
+    "ref": 4
+   },
+   {
+    "year": "2025",
+    "event": "Pectinase treatment was reported to produce spinnable sisal fiber of about 5.8 tex with a tenacity of about 38.5 cN/tex.",
+    "ref": 1
+   }
+  ],
+  "production": {
+   "figure": "about 378,000 tonnes",
+   "year": "not stated in source (compiled in a 2026 review)",
+   "scope": "world sisal production",
+   "countries": "Brazil, Tanzania, Kenya",
+   "ref": 0
+  },
+  "refs": [
+   {
+    "title": "RSC Advances (2026): Natural fibers in sustainable materials, extraction technologies, fiber modification and performance-sustainability relationships",
+    "url": "https://doi.org/10.1039/d5ra09029f"
+   },
+   {
+    "title": "International Journal of Biological Macromolecules (2025): An enzymatic modification of sisal fiber macromolecules (cellulose/lignin) for spinnable fibers",
+    "url": "https://doi.org/10.1016/j.ijbiomac.2025.147046"
+   },
+   {
+    "title": "British Journal of Industrial Medicine (1978): Byssinosis, respiratory symptoms and lung function in Tanzanian sisal workers",
+    "url": "https://doi.org/10.1136/oem.35.2.123"
+   },
+   {
+    "title": "Journal of Cleaner Production (2017): Life cycle assessment of sisal fibre, exploring how local practices can influence environmental performance",
+    "url": "https://www.sciencedirect.com/science/article/abs/pii/S0959652617302871"
+   },
+   {
+    "title": "Molecules (2024): A review of sisal fiber-reinforced geopolymers",
+    "url": "https://doi.org/10.3390/molecules29102401"
+   }
+  ]
+ },
+ "coir": {
+  "properties": [
+   {
+    "key": "density",
+    "label": "Density",
+    "value": "1.15 to 1.25",
+    "unit": "g/cm3",
+    "conditions": "compiled literature range",
+    "ref": 0
+   },
+   {
+    "key": "elongation",
+    "label": "Elongation at break",
+    "value": "15 to 51",
+    "unit": "%",
+    "conditions": "compiled literature range; one 2021 test on brown coir measured about 13 to 29%",
+    "ref": 0
+   },
+   {
+    "key": "fiber_diameter",
+    "label": "Fiber diameter",
+    "value": "100 to 450",
+    "unit": "microns",
+    "conditions": "technical fiber, compiled literature range",
+    "ref": 0
+   },
+   {
+    "key": "tensile_strength",
+    "label": "Tensile strength",
+    "value": "95 to 304",
+    "unit": "MPa",
+    "conditions": "compiled literature range",
+    "ref": 0
+   }
+  ],
+  "timeline": [
+   {
+    "year": "2005",
+    "event": "Selected microorganisms were tested for biosoftening coir fiber.",
+    "ref": 3
+   },
+   {
+    "year": "2012",
+    "event": "An environmentally friendlier method for extracting coir fiber was reported.",
+    "ref": 4
+   },
+   {
+    "year": "2018",
+    "event": "FAO statistics recorded about 475,000 tonnes of brown coir fiber from India and about 90,000 tonnes from Sri Lanka.",
+    "ref": 2
+   },
+   {
+    "year": "2021",
+    "event": "Alkali treatment tests showed that 5% NaOH barely changed coir tensile strength over 48 hours, while it weakened abaca after about 12 hours.",
+    "ref": 1
+   },
+   {
+    "year": "2025",
+    "event": "Drying at 90 C, mercerizing and epoxy coating raised the stiffness of Colombian coir fibers for polylactic acid composites.",
+    "ref": 5
+   }
+  ],
+  "production": {
+   "figure": "about 475,000 tonnes (India) and about 90,000 tonnes (Sri Lanka) of brown coir fiber",
+   "year": "2018",
+   "scope": "brown coir fiber from the two leading producers, not a world total",
+   "countries": "India, Sri Lanka",
+   "ref": 2
+  },
+  "refs": [
+   {
+    "title": "RSC Advances (2026): Natural fibers in sustainable materials, extraction technologies, fiber modification and performance-sustainability relationships",
+    "url": "https://doi.org/10.1039/d5ra09029f"
+   },
+   {
+    "title": "Materials (2021): Influence of alkali treatment on the microstructure and mechanical properties of coir and abaca fibers",
+    "url": "https://doi.org/10.3390/ma14102636"
+   },
+   {
+    "title": "FAO: Jute, kenaf, sisal, abaca, coir and allied fibres, Statistical bulletin 2019",
+    "url": "https://www.fao.org/fileadmin/templates/est/COMM_MARKETS_MONITORING/Jute_Hard_Fibres/Documents/STATISTICAL_Bulletin_-_2019.pdf"
+   },
+   {
+    "title": "Bioprocess and Biosystems Engineering (2005): Biosoftening of coir fiber using selected microorganisms",
+    "url": "https://doi.org/10.1007/s00449-005-0023-2"
+   },
+   {
+    "title": "Carbohydrate Polymers (2012): Environmentally friendly method for extraction of coir fibre",
+    "url": "https://doi.org/10.1016/j.carbpol.2012.10.056"
+   },
+   {
+    "title": "Scientific Reports (2025): Effects of drying temperature, mercerizing and coating on Colombian coir fibers",
+    "url": "https://doi.org/10.1038/s41598-025-18240-2"
+   }
+  ]
+ },
+ "kenaf": {
+  "properties": [
+   {
+    "key": "density",
+    "label": "Density",
+    "value": "1.2 to 1.5",
+    "unit": "g/cm3",
+    "conditions": "compiled literature range",
+    "ref": 0
+   },
+   {
+    "key": "elongation",
+    "label": "Elongation at break",
+    "value": "1.6 to 5.7",
+    "unit": "%",
+    "conditions": "compiled literature range",
+    "ref": 0
+   },
+   {
+    "key": "fiber_diameter",
+    "label": "Fiber diameter",
+    "value": "about 50 to 145",
+    "unit": "microns",
+    "conditions": "compiled literature range",
+    "ref": 0
+   },
+   {
+    "key": "tensile_strength",
+    "label": "Tensile strength",
+    "value": "223 to 1193",
+    "unit": "MPa",
+    "conditions": "compiled literature range",
+    "ref": 0
+   }
+  ],
+  "timeline": [
+   {
+    "year": "c. 4000 BCE",
+    "event": "Kenaf cultivation is traced back to about 4000 BC in ancient Africa.",
+    "ref": 0
+   },
+   {
+    "year": "2021/22",
+    "event": "India produced about 100,000 tonnes and China about 41,000 tonnes of kenaf and allied fibers, about 49% and 20% of the world total.",
+    "ref": 0
+   },
+   {
+    "year": "2023",
+    "event": "Field work on mining soil found that intercropping kenaf with soybean raised cadmium in kenaf leaves, a caution for fiber from polluted land.",
+    "ref": 1
+   },
+   {
+    "year": "2024",
+    "event": "Hydroponic work described how kenaf roots tolerate and sequester cadmium under stress.",
+    "ref": 2
+   },
+   {
+    "year": "2025",
+    "event": "A review grouped kenaf with hemp, ramie, jute and flax as bast crops with potential for remediation of degraded land.",
+    "ref": 3
+   }
+  ],
+  "production": {
+   "figure": "about 200,000 tonnes",
+   "year": "2021/22",
+   "scope": "world kenaf and allied fibers",
+   "countries": "India (about 49%), China (about 20%)",
+   "ref": 0
+  },
+  "refs": [
+   {
+    "title": "Materials (2025): Kenaf fiber-reinforced biocomposites for marine applications, a review",
+    "url": "https://doi.org/10.3390/ma18050999"
+   },
+   {
+    "title": "Environmental Science and Pollution Research (2023): Intercropping of kenaf and soybean and uptake of cadmium and lead in mining soil",
+    "url": "https://doi.org/10.1007/s11356-023-28757-6"
+   },
+   {
+    "title": "Frontiers in Plant Science (2024): Cd tolerance and detoxification mechanisms in kenaf under Cd stress",
+    "url": "https://doi.org/10.3389/fpls.2024.1332426"
+   },
+   {
+    "title": "Science of the Total Environment (2025): Sustainable environmental remediation with bast fiber crops",
+    "url": "https://doi.org/10.1016/j.scitotenv.2025.179403"
+   }
+  ]
+ },
+ "kapok": {
+  "properties": [
+   {
+    "key": "density",
+    "label": "Cell-wall density",
+    "value": "about 1.31",
+    "unit": "g/cm3",
+    "conditions": "cell-wall material; the hollow fiber itself is far lighter",
+    "ref": 0
+   },
+   {
+    "key": "decomposition",
+    "label": "Thermal decomposition",
+    "value": "about 230 to 380",
+    "unit": "C",
+    "conditions": "main mass loss from cellulose decomposition under inert atmosphere (thermogravimetry)",
+    "ref": 0
+   },
+   {
+    "key": "fiber_diameter",
+    "label": "Fiber diameter",
+    "value": "20 to 43",
+    "unit": "microns",
+    "conditions": "wall thickness about 1 to 3 microns",
+    "ref": 0
+   },
+   {
+    "key": "staple_length",
+    "label": "Fiber length",
+    "value": "10 to 35",
+    "unit": "mm",
+    "conditions": "",
+    "ref": 0
+   },
+   {
+    "key": "wax_content",
+    "label": "Surface wax",
+    "value": "0.5 to 2.0",
+    "unit": "%",
+    "conditions": "by mass",
+    "ref": 1
+   },
+   {
+    "key": "thermal_conductivity",
+    "label": "Thermal conductivity",
+    "value": "0.033 to 0.040",
+    "unit": "W/m K",
+    "conditions": "fiber assemblies",
+    "ref": 1
+   },
+   {
+    "key": "oil_sorption",
+    "label": "Oil sorption",
+    "value": "30 to 50",
+    "unit": "g/g",
+    "conditions": "times own weight, loose fiber",
+    "ref": 1
+   }
+  ],
+  "timeline": [
+   {
+    "year": "1944",
+    "event": "With wartime kapok supplies cut off, the United States ran a national milkweed pod collection to fill life jackets.",
+    "ref": 4
+   },
+   {
+    "year": "1994",
+    "event": "A case report documented occupational asthma in a worker exposed to kapok, confirmed by bronchial challenge.",
+    "ref": 2
+   },
+   {
+    "year": "2006",
+    "event": "Laboratory work characterized kapok as a natural hollow, hydrophobic and oleophilic sorbent for oil.",
+    "ref": 3
+   },
+   {
+    "year": "2010",
+    "event": "Oil sorption of kapok, milkweed and polypropylene fiber assemblies was compared under controlled packing densities.",
+    "ref": 5
+   }
+  ],
+  "production": {
+   "figure": "tonnage not verified; Indonesia supplies about 85% of global kapok",
+   "year": "not stated in source",
+   "scope": "share of global kapok supply",
+   "countries": "Indonesia",
+   "ref": 1
+  },
+  "refs": [
+   {
+    "title": "International Journal of Environmental Research and Public Health (2022): Modification strategies of kapok fiber composites, a systematic review",
+    "url": "https://doi.org/10.3390/ijerph19052703"
+   },
+   {
+    "title": "RSC Advances (2026): Natural fibers in sustainable materials, extraction technologies, fiber modification and performance-sustainability relationships",
+    "url": "https://doi.org/10.1039/d5ra09029f"
+   },
+   {
+    "title": "Journal of Asthma (1994): Occupational asthma following kapok exposure",
+    "url": "https://doi.org/10.3109/02770909409089472"
+   },
+   {
+    "title": "Chemosphere (2006): Evaluation of kapok as a natural hollow hydrophobic-oleophilic fibrous sorbent",
+    "url": "https://doi.org/10.1016/j.chemosphere.2006.05.062"
+   },
+   {
+    "title": "Wisconsin DNR (2019): When picking milkweed was a patriotic pursuit",
+    "url": "https://dnr.wisconsin.gov/wnrmag/2019/Fall/back"
+   },
+   {
+    "title": "Journal of Hazardous Materials (2010): Oil sorption behavior of fiber assemblies from polypropylene, kapok and milkweed",
+    "url": "https://doi.org/10.1016/j.jhazmat.2010.11.031"
+   }
+  ]
+ },
+ "nettle": {
+  "properties": [
+   {
+    "key": "moisture_regain",
+    "label": "Moisture regain",
+    "value": "about 9.5",
+    "unit": "%",
+    "conditions": "Himalayan giant nettle (Girardinia diversifolia), not Urtica dioica",
+    "ref": 2
+   },
+   {
+    "key": "fiber_diameter",
+    "label": "Elementary fiber diameter",
+    "value": "about 19 to 47",
+    "unit": "microns",
+    "conditions": "German fiber nettle clone 13, top to bottom of stem",
+    "ref": 0
+   },
+   {
+    "key": "staple_length",
+    "label": "Elementary fiber length",
+    "value": "about 43 to 58",
+    "unit": "mm",
+    "conditions": "German fiber nettle clone 13, bottom to top of stem",
+    "ref": 0
+   },
+   {
+    "key": "linear_density",
+    "label": "Fineness",
+    "value": "about 1.9",
+    "unit": "tex",
+    "conditions": "Himalayan giant nettle (Girardinia diversifolia)",
+    "ref": 2
+   }
+  ],
+  "timeline": [
+   {
+    "year": "c. 2,800 years ago",
+    "event": "The Lusehoj Bronze Age textile from Voldtofte, Denmark, was identified in 2012 as nettle cloth, probably imported from the region of present-day Austria.",
+    "ref": 1
+   },
+   {
+    "year": "1914 to 1918",
+    "event": "Germany expanded nettle fiber production during the First World War after flax and cotton stocks ran out, using nettle fabric for army uniforms.",
+    "ref": 0
+   },
+   {
+    "year": "1920s",
+    "event": "Gustav Bredemann began selecting wild nettles for vigor and fiber content, founding the clone collections behind later fiber nettles.",
+    "ref": 0
+   },
+   {
+    "year": "1939 to 1945",
+    "event": "Research on nettle fibers for the German textile industry increased again during the Second World War.",
+    "ref": 0
+   },
+   {
+    "year": "1993",
+    "event": "Surviving Bredemann clones were re-evaluated, restarting breeding and processing trials.",
+    "ref": 0
+   },
+   {
+    "year": "2025",
+    "event": "A chromosome-level genome of stinging nettle was published, including candidate genes for the neurotoxic peptide urthionin.",
+    "ref": 3
+   }
+  ],
+  "production": null,
+  "refs": [
+   {
+    "title": "Materials (2022): Nettle, a long-known fiber plant with new perspectives",
+    "url": "https://doi.org/10.3390/ma15124288"
+   },
+   {
+    "title": "Scientific Reports (2012): Nettle as a distinct Bronze Age textile plant",
+    "url": "https://doi.org/10.1038/srep00664"
+   },
+   {
+    "title": "Industrial Crops and Products (2024): Structure and properties of fibres extracted from Himalayan nettle (Girardinia diversifolia)",
+    "url": "https://www.sciencedirect.com/science/article/abs/pii/S0926669024020685"
+   },
+   {
+    "title": "Plants (2025): A high-quality phased genome assembly of stinging nettle",
+    "url": "https://doi.org/10.3390/plants14010124"
+   }
+  ]
+ },
+ "banana": {
+  "properties": [
+   {
+    "key": "density",
+    "label": "Density",
+    "value": "0.65 to 1.5",
+    "unit": "g/cm3",
+    "conditions": "Musaceae pseudostem fibers, review range",
+    "ref": 0
+   },
+   {
+    "key": "moisture_regain",
+    "label": "Moisture regain",
+    "value": "about 13.6",
+    "unit": "%",
+    "conditions": "after 21 to 25 days of warm-water retting, laboratory study",
+    "ref": 1
+   },
+   {
+    "key": "tenacity",
+    "label": "Tenacity",
+    "value": "about 34",
+    "unit": "cN/tex",
+    "conditions": "after 21 to 25 days of warm-water retting, laboratory study",
+    "ref": 1
+   },
+   {
+    "key": "elongation",
+    "label": "Elongation at break",
+    "value": "about 1.7 (up to about 10 in the literature)",
+    "unit": "%",
+    "conditions": "1.7% after warm-water retting; review maximum about 10.3%",
+    "ref": 1
+   },
+   {
+    "key": "decomposition",
+    "label": "Thermal resistance limit",
+    "value": "about 230",
+    "unit": "C",
+    "conditions": "review value for lignocellulosic fibers such as banana pseudostem fiber",
+    "ref": 0
+   },
+   {
+    "key": "fiber_diameter",
+    "label": "Fiber diameter",
+    "value": "56 to 350",
+    "unit": "microns",
+    "conditions": "banana pseudostem fibers, review range",
+    "ref": 0
+   },
+   {
+    "key": "tensile_strength",
+    "label": "Tensile strength",
+    "value": "54 to 754",
+    "unit": "MPa",
+    "conditions": "pseudostem fibers, review range",
+    "ref": 0
+   }
+  ],
+  "timeline": [
+   {
+    "year": "1974",
+    "event": "Kijoka bashofu weaving in Ogimi, Okinawa, was recognized as an Important Intangible Cultural Property of Japan.",
+    "ref": 2
+   },
+   {
+    "year": "2000",
+    "event": "Toshiko Taira, who led the revival of Kijoka bashofu, was named a Living National Treasure.",
+    "ref": 3
+   },
+   {
+    "year": "2016",
+    "event": "Researchers produced banana fiber yarns for technical textile reinforced composites, refining fiber with a pectinase bath.",
+    "ref": 4
+   },
+   {
+    "year": "2022",
+    "event": "Toshiko Taira died at the age of 101.",
+    "ref": 3
+   },
+   {
+    "year": "2022",
+    "event": "Warm-water retting of banana stems for 21 to 25 days gave fibers of about 34 cN/tex with a moisture regain of about 13.6%.",
+    "ref": 1
+   }
+  ],
+  "production": null,
+  "refs": [
+   {
+    "title": "Polymers (2021): Potential uses of Musaceae wastes in bio-based composites",
+    "url": "https://doi.org/10.3390/polym13111844"
+   },
+   {
+    "title": "Materials (2022): Effect of warm-water retting pretreatment on the physical properties of banana stem and its fibre",
+    "url": "https://doi.org/10.3390/ma15238462"
+   },
+   {
+    "title": "Traditional Crafts Aoyama Square: Kijoka no Bashofu (banana fiber textiles)",
+    "url": "https://kougeihin.jp/en/craft/0133/"
+   },
+   {
+    "title": "TOKION (2022): Toshiko Taira, the master of bashofu",
+    "url": "https://tokion.jp/en/2022/09/13/the-tashinami-of-free-spirits-vol11/"
+   },
+   {
+    "title": "Materials (2016): Production of banana fiber yarns for technical textile reinforced composites",
+    "url": "https://doi.org/10.3390/ma9050370"
+   }
+  ]
+ },
+ "pineapple": {
+  "properties": [
+   {
+    "key": "density",
+    "label": "Density",
+    "value": "1.07 to 1.56",
+    "unit": "g/cm3",
+    "conditions": "compiled literature range",
+    "ref": 1
+   },
+   {
+    "key": "elongation",
+    "label": "Elongation at break",
+    "value": "1.0 to 3.9",
+    "unit": "%",
+    "conditions": "Azores fibers after 14 days of biological retting at 25 C",
+    "ref": 0
+   },
+   {
+    "key": "decomposition",
+    "label": "Thermal decomposition",
+    "value": "about 200 to 380",
+    "unit": "C",
+    "conditions": "main DTG peak for cellulose; hemicellulose shoulder about 200 to 300 C",
+    "ref": 0
+   },
+   {
+    "key": "fiber_diameter",
+    "label": "Fiber diameter",
+    "value": "about 35 to 168",
+    "unit": "microns",
+    "conditions": "Azores fibers after 14 days of biological retting",
+    "ref": 0
+   },
+   {
+    "key": "linear_density",
+    "label": "Linear density",
+    "value": "about 1.4 to 7.1",
+    "unit": "tex",
+    "conditions": "Azores fibers after 14 days of biological retting",
+    "ref": 0
+   },
+   {
+    "key": "tensile_strength",
+    "label": "Tensile strength",
+    "value": "37 to 993",
+    "unit": "MPa",
+    "conditions": "Azores fibers after 14 days of biological retting",
+    "ref": 0
+   }
+  ],
+  "timeline": [
+   {
+    "year": "2023",
+    "event": "UNESCO inscribed Aklan pina handloom weaving on the Representative List of the Intangible Cultural Heritage of Humanity on 6 December 2023.",
+    "ref": 2
+   },
+   {
+    "year": "2024",
+    "event": "Long pineapple leaf fibers up to about 70 cm were extracted from Azores pineapple waste, with 14 days of retting at 25 C giving the strongest fibers.",
+    "ref": 0
+   },
+   {
+    "year": "2025",
+    "event": "Enzyme-enhanced processing of pineapple leaf fiber was reported for green textile applications with natural dyeing.",
+    "ref": 3
+   }
+  ],
+  "production": null,
+  "refs": [
+   {
+    "title": "Heliyon (2024): Extraction, characterization and properties evaluation of pineapple leaf fibers from Azores pineapple",
+    "url": "https://doi.org/10.1016/j.heliyon.2024.e26698"
+   },
+   {
+    "title": "RSC Advances (2026): Natural fibers in sustainable materials, extraction technologies, fiber modification and performance-sustainability relationships",
+    "url": "https://doi.org/10.1039/d5ra09029f"
+   },
+   {
+    "title": "UNESCO Intangible Cultural Heritage: Aklan pina handloom weaving",
+    "url": "https://ich.unesco.org/en/RL/aklan-pina-handloom-weaving-01564"
+   },
+   {
+    "title": "ACS Omega (2025): Enzyme-enhanced transformation of lignocellulosic fibers for green textiles, pineapple case study",
+    "url": "https://doi.org/10.1021/acsomega.5c04005"
+   }
+  ]
+ },
+ "bamboo-bast": {
+  "properties": [
+   {
+    "key": "density",
+    "label": "Density",
+    "value": "0.60 to 1.50",
+    "unit": "g/cm3",
+    "conditions": "mechanically separated fiber, compiled literature range",
+    "ref": 0
+   },
+   {
+    "key": "elongation",
+    "label": "Elongation at break",
+    "value": "1.3 to 7",
+    "unit": "%",
+    "conditions": "compiled literature range",
+    "ref": 0
+   },
+   {
+    "key": "tensile_strength",
+    "label": "Tensile strength",
+    "value": "140 to 800",
+    "unit": "MPa",
+    "conditions": "compiled literature range",
+    "ref": 0
+   }
+  ],
+  "timeline": [
+   {
+    "year": "2010",
+    "event": "The FTC sent warning letters in January 2010 to retailers about labeling rayon made from bamboo as bamboo.",
+    "ref": 1
+   },
+   {
+    "year": "2022",
+    "event": "Delignification and drying methods were shown to change the strength of mechanically separated moso bamboo fibers.",
+    "ref": 3
+   },
+   {
+    "year": "2022",
+    "event": "In April 2022 the FTC announced settlements with Kohl's and Walmart totaling 5.5 million US dollars over bamboo labeling and environmental claims.",
+    "ref": 2
+   }
+  ],
+  "production": null,
+  "refs": [
+   {
+    "title": "RSC Advances (2026): Natural fibers in sustainable materials, extraction technologies, fiber modification and performance-sustainability relationships",
+    "url": "https://doi.org/10.1039/d5ra09029f"
+   },
+   {
+    "title": "FTC press release (2022): FTC uses Penalty Offense Authority to seek largest-ever civil penalty for bogus bamboo marketing",
+    "url": "https://www.ftc.gov/news-events/news/press-releases/2022/04/ftc-uses-penalty-offense-authority-seek-largest-ever-civil-penalty-bogus-bamboo-marketing-kohls"
+   },
+   {
+    "title": "FTC business blog (2022): $5.5 million total FTC settlements with Kohl's and Walmart challenge bamboo and eco claims",
+    "url": "https://www.ftc.gov/business-guidance/blog/2022/04/55-million-total-ftc-settlements-kohls-and-walmart-challenge-bamboo-and-eco-claims-shed-light"
+   },
+   {
+    "title": "Polymers (2022): Effects of delignification and drying methods on fiber properties of moso bamboo",
+    "url": "https://doi.org/10.3390/polym14245464"
+   }
+  ]
+ },
+ "raffia": {
+  "properties": [
+   {
+    "key": "water_uptake",
+    "label": "Water absorption at saturation",
+    "value": "about 300 to 660",
+    "unit": "%",
+    "conditions": "Raphia vinifera fibers from Bandjoun, Cameroon",
+    "ref": 0
+   }
+  ],
+  "timeline": [
+   {
+    "year": "2014",
+    "event": "Water absorption kinetics of Raphia vinifera fibers from Bandjoun, Cameroon, were measured for composite use.",
+    "ref": 0
+   },
+   {
+    "year": "2020",
+    "event": "Chemical treatment and fiber length of raffia were tested as variables in polyester composites.",
+    "ref": 1
+   },
+   {
+    "year": "2026",
+    "event": "A synopsis of Raphia in the Republic of the Congo recorded the continued use of young leaflet epidermis for loincloths and dance skirts.",
+    "ref": 2
+   }
+  ],
+  "production": null,
+  "refs": [
+   {
+    "title": "The Scientific World Journal (2014): Water absorption in Raffia vinifera fibres from Bandjoun, Cameroon",
+    "url": "https://doi.org/10.1155/2014/912380"
+   },
+   {
+    "title": "Polymers (2020): Effect of chemical treatment and length of raffia fiber on polyester composites",
+    "url": "https://doi.org/10.3390/polym12122899"
+   },
+   {
+    "title": "PhytoKeys (2026): Synopsis of the genus Raphia (Arecaceae) in the Republic of the Congo",
+    "url": "https://doi.org/10.3897/phytokeys.271.174506"
+   }
+  ]
+ },
+ "paper-yarn": {
+  "properties": [
+   {
+    "key": "tenacity",
+    "label": "Tenacity",
+    "value": "about 7.7 to 10.5",
+    "unit": "cN/tex",
+    "conditions": "two wood-pulp paper yarns of 42 and 59 tex, before washing",
+    "ref": 0
+   },
+   {
+    "key": "elongation",
+    "label": "Elongation at break",
+    "value": "about 2.3 to 3.7",
+    "unit": "%",
+    "conditions": "two wood-pulp paper yarns, before washing",
+    "ref": 0
+   },
+   {
+    "key": "linear_density",
+    "label": "Yarn linear density",
+    "value": "42 to 59",
+    "unit": "tex",
+    "conditions": "yarns twisted from 3 mm strips of 12 and 18 g/m2 paper",
+    "ref": 0
+   },
+   {
+    "key": "wash_retention",
+    "label": "Strength retained after washing",
+    "value": "about 89 to 95",
+    "unit": "%",
+    "conditions": "after 15 washing or soaping cycles at 30 C",
+    "ref": 0
+   }
+  ],
+  "timeline": [
+   {
+    "year": "2019",
+    "event": "Paper yarn was compared with cotton, viscose and polyester yarns on mechanical properties.",
+    "ref": 1
+   },
+   {
+    "year": "2021",
+    "event": "Surface treatments were shown to improve the knittability of paper yarn made from Swedish forest resources.",
+    "ref": 2
+   },
+   {
+    "year": "2024",
+    "event": "Two wood-pulp paper yarns kept about 89 to 95% of their breaking strength after 15 wash cycles.",
+    "ref": 0
+   },
+   {
+    "year": "2024",
+    "event": "A salt-free dyeing route for paper yarn used a cationic cellulose nanofiber and chitosan auxiliary.",
+    "ref": 3
+   },
+   {
+    "year": "2025",
+    "event": "Researchers adapted shifu techniques to make experimental fungal paper yarns.",
+    "ref": 4
+   }
+  ],
+  "production": null,
+  "refs": [
+   {
+    "title": "Heliyon (2024): Structure, properties and fabric applicability of sustainable paper yarn with high washing stability",
+    "url": "https://doi.org/10.1016/j.heliyon.2024.e27467"
+   },
+   {
+    "title": "Journal of Natural Fibers (2019): Mechanical-property-based comparison of paper yarn with cotton, viscose and polyester yarns",
+    "url": "https://www.tandfonline.com/doi/full/10.1080/15440478.2019.1629372"
+   },
+   {
+    "title": "Polymers (2021): Enhanced knittability of paper yarn from the Swedish forest",
+    "url": "https://doi.org/10.3390/polym13213628"
+   },
+   {
+    "title": "Carbohydrate Polymers (2024): Cationic cellulose nanofibers and chitosan auxiliary for salt-free dyeing and strengthening of paper yarn",
+    "url": "https://doi.org/10.1016/j.carbpol.2024.121833"
+   },
+   {
+    "title": "Advanced Science (2025): Shifu-inspired fungal paper yarns",
+    "url": "https://doi.org/10.1002/advs.202511975"
+   }
+  ]
+ },
+ "barkcloth": {
+  "properties": [],
+  "timeline": [
+   {
+    "year": "Within the last c. 5,000 years",
+    "event": "Pacific paper mulberry, the main barkcloth plant, was carried from Taiwan by Austronesian-speaking voyagers, according to phylogeographic evidence.",
+    "ref": 0
+   },
+   {
+    "year": "18th to 19th centuries",
+    "event": "Western explorers collected many decorated Pacific barkcloths, now used for dye and DNA studies.",
+    "ref": 1
+   },
+   {
+    "year": "2005",
+    "event": "UNESCO proclaimed barkcloth making in Uganda a Masterpiece of the Oral and Intangible Heritage of Humanity.",
+    "ref": 2
+   },
+   {
+    "year": "2019",
+    "event": "A study characterized colorants used on Pacific barkcloths.",
+    "ref": 3
+   },
+   {
+    "year": "2024",
+    "event": "Dyes from Tahitian plants, including mati red, were identified in historical barkcloth.",
+    "ref": 4
+   }
+  ],
+  "production": null,
+  "refs": [
+   {
+    "title": "PNAS (2015): Austronesian migrations revealed by phylogeography of Pacific paper mulberry",
+    "url": "https://doi.org/10.1073/pnas.1503205112"
+   },
+   {
+    "title": "PLOS ONE (2020): A tale of textiles, genetic characterization of historical paper mulberry barkcloth from Oceania",
+    "url": "https://doi.org/10.1371/journal.pone.0233113"
+   },
+   {
+    "title": "UNESCO Multimedia Archives: Bark cloth making in Uganda",
+    "url": "https://www.unesco.org/archives/multimedia/document-641"
+   },
+   {
+    "title": "Heritage Science (2019): Colouring of Pacific barkcloths",
+    "url": "https://doi.org/10.1186/s40494-018-0243-9"
+   },
+   {
+    "title": "Scientific Reports (2024): Dye characterisation of Tahitian plants and mati red in historical barkcloth",
+    "url": "https://doi.org/10.1038/s41598-024-83554-6"
+   }
+  ]
+ },
+ "lotus": {
+  "properties": [],
+  "timeline": [
+   {
+    "year": "2017",
+    "event": "Helical lotus-root fibers were used as templates for soft helical microswimmers.",
+    "ref": 0
+   },
+   {
+    "year": "2021",
+    "event": "Coiled lotus fiber yarn was made into an artificial muscle with a reversible tensile stroke of about 38% in response to water or humidity.",
+    "ref": 1
+   },
+   {
+    "year": "2024",
+    "event": "Researchers published an open design for an automatic lotus fiber extractor intended to raise productivity for hand workers.",
+    "ref": 2
+   }
+  ],
+  "production": null,
+  "refs": [
+   {
+    "title": "Micromachines (2017): Helical microswimmers based on soft lotus-root fibers",
+    "url": "https://doi.org/10.3390/mi8120349"
+   },
+   {
+    "title": "ACS Applied Materials and Interfaces (2021): Humidity- and water-responsive lotus fiber yarn artificial muscles",
+    "url": "https://doi.org/10.1021/acsami.0c20456"
+   },
+   {
+    "title": "Data in Brief (2024): Design and manufacturability data of an automatic lotus fiber extractor",
+    "url": "https://doi.org/10.1016/j.dib.2024.110175"
+   }
+  ]
+ },
+ "milkweed": {
+  "properties": [
+   {
+    "key": "thermal_conductivity",
+    "label": "Thermal conductivity",
+    "value": "about 28 to 35",
+    "unit": "mW/m K",
+    "conditions": "air-laid nonwovens with 30 to 70% milkweed at about 11 to 19 kg/m3, -4 to 24 C",
+    "ref": 0
+   }
+  ],
+  "timeline": [
+   {
+    "year": "1944",
+    "event": "A US wartime milkweed pod collection enlisted schoolchildren to gather pods for life vest filling under the slogan 'Two bags save one life'.",
+    "ref": 1
+   },
+   {
+    "year": "2010",
+    "event": "Oil sorption of milkweed, kapok and polypropylene fiber assemblies was compared.",
+    "ref": 2
+   },
+   {
+    "year": "2019",
+    "event": "A field experiment found that up to 90% of monarch eggs on common milkweed in grasslands were lost within 72 hours.",
+    "ref": 3
+   },
+   {
+    "year": "2020",
+    "event": "Milkweed floss was characterized as a natural hollow, oleophilic sorbent.",
+    "ref": 4
+   },
+   {
+    "year": "2025",
+    "event": "Air-laid nonwovens made with Quebec-grown milkweed reached thermal conductivities of about 28 to 35 mW/m K for building insulation.",
+    "ref": 0
+   }
+  ],
+  "production": null,
+  "refs": [
+   {
+    "title": "Materials (2025): Milkweed fiber nonwovens for sustainable thermal and acoustic building insulation",
+    "url": "https://doi.org/10.3390/ma18163821"
+   },
+   {
+    "title": "Wisconsin DNR (2019): When picking milkweed was a patriotic pursuit",
+    "url": "https://dnr.wisconsin.gov/wnrmag/2019/Fall/back"
+   },
+   {
+    "title": "Journal of Hazardous Materials (2010): Oil sorption behavior of fiber assemblies from polypropylene, kapok and milkweed",
+    "url": "https://doi.org/10.1016/j.jhazmat.2010.11.031"
+   },
+   {
+    "title": "Environmental Entomology (2019): Habitat type influences monarch oviposition and egg survival on Asclepias syriaca",
+    "url": "https://doi.org/10.1093/ee/nvz046"
+   },
+   {
+    "title": "Journal of Environmental Management (2020): Milkweed floss as a natural hollow oleophilic fibrous sorbent",
+    "url": "https://doi.org/10.1016/j.jenvman.2020.110688"
+   }
+  ]
+ },
+ "henequen": {
+  "properties": [
+   {
+    "key": "density",
+    "label": "Density",
+    "value": "about 1.4",
+    "unit": "g/cm3",
+    "conditions": "compiled literature value",
+    "ref": 0
+   },
+   {
+    "key": "decomposition",
+    "label": "Thermal stability limit",
+    "value": "about 220",
+    "unit": "C",
+    "conditions": "fibers extracted for textile use",
+    "ref": 1
+   },
+   {
+    "key": "tensile_strength",
+    "label": "Tensile strength",
+    "value": "430 to 580",
+    "unit": "MPa",
+    "conditions": "compiled literature range",
+    "ref": 0
+   },
+   {
+    "key": "youngs_modulus",
+    "label": "Intrinsic Young's modulus",
+    "value": "about 30 to 35",
+    "unit": "GPa",
+    "conditions": "estimated by micromechanics and corrected single-filament tests",
+    "ref": 2
+   }
+  ],
+  "timeline": [
+   {
+    "year": "2014",
+    "event": "Henequen leaf juice, a decortication by-product, was hydrolyzed and fermented to ethanol.",
+    "ref": 4
+   },
+   {
+    "year": "2021",
+    "event": "Micromechanical modeling put the intrinsic Young's modulus of henequen fiber at roughly 30 to 35 GPa.",
+    "ref": 2
+   },
+   {
+    "year": "2022",
+    "event": "A thin cell layer protocol for somatic embryogenesis was published to multiply elite Agave fourcroydes clones.",
+    "ref": 3
+   },
+   {
+    "year": "2026",
+    "event": "Henequen leaves were studied as a source of textile fiber, with thermal stability up to about 220 C.",
+    "ref": 1
+   }
+  ],
+  "production": null,
+  "refs": [
+   {
+    "title": "RSC Advances (2026): Natural fibers in sustainable materials, extraction technologies, fiber modification and performance-sustainability relationships",
+    "url": "https://doi.org/10.1039/d5ra09029f"
+   },
+   {
+    "title": "Scientific Reports (2026): Extraction of natural fibres from Agave fourcroydes leaves for textile applications",
+    "url": "https://www.nature.com/articles/s41598-026-42567-z"
+   },
+   {
+    "title": "Polymers (2021): Effective Young's modulus estimation of henequen fibers in PP composites",
+    "url": "https://doi.org/10.3390/polym13223947"
+   },
+   {
+    "title": "Methods in Molecular Biology (2022): Thin cell layer technique for induction of somatic embryogenesis of Agave fourcroydes",
+    "url": "https://doi.org/10.1007/978-1-0716-2485-2_5"
+   },
+   {
+    "title": "BMC Biotechnology (2014): Hydrolysis of henequen leaf juice and fermentation for ethanol",
+    "url": "https://doi.org/10.1186/1472-6750-14-14"
    }
   ]
  },
@@ -3783,6 +5560,65 @@
    {
     "title": "Federal Register: Asbestos Part 1, chrysotile asbestos, regulation of certain conditions of use under TSCA (2024)",
     "url": "https://www.federalregister.gov/documents/2024/03/28/2024-05972/asbestos-part-1-chrysotile-asbestos-regulation-of-certain-conditions-of-use-under-the-toxic"
+   }
+  ]
+ },
+ "recycled-cotton": {
+  "properties": [],
+  "timeline": [
+   {
+    "year": "2022",
+    "event": "A study spun 100% cotton ring yarns containing recycled pre- and post-consumer fiber, reaching about 25% recycled content in 30 Ne yarn.",
+    "ref": 1
+   },
+   {
+    "year": "2023",
+    "event": "A cradle-to-gate life cycle assessment compared fabrics with 30% mechanically recycled cotton against 100% virgin cotton.",
+    "ref": 2
+   },
+   {
+    "year": "2024",
+    "event": "The Swedish cotton-to-pulp recycler Renewcell, whose pulp was sold as Circulose, was bought out of bankruptcy by the investment firm Altor.",
+    "ref": 3
+   },
+   {
+    "year": "2024",
+    "event": "Textile Exchange estimated recycled cotton at about 0.3 million tonnes, roughly 1% of cotton production.",
+    "ref": 0
+   },
+   {
+    "year": "2026",
+    "event": "Rotor yarns blending upcycled waste with cotton were assessed for quality.",
+    "ref": 4
+   }
+  ],
+  "production": {
+   "figure": "about 0.3 million tonnes (roughly 1% of cotton production)",
+   "year": "2024",
+   "scope": "global recycled cotton, pre- and post-consumer",
+   "countries": "",
+   "ref": 0
+  },
+  "refs": [
+   {
+    "title": "Textile Exchange: Materials Market Report 2025",
+    "url": "https://textileexchange.org/knowledge-center/reports/materials-market-report-2025/"
+   },
+   {
+    "title": "Heliyon: Recycled fibers from pre- and post-consumer textile waste in 100% cotton ring-spun yarns (Arafat and Uddin, 2022)",
+    "url": "https://doi.org/10.1016/j.heliyon.2022.e11275"
+   },
+   {
+    "title": "Cleaner Environmental Systems (2023): Life cycle environmental impact assessment of cotton recycling and the benefits of a take-back system",
+    "url": "https://www.sciencedirect.com/science/article/pii/S2667378923000494"
+   },
+   {
+    "title": "Recycling Today: Textile recycling plant acquired out of bankruptcy",
+    "url": "https://www.recyclingtoday.com/news/renewcell-altor-purchase-sweden-cotton-textile-recycling/"
+   },
+   {
+    "title": "Waste Management and Research (2026): Quality assessment of upcycled waste/cotton blend rotor yarn",
+    "url": "https://doi.org/10.1177/0734242X261481277"
    }
   ]
  },
