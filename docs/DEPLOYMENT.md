@@ -10,7 +10,7 @@ Run `npm ci` and `npm run build`. Deploy the contents of `dist/` to a static hos
 
 ## GitHub Pages
 
-The included Pages workflow is manually triggered. In repository Settings, open Pages and select GitHub Actions as the source, then run the Deploy site workflow. Publishing the repository does not automatically enable Pages. The workflow builds and uploads only dist/.
+The included Pages workflow is manually triggered. In repository Settings, open Pages and select GitHub Actions as the source, then run the Deploy site workflow. Pages is enabled for this repository with GitHub Actions as its source. The workflow builds and uploads only dist/.
 
 No custom domain, credentials, environment secrets or API keys are needed. If a custom domain is configured later, preserve HTTPS and test direct fragment links.
 
