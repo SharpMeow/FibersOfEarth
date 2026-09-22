@@ -59,4 +59,47 @@ button.text-link{font-size:inherit;padding:0;color:var(--green)}
 /* Zoom detail: country names and stage descriptions under place names */
 .country-label{font-size:9.5px;letter-spacing:.16em;fill:#5f7258;fill-opacity:.8;font-weight:500;paint-order:stroke;stroke:#eef2e7;stroke-width:3px;stroke-linejoin:round}
 .city-sub{font-size:9px;fill:#536252;font-weight:400;letter-spacing:.02em}
+/* Globe: keyboard focus stays visible; scale bar; full screen */
+.globe-svg:focus:not(:focus-visible){outline:none}
+.globe-svg:focus-visible{outline:3px solid var(--ochre);outline-offset:-3px;border-radius:8px}
+.scale-bar path{fill:none;stroke:#3a5141;stroke-width:1.4}
+.scale-bar text{font:10px var(--sans);fill:#3a5141;paint-order:stroke;stroke:#f6f8ee;stroke-width:3px}
+.map-panel:fullscreen{background:var(--paper);display:flex;flex-direction:column;justify-content:center;padding:2vh 3vw}
+.map-panel:fullscreen .globe-svg{max-height:84vh;min-height:0}
+/* Display settings */
+.display-form fieldset{border:1px solid var(--line);border-radius:6px;padding:12px 16px;margin:0 0 14px}
+.display-form legend{font-weight:600;padding:0 6px;color:var(--ink)}
+.display-form .option{display:flex;gap:10px;align-items:flex-start;padding:6px 0;cursor:pointer}
+.display-form .option input{margin-top:3px;accent-color:var(--green)}
+.display-form .option small{display:block;color:var(--muted)}
+html.a11y-still *,html.a11y-still *::before,html.a11y-still *::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+html.a11y-still .route-flow{opacity:0}
+html.a11y-text-lg body{zoom:1.15}
+html.a11y-text-xl body{zoom:1.3}
+html.a11y-underline a{text-decoration:underline;text-underline-offset:2px}
+html.a11y-contrast{--muted:#24352a;--line:#7d8a76;--ink:#0d2219;--soft:#dfe6d6}
+html.a11y-contrast body{background:#fffef8}
+html.a11y-contrast p,html.a11y-contrast small,html.a11y-contrast .muted{color:#24352a}
+html.a11y-contrast .material-card,html.a11y-contrast .fact-box,html.a11y-contrast .lab,html.a11y-contrast .button,html.a11y-contrast input,html.a11y-contrast select{border-color:#5d6b57}
+html.a11y-contrast button:focus-visible,html.a11y-contrast a:focus-visible,html.a11y-contrast input:focus-visible,html.a11y-contrast select:focus-visible,html.a11y-contrast [tabindex]:focus-visible{outline:3px solid #000;outline-offset:3px}
+/* Guide layer: pros and cons, notable facts, FAQ, full profile */
+.pros-cons{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:26px 0}
+.pros-cons section{border:1px solid var(--line);border-radius:6px;padding:16px 20px;background:var(--white)}
+.pros-cons h3{margin:0 0 8px;font-size:17px}
+.pros-cons ul{margin:0;padding-left:18px;color:var(--muted);line-height:1.6}
+.pros-cons li{margin:6px 0}
+.pros li::marker{content:"+  ";color:var(--green);font-weight:700}
+.cons li::marker{content:"\2212  ";color:#8a5d30;font-weight:700}
+.notable-list{margin:8px 0 0;padding-left:18px}
+.notable-list li{margin:5px 0}
+.faq details{border-bottom:1px solid var(--line);padding:12px 0}
+.faq summary{cursor:pointer;font-weight:600;color:var(--ink)}
+.faq details p{margin:10px 0 0}
+.profile-section{padding:10px 0 34px;border-bottom:1px solid var(--line);margin-bottom:26px}
+.card-facts{margin:8px 0 12px;display:grid;gap:4px;font-size:12px}
+.card-facts div{display:flex;justify-content:space-between;gap:10px;border-top:1px solid var(--line);padding-top:4px}
+.card-facts dt{color:var(--muted)}
+.card-facts dd{margin:0;text-align:right;color:var(--ink);max-width:62%}
+@media(max-width:650px){.pros-cons{grid-template-columns:1fr}}
+@media print{.profile-tabs,.site-header,.subnav,.site-footer,.profile-hero .actions,[data-action="print"],.cite-box .actions{display:none!important}.profile-body{display:block}.profile-section{break-inside:auto}}
 </style><script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"DefinedTerm","@id":"https://sharpmeow.github.io/FibersOfEarth/glossary/denier/#term","name":"Denier","alternateName":["den","D","linear density"],"description":"A linear density unit: grams per 9,000 meters of yarn or fiber.","url":"https://sharpmeow.github.io/FibersOfEarth/glossary/denier/","inDefinedTermSet":"https://sharpmeow.github.io/FibersOfEarth/glossary/"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Textile glossary","item":"https://sharpmeow.github.io/FibersOfEarth/glossary/"},{"@type":"ListItem","position":2,"name":"Denier","item":"https://sharpmeow.github.io/FibersOfEarth/glossary/denier/"}]}]}</script></head><body><a class="skip" href="#main">Skip to content</a><header><nav class="glossary-static-nav" aria-label="Main navigation"><a href="../../index.html">Fibers of Earth</a><a href="../index.html">Textile glossary</a><a href="../../index.html#/materials">Materials</a><a href="../../index.html#/science">Science lab</a></nav></header><main id="main" class="page glossary-article"><nav class="breadcrumb" aria-label="Breadcrumb"><a href="../index.html">Textile glossary</a><span> / Denier</span></nav><div class="eyebrow">Measurements</div><h1>Denier</h1><p class="muted">Also searched as: den, D, linear density</p><div class="reading"><p class="definition-lead">A linear density unit: grams per 9,000 meters of yarn or fiber.</p><section><h2>In detail</h2><p>Denier measures mass per length: a 9,000-meter length with a mass of 1 gram is 1 denier. A larger number means more mass for the same length. The unit may describe an individual <a class="term-link" href="../filament/index.html" title="A fiber of continuous or very long length, unlike a staple fiber.">filament</a> or a whole yarn, so the object being measured must accompany the number.</p></section><section><h2>The science and numbers</h2><p>Because denier is mass per 9,000 meters, conversion to the other linear-density units is a fixed ratio: tex (grams per 1,000 m) equals denier divided by 9, and decitex (grams per 10,000 m) equals denier divided by 0.9, so 1 denier is about 1.11 dtex. For diameter, the polymer density is also needed: for a solid round filament, mass per length equals density times cross-sectional area, so in cgs units d (cm) = sqrt(4 x denier / (pi x density x 900,000)), since 9,000 m is 900,000 cm. With d in micrometers and density in g/cm3 this becomes denier = 0.00707 x d squared x density, or d = 11.89 x sqrt(denier / density). A 15 micrometer polypropylene filament (density about 0.89 g/cm3) therefore works out to roughly 1.4 denier. Hollow or non-round sections need the measured cross-sectional area instead.</p></section><section><h2>A practical example</h2><p>A 90-denier yarn has a linear density of 10 tex because tex uses grams per 1,000 meters. If that yarn contains 30 equal filaments, each is nominally 3 denier. These are calculated examples, not measurements of a particular fabric.</p></section><section><h2>What to distinguish</h2><p>Denier is not a direct diameter, <a class="term-link" href="../thread-count/index.html" title="Thread count is the number of warp ends plus weft picks in one square inch of woven fabric, most often quoted for bed sheets.">thread count</a> or fabric-weight measurement. Material density, cross-sectional shape, filament count and fabric construction prevent a simple universal conversion from denier to softness, opacity or durability.</p></section><section><h2>Origins and history</h2><p>The unit borrows the name of a coin. English denier comes through French from Latin denarius, a Roman coin whose name derives from deni, &#39;ten each&#39;. A Frankish silver denier was first issued in the late seventh century, and in France the denier survived as one twelfth of a sou until it was withdrawn in the 19th century. Silk was traditionally weighed against this small coin, and the modern definition fixes the practice as 1 gram per 9,000 meters, a length at which a single silk strand weighs roughly one gram.</p></section><section><h2>Related terms</h2><ul class="related-terms"><li><a href="../filament/index.html">Filament</a></li><li><a href="../micron/index.html">Micron</a></li><li><a href="../staple/index.html">Staple</a></li><li><a href="../tex/index.html">Tex</a></li><li><a href="../yarn-count/index.html">Yarn count</a></li><li><a href="../microfiber/index.html">Microfiber</a></li></ul></section><section><h2>Sources & further reading</h2><ul class="source-links"><li><a href="https://cottonworks.com/encyclopedia-item/denier/" rel="noopener noreferrer">CottonWorks: Denier</a></li><li><a href="https://www.etymonline.com/word/denier" rel="noopener noreferrer">Online Etymology Dictionary: Denier</a></li><li><a href="https://www.merriam-webster.com/dictionary/denier" rel="noopener noreferrer">Merriam-Webster: Denier definition and meaning</a></li><li><a href="https://www.sciencedirect.com/topics/engineering/filament-diameter" rel="noopener noreferrer">ScienceDirect Topics: Filament diameter</a></li></ul><p class="editorial-note">Technical references reviewed 2026-09-22. Examples are illustrative. Industry organizations and manufacturers describe their own fields; their references are not independent product endorsements. Figures are approximate and depend on the stated test conditions.</p></section></div></main><footer class="site-footer"><p>Fibers of Earth · An independent field guide by Chaos.</p><a href="../../index.html#/sources">Sources & method</a></footer></body></html>

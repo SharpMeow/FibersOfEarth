@@ -3,10 +3,11 @@ import {profiles,sources as coreSources,articles,glossary,regions} from './conte
 import {extended,extraSources,histories,aliases} from './extended.js';
 import {brands,brandSources} from './brands.js';
 import {details} from './details.js';
+import {guide} from './guide.js';
 import {createIndex,fold} from './search.js';
 export {articles,glossary,regions};
 export const sources=[...coreSources,...extraSources,...brandSources];
-export const materials=Object.values({...profiles,...extended,...brands}).map((m,i)=>({...m,index:i+1,history:m.history||histories[m.id],aliases:aliases[m.id]||'',detail:details[m.id]||null,color:['#a6b49e','#c8b89d','#b6c0ae','#aeacb1','#c0a18d','#a4b6b3'][i%6]}));
+export const materials=Object.values({...profiles,...extended,...brands}).map((m,i)=>({...m,index:i+1,history:m.history||histories[m.id],aliases:aliases[m.id]||'',detail:details[m.id]||null,guide:guide[m.id]||null,color:['#a6b49e','#c8b89d','#b6c0ae','#aeacb1','#c0a18d','#a4b6b3'][i%6]}));
 export const byId=Object.fromEntries(materials.map(m=>[m.id,m]));
 export const families=['All materials','Plant','Animal','Cellulosic','Synthetic','Recycled','Technical','Mineral & metal','Bio-based','Regenerated protein','Specialty','Brands & technologies'];
 export const networks=Object.fromEntries(Object.entries(legacy.FIBRES).map(([id,f])=>[id,{nodes:Object.fromEntries(Object.entries({...f.nodes,...legacy.RETAIL}).map(([k,n])=>[k,{...n,id:k,country:legacy.GEO[n.name]||'China',role:n.src?'Origin':n.hub?'Processing':'Destination'}])),flows:f.flows.map(x=>x.slice(0,3)),camera:f.camera}]));
@@ -36,11 +37,11 @@ export const journeyById=Object.fromEntries(journeys.map(j=>[j.id,j]));
 export const locations=Object.values(Object.fromEntries(Object.values(networks).flatMap(n=>Object.values(n.nodes)).map(n=>[n.name,n])));
 export function normalize(s){return fold(s).trim();}
 // Field weights for ranked search. The first field is the title used for exact-name boosts.
-const materialFields={name:10,aliases:7,id:5,type:3,base:2.5,family:2,tagline:2,composition:3,uses:2.5,feel:1.5,history:1.1,origin:1.6,structure:1.1,process:1.1,performance:1.1,identify:.9,labeling:1.1,past:1,facts:1.2,care:.5,tradeoff:.5};
-const materialFieldAliases={family:'family',name:'name',use:'uses',uses:'uses',history:'past',origin:'origin',source:'origin',chemistry:'structure',structure:'structure',process:'process',processing:'process',performance:'performance',identify:'identify',law:'labeling',legal:'labeling',label:'labeling',labeling:'labeling',care:'care'};
-export const fieldLabels={name:'Name',aliases:'Search terms',id:'Identifier',type:'Entry type',base:'Underlying material',family:'Family',tagline:'Summary',composition:'Composition',uses:'Uses',feel:'Feel',history:'History',origin:'Source & geography',structure:'Structure & chemistry',process:'From source to yarn',performance:'Performance in use',identify:'Identification',labeling:'Labeling, law & standards',past:'Deeper history',facts:'Key figures',care:'Care',tradeoff:'Tradeoffs'};
+const materialFields={name:10,aliases:7,id:5,type:3,base:2.5,family:2,tagline:2,composition:3,uses:2.5,feel:1.5,history:1.1,origin:1.6,structure:1.1,process:1.1,performance:1.1,identify:.9,labeling:1.1,past:1,facts:1.2,care:.5,tradeoff:.5,types:1.4,fabrics:1.6,quality:.8,careGuide:.6,impact:.8,faq:1,notable:.6,pros:.6,cons:.6};
+const materialFieldAliases={family:'family',name:'name',use:'uses',uses:'uses',history:'past',origin:'origin',source:'origin',chemistry:'structure',structure:'structure',process:'process',processing:'process',performance:'performance',identify:'identify',law:'labeling',legal:'labeling',label:'labeling',labeling:'labeling',care:'care',types:'types',grade:'types',fabric:'fabrics',fabrics:'fabrics',buy:'quality',quality:'quality',impact:'impact',faq:'faq'};
+export const fieldLabels={name:'Name',aliases:'Search terms',id:'Identifier',type:'Entry type',base:'Underlying material',family:'Family',tagline:'Summary',composition:'Composition',uses:'Uses',feel:'Feel',history:'History',origin:'Source & geography',structure:'Structure & chemistry',process:'From source to yarn',performance:'Performance in use',identify:'Identification',labeling:'Labeling, law & standards',past:'Deeper history',facts:'Key figures',care:'Care',tradeoff:'Tradeoffs',types:'Types & grades',fabrics:'Fabrics & products',quality:'Buying guide',careGuide:'Care guide',impact:'Footprint',faq:'FAQ',notable:'Notable facts',pros:'Advantages',cons:'Drawbacks'};
 let materialIndex;
-function index(){return materialIndex??=createIndex(materials.map(m=>({...m,...(m.detail||{}),history:m.history,m,base:m.base?byId[m.base]?.name:'',facts:(m.detail?.facts||[]).map(f=>f.join(' '))})),materialFields,{aliases:materialFieldAliases});}
+function index(){return materialIndex??=createIndex(materials.map(m=>({...m,...(m.detail||{}),history:m.history,m,base:m.base?byId[m.base]?.name:'',facts:(m.detail?.facts||[]).map(f=>f.join(' ')),...(m.guide?{types:m.guide.types,fabrics:m.guide.fabrics,quality:m.guide.quality,careGuide:m.guide.care,impact:m.guide.impact,faq:m.guide.faq.flat(),notable:m.guide.notable,pros:m.guide.pros,cons:m.guide.cons}:{})})),materialFields,{aliases:materialFieldAliases});}
 // Ranked results with the fields each result matched, for snippets and explanations.
 export function searchMaterials(q,filter=()=>true){return index().search(q,{filter:d=>filter(d.m)}).map(r=>({material:r.doc.m,score:r.score,matched:r.matched}));}
 export function suggestMaterials(q){return index().suggest(q);}

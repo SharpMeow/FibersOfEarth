@@ -1,5 +1,14 @@
 # Changelog
 
+## 2.3.0 - 2026-09-22
+
+- Every material gains a reader guide: types and grades, fabrics and products, how to judge quality, advantages and drawbacks, environmental and social footprint, a detailed care guide, an FAQ and notable facts, with references. Profiles reorganize into Overview, Types & fabrics, Buying & care, History, Science, Journeys, Labeling & law and a printable Full profile. Library cards show two key figures, and search covers the new sections (a search for denim finds cotton).
+- The mouse wheel zooms the globe toward the pointer; at the zoom limits the page scrolls. Two-finger pinch zooms on touch screens.
+- Keyboard control of the globe: arrow keys rotate and tilt, plus and minus zoom, 0 recenters on the route, P pauses motion; a polite live region announces the view. The globe's accessible name includes a spoken summary of the route.
+- Display settings (header button): reduce motion, larger text (115% or 130%), high contrast and underlined links, stored in this browser.
+- Full-screen map control and a scale bar that tracks zoom.
+- Detailed 1:50m and 1:10m coastlines now load on demand from the same site instead of being bundled, cutting the standalone page from about 5.5 MB to about 1.2 MB. Opened from a local file, the globe keeps the bundled 1:110m map.
+
 ## 2.2.1 - 2026-09-22
 
 - Each fiber's globe now opens centered on its trade route, zoomed so every stop fits; Reset returns to that view.

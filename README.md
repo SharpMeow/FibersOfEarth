@@ -5,26 +5,27 @@
 [![Checks](https://github.com/SharpMeow/FibersOfEarth/actions/workflows/check.yml/badge.svg)](https://github.com/SharpMeow/FibersOfEarth/actions/workflows/check.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-294e3c)](LICENSE)
 
-Explore 100 material, fiber and technology profiles, 115 illustrative supply-chain journeys, and the science and history of textiles. The site works offline from a single HTML file, with no account, API key or application server.
+Explore 100 material, fiber and technology profiles, 115 illustrative supply-chain journeys, and the science and history of textiles. The core site works offline from a single HTML file, with no account, API key or application server; on the hosted site, detailed coastlines load as you zoom in.
 
 ![Fibers of Earth desktop atlas](docs/screenshots/atlas-desktop.png)
 
 ## Open the atlas
 
-Download the repository and open **index.html** in a modern browser. All map geometry, styles, content and JavaScript are bundled. External references require a network connection when you choose to open them.
+Download the repository and open **index.html** in a modern browser. Styles, content, JavaScript and the base world map are bundled; the detailed zoom coastlines need the hosted site or `npm run dev`. External references require a network connection when you choose to open them.
 
 ## Find your way around
 
 | Section | What you can do |
 | --- | --- |
-| Atlas | Choose from 30 mapped materials, watch raised route arcs animate in the direction of travel, rotate, pause or zoom the globe, switch to a flat map, inspect locations and choose a journey. |
-| Materials | Read 100 research profiles (structure and chemistry, processing, performance, identification, labeling law, deeper history, key figures and references). Ranked, typo-tolerant search covers every section, with phrases, exclusions and field filters such as `law:cites`. Cite any profile in APA or BibTeX. |
+| Atlas | Choose from 30 mapped materials. Each globe opens centered on its trade route; raised arcs animate the direction of travel. Zoom with the wheel, pinch, buttons or keyboard (0.6x to 16x) for finer coastlines, country names and grids; go full screen; switch to a flat map. |
+| Materials | 100 profiles with a reader guide (types and grades, fabrics, buying cues, pros and cons, footprint, care, FAQ, notable facts) and a research layer (structure and chemistry, processing, performance, identification, labeling law, deeper history, key figures, references). Ranked, typo-tolerant search covers every section. Cite in APA or BibTeX, or print the full profile. |
 | Brands & technologies | Distinguish 20 proprietary offerings from their underlying fiber, feedstock or yarn process. |
 | Compare | Put three materials side by side across composition, history, care, uses and sourcing questions. |
 | Journeys | Search 115 illustrative routes by place or material; sort by estimated distance or stage count; export a route. |
 | Learn | Read eight field notes, 100 historical summaries and a 99-term glossary with the science, numbers and origins behind each term. |
 | Science lab | Change weave diagrams, calculate ideal filament diameter, and convert yarn counts (tex, dtex, denier, Nm, Ne) and fabric weights (g/m², oz/yd², momme). |
 | Saved | Keep a local collection of materials in your browser. |
+| Display settings | Reduce motion, enlarge text, raise contrast or underline links from the header; choices stay in your browser. |
 
 Press `/` to search the atlas. Links preserve views using URL fragments. Browser Back and Forward navigate between sections. Saved items stay on your device.
 
