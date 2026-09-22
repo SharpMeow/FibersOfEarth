@@ -8,3 +8,5 @@ html=html.replace('<!--STYLE-->',()=>'<style>'+css+'</style>').replace('<!--SCRI
 new Script(html.match(/<script>([\s\S]*)<\/script>/)[1]);
 await fs.mkdir('dist',{recursive:true});await fs.writeFile('dist/index.html',html);await fs.writeFile('index.html',html);
 console.log('Built offline-ready dist/index.html ('+Math.round(Buffer.byteLength(html)/1024)+' KB)');
+const {buildGlossary}=await import('./glossary-build.mjs');
+await buildGlossary(css);

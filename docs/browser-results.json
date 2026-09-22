@@ -10,6 +10,7 @@
     "All 100 material profiles and 115 journey detail routes render",
     "All main sections checked at 1440, 768 and 390 pixels",
     "Unknown routes and escaped search input handled",
+    "Glossary: aliases, topic/letter filters, 32 detail routes, 33 JavaScript-free pages, related links, metadata, structured data, sitemap and accessibility",
     "Standalone HTML opens offline with populated library",
     "No browser JavaScript errors"
   ]

@@ -17,3 +17,9 @@ No custom domain, credentials, environment secrets or API keys are needed. If a 
 ## Updating
 
 Edit src/, run the tests, rebuild and commit the updated root index.html. Deploy the new build. Bookmark IDs remain stable across updates when the same material IDs are preserved.
+
+## Glossary and SEO
+
+The build now emits `glossary/index.html`, 32 static term pages, and `sitemap.xml` into both the repository and `dist/`. Deploy all of `dist/`, not only the root HTML, to expose the reading edition. These pages work without JavaScript and use normal relative links.
+
+The default canonical base is `https://sharpmeow.github.io/FibersOfEarth/`. For another address, build with `SITE_URL=https://example.com/your-path/ npm run build`. Do not publish mismatched canonicals. The sitemap can be submitted after deployment; no indexing or ranking guarantee is implied. See [GLOSSARY-RESEARCH.md](GLOSSARY-RESEARCH.md).

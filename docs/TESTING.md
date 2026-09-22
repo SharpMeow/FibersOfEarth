@@ -13,3 +13,7 @@ The final run passed. Desktop and mobile screenshots were visually reviewed. Aut
 See [browser-results.json](browser-results.json) and [screenshots](screenshots/) for recorded evidence. GitHub Actions repeats the data, build, and browser checks on pushes and pull requests.
 
 These checks are not a full accessibility audit, screen-reader study, scientific peer review, or verification of real-world supply chains. Routes are illustrative and historical summaries have the source limitations described in [CONTENT.md](CONTENT.md).
+
+## Expanded glossary verification
+
+The additional glossary data test checks preservation of all 32 original terms, references, related terms, substantial explanations, alias search, and combined topic/letter filters. Browser coverage includes all 32 interactive definition routes and all 32 static definition pages with JavaScript disabled, the static index, relative related-term navigation, canonical URLs, structured-data consistency, sitemap entries, missing-page 404s, mobile layout, and axe checks for both reading modes.

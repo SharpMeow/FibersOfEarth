@@ -69,3 +69,7 @@ The browser command starts its own preview server. To use an installed Chrome in
 ## Credits
 
 Created by **Chaos**. Original application code and original editorial text are MIT licensed. Material names and trademarks belong to their respective owners. Reference organizations and material producers are not affiliated with or endorsing this project. Map data and library licenses are documented separately.
+
+### Detailed textile glossary
+
+[Read the glossary](glossary/index.html) or use the interactive glossary to search by aliases and filter by topic or letter. All 32 terms now include explanations, practical examples, distinctions, related terms and sources. The build creates 33 JavaScript-free glossary pages plus a sitemap for static hosting. [Research and SEO notes](docs/GLOSSARY-RESEARCH.md) explain the source methodology and deployment requirements. Canonical URLs default to the anticipated GitHub Pages address; enable hosting before expecting search discovery.
