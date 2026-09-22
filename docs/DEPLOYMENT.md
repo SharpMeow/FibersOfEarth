@@ -1,12 +1,12 @@
 # Deployment
 
-## Standalone
+## Offline copy
 
-Open the root index.html in a modern browser. It contains the complete app. No server is needed, and the browser never needs to fetch map geometry or runtime libraries.
+`npm run build` writes `dist/offline.html`, a single file with the app, styles and base map inlined. Open it in a modern browser without a server. Detailed zoom coastlines and the glossary reading edition need the hosted site.
 
 ## Static hosting
 
-Run `npm ci` and `npm run build`. Deploy the contents of `dist/` to a static host. Hash-based navigation needs no rewrite rules. The committed root index.html can also be served directly.
+Run `npm ci` and `npm run build`. Deploy the contents of `dist/` to a static host. Hash-based navigation needs no rewrite rules. Serve `assets/` with long-lived caching (file names change with content) and `index.html` without it.
 
 ## GitHub Pages
 
@@ -16,10 +16,10 @@ No custom domain, credentials, environment secrets or API keys are needed. If a 
 
 ## Updating
 
-Edit src/, run the tests, rebuild and commit the updated root index.html. Deploy the new build. Bookmark IDs remain stable across updates when the same material IDs are preserved.
+Edit src/, run the tests and commit the source. Build output is not committed; after merging, run the Deploy site workflow, which builds and publishes `dist/`. Bookmark IDs remain stable across updates when the same material IDs are preserved.
 
 ## Glossary and SEO
 
-The build now emits `glossary/index.html`, one static page per glossary term (99 in this edition), and `sitemap.xml` into both the repository and `dist/`. Deploy all of `dist/`, not only the root HTML, to expose the reading edition. These pages work without JavaScript and use normal relative links.
+The build now emits `glossary/index.html`, one static page per glossary term (99 in this edition), and `sitemap.xml` into `dist/`. Deploy all of `dist/`, not only the root HTML, to expose the reading edition. These pages work without JavaScript and use normal relative links.
 
 The default canonical base is `https://sharpmeow.github.io/FibersOfEarth/`. For another address, build with `SITE_URL=https://example.com/your-path/ npm run build`. Do not publish mismatched canonicals. The sitemap can be submitted after deployment; no indexing or ranking guarantee is implied. See [GLOSSARY-RESEARCH.md](GLOSSARY-RESEARCH.md).

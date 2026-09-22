@@ -2,7 +2,7 @@
 
 Verification date: September 22, 2026.
 
-Run `npm ci`, `npm test`, and `npm run build`. Install a browser with `npx playwright install chromium`, then run `npm run test:browser`. To use installed Google Chrome locally, set `BROWSER_CHANNEL=chrome`. To use a specific Chromium binary, set `BROWSER_EXECUTABLE=/path/to/chromium`.
+Run `npm ci`, `npm test`, and `npm run build` (output goes to `dist/`; nothing generated is committed). Install a browser with `npx playwright install chromium`, then run `npm run test:browser`. To use installed Google Chrome locally, set `BROWSER_CHANNEL=chrome`. To use a specific Chromium binary, set `BROWSER_EXECUTABLE=/path/to/chromium`.
 
 The five data tests cover catalog completeness, unique identifiers, source references, valid route coordinates, combined search/filter/sort behavior, distance and filament calculations, and editorial links.
 

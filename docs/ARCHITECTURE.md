@@ -1,6 +1,6 @@
 # Architecture
 
-FibersOfEarth is a local-first static application. ES modules are bundled with esbuild into an IIFE inside a standalone HTML file. No runtime CDN, font, tracking, geocoding or API dependency is required.
+FibersOfEarth is a static application. `scripts/build.mjs` bundles the ES modules with esbuild into one content-hashed script and copies the stylesheet as a content-hashed asset, both referenced from a small `index.html`; hashed names let hosts cache them indefinitely. The same build writes the glossary reading edition (which links the shared stylesheet), the sitemap, on-demand map geometry and `offline.html`, a single-file copy with everything inlined. Build output lives in `dist/` and is not committed. No runtime CDN, font, tracking, geocoding or API dependency is required.
 
 ## Modules
 
@@ -10,9 +10,9 @@ FibersOfEarth is a local-first static application. ES modules are bundled with e
 | src/globe.js | D3 orthographic and Natural Earth projections, topology conversion, raised 3D route arcs, direction-of-travel animation, auto-rotation, map controls and node selection. |
 | src/data.js | Unified catalog, research details, illustrative networks, route derivation, distances and the material search index. |
 | src/search.js | Offline ranked search engine: tokenizer, spelling folding, BM25 scoring, typo tolerance, query syntax, suggestions and snippets. |
-| src/guide.js | Generated reader guide per entry: types, fabrics, quality cues, pros and cons, footprint, care, FAQ, notable facts and references. |
-| src/details.js | Generated research profiles for every catalog entry, with key figures, references and evidence levels. |
-| src/glossary.js, src/glossary-extended.js, src/glossary-render.js | Glossary data, research additions, ranked term search, shared HTML rendering and automatic term links. |
+| src/data/guide.json | Generated reader guide per entry: types, fabrics, quality cues, pros and cons, footprint, care, FAQ, notable facts and references. |
+| src/data/details.json | Generated research profiles for every catalog entry, with key figures, references and evidence levels. |
+| src/glossary.js, src/data/glossary-extended.json, src/glossary-render.js | Glossary data, research additions, ranked term search, shared HTML rendering and automatic term links. |
 | src/content.js | Core material descriptions, articles, regions, references and glossary. |
 | src/extended.js | Additional fibers, histories, aliases and reference entries. |
 | src/brands.js | Proprietary names, underlying-material links and producer references. |

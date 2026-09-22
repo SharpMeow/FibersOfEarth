@@ -5,13 +5,13 @@
 [![Checks](https://github.com/SharpMeow/FibersOfEarth/actions/workflows/check.yml/badge.svg)](https://github.com/SharpMeow/FibersOfEarth/actions/workflows/check.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-294e3c)](LICENSE)
 
-Explore 100 material, fiber and technology profiles, 115 illustrative supply-chain journeys, and the science and history of textiles. The core site works offline from a single HTML file, with no account, API key or application server; on the hosted site, detailed coastlines load as you zoom in.
+Explore 100 material, fiber and technology profiles, 115 illustrative supply-chain journeys, and the science and history of textiles. It is a static site with no account, API key or application server. Visit the hosted atlas, or build it locally.
 
 ![Fibers of Earth desktop atlas](docs/screenshots/atlas-desktop.png)
 
 ## Open the atlas
 
-Download the repository and open **index.html** in a modern browser. Styles, content, JavaScript and the base world map are bundled; the detailed zoom coastlines need the hosted site or `npm run dev`. External references require a network connection when you choose to open them.
+Visit [sharpmeow.github.io/FibersOfEarth](https://sharpmeow.github.io/FibersOfEarth/), or run `npm ci && npm run build && npm run dev` and open http://127.0.0.1:4173. The build also writes `dist/offline.html`, a single-file copy that opens without a server (base world map only). External references require a network connection when you choose to open them.
 
 ## Find your way around
 
@@ -46,7 +46,7 @@ npm run build
 npm run dev
 ```
 
-Open http://127.0.0.1:4173. Rebuild after source changes and restart the preview server. `npm run build` produces `dist/index.html` and the standalone root `index.html`.
+Open http://127.0.0.1:4173. Rebuild after source changes and restart the preview server. `npm run build` writes the site to `dist/`: a small `index.html`, content-hashed `assets/app-*.js` and `assets/styles-*.css`, the glossary reading edition, the sitemap, on-demand map geometry in `geo/`, and `offline.html`. Build output is not committed; CI builds and deploys it.
 
 For browser and accessibility checks:
 
@@ -73,4 +73,4 @@ Created by **Chaos**. Original application code and original editorial text are 
 
 ### Detailed textile glossary
 
-[Read the glossary](glossary/index.html) or use the interactive glossary to search by aliases and filter by topic or letter. All 99 terms include explanations, the science and numbers, practical examples, distinctions, origins, related terms and sources. The build creates 100 JavaScript-free glossary pages plus a sitemap for static hosting. [Research and SEO notes](docs/GLOSSARY-RESEARCH.md) explain the source methodology and deployment requirements. The site is published through GitHub Pages at [sharpmeow.github.io/FibersOfEarth](https://sharpmeow.github.io/FibersOfEarth/). Search indexing is controlled by search engines.
+[Read the glossary](https://sharpmeow.github.io/FibersOfEarth/glossary/) or use the interactive glossary to search by aliases and filter by topic or letter. All 99 terms include explanations, the science and numbers, practical examples, distinctions, origins, related terms and sources. The build creates 100 JavaScript-free glossary pages plus a sitemap for static hosting. [Research and SEO notes](docs/GLOSSARY-RESEARCH.md) explain the source methodology and deployment requirements. The site is published through GitHub Pages at [sharpmeow.github.io/FibersOfEarth](https://sharpmeow.github.io/FibersOfEarth/). Search indexing is controlled by search engines.

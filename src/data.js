@@ -2,8 +2,9 @@ import legacy from './legacy.json' with {type:'json'};
 import {profiles,sources as coreSources,articles,glossary,regions} from './content.js';
 import {extended,extraSources,histories,aliases} from './extended.js';
 import {brands,brandSources} from './brands.js';
-import {details} from './details.js';
-import {guide} from './guide.js';
+// Generated research layers live as JSON data; see docs/CONTENT.md for the method and evidence levels.
+import details from './data/details.json' with {type:'json'};
+import guide from './data/guide.json' with {type:'json'};
 import {createIndex,fold} from './search.js';
 export {articles,glossary,regions};
 export const sources=[...coreSources,...extraSources,...brandSources];

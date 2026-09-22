@@ -2,6 +2,8 @@
 
 ## 2.3.0 - 2026-09-22
 
+- The site is now a multi-file static build: a small HTML shell with content-hashed script and stylesheet assets, glossary pages that share the stylesheet, and generated research content stored as JSON under `src/data/`. Build output is no longer committed (CI builds and deploys it); `dist/offline.html` remains available as a single-file offline copy.
+
 - Every material gains a reader guide: types and grades, fabrics and products, how to judge quality, advantages and drawbacks, environmental and social footprint, a detailed care guide, an FAQ and notable facts, with references. Profiles reorganize into Overview, Types & fabrics, Buying & care, History, Science, Journeys, Labeling & law and a printable Full profile. Library cards show two key figures, and search covers the new sections (a search for denim finds cotton).
 - The mouse wheel zooms the globe toward the pointer; at the zoom limits the page scrolls. Two-finger pinch zooms on touch screens.
 - Keyboard control of the globe: arrow keys rotate and tilt, plus and minus zoom, 0 recenters on the route, P pauses motion; a polite live region announces the view. The globe's accessible name includes a spoken summary of the route.
