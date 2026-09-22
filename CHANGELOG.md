@@ -10,3 +10,10 @@
 - Bundled map data and runtime code for offline use without a build step for readers.
 - Added automated data, routing, interaction, responsive-layout and accessibility checks, CI, project documentation and license notices.
 - Removed personal branding, original review pages and unsupported live-tracking implications.
+
+## 2.1.0
+
+- Expanded all 32 glossary definitions with explanations, examples, distinctions, related terms and technical references.
+- Added alias search, topic and letter filters, and glossary results in global search.
+- Added a JavaScript-free reading edition with 33 static pages, unique metadata, structured data and a sitemap.
+- Documented research sources and deployment requirements for search discovery.
