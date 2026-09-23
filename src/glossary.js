@@ -1,5 +1,5 @@
 import {glossary as definitions} from './content.js';
-import extension from './data/glossary-extended.json' with {type:'json'};
+import extension from './data/glossary-extended.js';
 const {additions:glossaryAdditions,depth:glossaryDepth}=extension;
 import {createIndex} from './search.js';
 export const reviewed='2026-09-22';

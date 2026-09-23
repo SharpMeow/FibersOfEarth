@@ -3,9 +3,9 @@ import {profiles,sources as coreSources,articles,glossary,regions} from './conte
 import {extended,extraSources,histories,aliases} from './extended.js';
 import {brands,brandSources} from './brands.js';
 // Generated research layers live as JSON data; see docs/CONTENT.md for the method and evidence levels.
-import details from './data/details.json' with {type:'json'};
-import guide from './data/guide.json' with {type:'json'};
-import datasheet from './data/datasheet.json' with {type:'json'};
+import details from './data/details.js';
+import guide from './data/guide.js';
+import datasheet from './data/datasheet.js';
 import {createIndex,fold} from './search.js';
 export {articles,glossary,regions};
 export const sources=[...coreSources,...extraSources,...brandSources];
