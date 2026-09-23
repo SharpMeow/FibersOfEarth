@@ -144,3 +144,37 @@ const rows=[
 'Top is not the same as loose scoured wool or finished worsted cloth. It is also not a universal name for every carded strand. Ask whether the material is card sliver, combed top, roving or spun yarn.',['Combing','Sliver','Worsted'],['top']],
 ['Traceability','Claims & sourcing','provenance, origin records, supply-chain tracking',
 'Traceability is the ability to follow specified information about a material through recorded stages. A useful claim identifies what is traced, how far back the records reach and which links are supported. A map of plausible locations is not, by itself, a record for a specific product.',
+'For a garment, you might know the sewing factory but not the spinning mill or fiber origin. State that boundary clearly. To investigate further, ask for links between the product, batch records, purchases and the relevant upstream facilities.',
+'Traceability and certification are different ideas. A traceable material is not automatically certified to an environmental standard, and a general supplier certificate does not answer every product-origin question. Fibers of Earth routes remain illustrative.',['Chain of custody','Ginning','Post-consumer'],['custody']],
+['Warp & weft','Fabric construction','warp and weft, ends, picks, filling, selvedge, selvage',
+'Warp and weft are the principal yarn systems in weaving. Warp yarns run lengthwise through the loom, while weft, also called filling, crosses them. The sequence of interlacing produces the weave, and the two systems may use different yarns, colors or materials.',
+'On a woven sample with its original selvedge, the warp direction runs along that edge. Identify both directions before comparing stretch or cutting a pattern piece. A fabric can behave differently lengthwise and crosswise even when its overall composition is unchanged.',
+'These are structural directions, not fiber names. The terminology also should not be applied casually to the loop rows and columns of ordinary weft knitting, which uses a different construction.',['Weaving','Knitting','Dyeing'],['weavebasics']],
+['Weaving','Fabric construction','woven fabric, loom, interlacing',
+'Weaving constructs fabric by interlacing yarn systems. In a conventional loom, warp yarns are arranged lengthwise and weft is inserted across them. Different interlacing sequences produce structures such as plain weave, twill and satin; those structures are not themselves fiber types.',
+'Two fabrics can both be cotton while one uses a plain weave and the other a twill. A composition label identifies the material, while a construction description helps explain its surface and behavior. Both are needed to describe the textile usefully.',
+'Woven does not automatically mean rigid, waterproof or non-stretch. Yarn selection, interlacing, density and finishing influence the final performance. Compare finished samples for the use you have in mind.',['Warp & weft','Knitting','Drape'],['weave']],
+['Worsted','Processing','worsted-spun, worsted wool, woollen, woolen',
+'In textile manufacturing, worsted describes a preparation and spinning route using aligned, combed fibers. It contrasts with the woollen route, which uses a different preparation sequence. The processing distinction helps explain yarn character, but does not by itself prescribe a particular garment or weave.',
+'A worsted yarn can be used in different fabric constructions. When reading a supplier’s description, separate the processing route from fiber composition, yarn count and the eventual knitted or woven structure. That prevents one familiar word from standing in for a complete specification.',
+'Hand-knitting labels also use “worsted weight” as a yarn-size category. That usage does not establish that the yarn was manufactured by the worsted wool-processing route. Confirm which meaning the speaker intends.',['Top','Combing','Carding'],['iwto','top','weights']]
+];
+const slug=term=>term.toLowerCase().replace(/ & /g,'-and-').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
+const base=rows.map(([term,category,aliases,explanation,example,caution,related,sources])=>({term,category,aliases:aliases.split(', '),definition:definitions[term],explanation,example,caution,related,sources}));
+const added=glossaryAdditions.map(t=>({...t,sources:[]}));
+export const glossaryEntries=[...base,...added].map(t=>{const d=glossaryDepth[t.term]||{};return {...t,id:slug(t.term),deeper:t.deeper||d.deeper||'',origins:t.origins||d.origins||'',related:[...new Set([...t.related,...(d.related_add||[])])],refs:[...(t.refs||[]),...(d.refs||[])],reviewed};});
+const known=new Set(glossaryEntries.map(t=>t.term));
+for(const t of glossaryEntries)t.related=t.related.filter(name=>known.has(name)&&name!==t.term);
+export const glossaryById=Object.fromEntries(glossaryEntries.map(t=>[t.id,t]));
+export const glossaryCategories=[...new Set(glossaryEntries.map(t=>t.category))].sort();
+export const glossaryFieldLabels={term:'Term',aliases:'Also searched as',definition:'Short answer',category:'Topic',explanation:'In detail',deeper:'The science and numbers',origins:'Origins and history',example:'A practical example',caution:'What to distinguish'};
+let termIndex;
+const index=()=>termIndex??=createIndex(glossaryEntries,{term:10,aliases:7,definition:3,category:1,explanation:1.2,deeper:1,origins:.8,example:.6,caution:.6},{aliases:{topic:'category',category:'category',history:'origins',science:'deeper'}});
+// Ranked search with the fields each term matched; without a query, terms are alphabetical.
+export function searchTerms({q='',category='',letter=''}={}){
+ const keep=t=>(!category||t.category===category)&&(!letter||t.term[0]===letter);
+ if(!String(q).trim())return glossaryEntries.filter(keep).sort((a,b)=>a.term.localeCompare(b.term,'en')).map(term=>({term,score:0,matched:{}}));
+ return index().search(q,{filter:keep}).map(r=>({term:r.doc,score:r.score,matched:r.matched}));
+}
+export function findTerms(opts={}){return searchTerms(opts).map(r=>r.term);}
+export function suggestTerms(q){return index().suggest(q);}
