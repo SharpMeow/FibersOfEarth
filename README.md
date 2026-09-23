@@ -7,7 +7,7 @@
 ![Node 22+](https://img.shields.io/badge/node-22%2B-294e3c)
 [![License: MIT](https://img.shields.io/badge/license-MIT-294e3c)](LICENSE)
 
-Fibers of Earth is an independent textile atlas: 101 material, fiber, and technology profiles, 115 illustrative supply-chain journeys, and the science and history of textiles. It is a static site with no account, API key, or application server.
+Fibers of Earth is an independent textile atlas: 106 material, fiber, and technology profiles, 115 illustrative supply-chain journeys, and the science and history of textiles. It is a static site with no account, API key, or application server.
 
 Fibers of Earth is the independent atlas for what clothes are actually made of: fiber, yarn, cloth, and the words mills and labels use.
 
@@ -53,8 +53,8 @@ The build also writes `dist/offline.html`, a single-file copy that opens without
 | Section | What you can do |
 | --- | --- |
 | Atlas | Choose from 30 mapped materials. Each globe opens centered on its trade route; raised arcs animate the direction of travel. Zoom with the wheel, pinch, buttons, or keyboard (0.6× to 16×) for finer coastlines, country names, and grids; go full screen; switch to a flat map. |
-| Materials | 101 profiles with a reader guide (types and grades, fabrics, buying cues, pros and cons, footprint, care, FAQ, notable facts) and a research layer (structure and chemistry, processing, performance, identification, labeling law, deeper history, key figures, references). Ranked, typo-tolerant search covers every section. Cite in APA or BibTeX, or print the full profile. |
-| Brands & technologies | Distinguish 21 proprietary offerings from their underlying fiber, feedstock, or yarn process. |
+| Materials | 106 profiles with a reader guide (types and grades, fabrics, buying cues, pros and cons, footprint, care, FAQ, notable facts) and a research layer (structure and chemistry, processing, performance, identification, labeling law, deeper history, key figures, references). Ranked, typo-tolerant search covers every section. Cite in APA or BibTeX, or print the full profile. |
+| Brands & technologies | Distinguish 26 proprietary offerings from their underlying fiber, feedstock, or yarn process. |
 | Compare | Put three materials side by side across composition, history, care, uses, and sourcing questions. |
 | Journeys | Search 115 illustrative routes by place or material; sort by estimated distance or stage count; export a route. |
 | Learn | Read nine field notes, 100 historical summaries, and a 102-term glossary with the science, numbers, and origins behind each term. |
