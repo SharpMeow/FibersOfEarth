@@ -1,1 +1,1 @@
-@/workspace/FibersOfEarth/src/content.js
+@/home/box/.cursor/projects/workspace/agent-tools/foe_RESTORE_create_or_update.json
