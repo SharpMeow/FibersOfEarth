@@ -1,1 +1,1 @@
-@/tmp/foe_mcp_args_brands.json
+FILE:/tmp/brands_content_for_mcp.txt
