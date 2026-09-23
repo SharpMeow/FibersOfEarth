@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 420" role="img" aria-labelledby="title desc">
+  <title id="title">Italian textile districts (educational)</title>
+  <desc id="desc">Biella for worsted wool, Prato for regenerated cardato wool, Como for silk weaving and printing. Mill towns are finishing cultures, not fiber origins.</desc>
+  <rect width="840" height="420" fill="#f7f4ef"/>
+  <text x="32" y="40" font-family="Georgia, serif" font-size="22" fill="#1f2a24">Italian textile districts</text>
+  <text x="32" y="64" font-family="system-ui, sans-serif" font-size="13" fill="#5c6b63">Educational sketch. Mill name ≠ fiber origin. Routes on the atlas remain illustrative.</text>
+  <path d="M360 70 l40 10 30 40 10 50 -10 40 20 30 10 50 -20 40 -30 20 -20 40 10 30 -40 10 -30 -40 10 -40 -20 -30 -40 -20 -20 -50 20 -60 30 -40 40 -20 z" fill="#dce6df" stroke="#6d8f7b" stroke-width="2"/>
+  <g font-family="system-ui, sans-serif">
+    <circle cx="390" cy="120" r="8" fill="#2f5d4a"/>
+    <text x="410" y="116" font-size="16" font-weight="600" fill="#1f2a24">Biella</text>
+    <text x="410" y="134" font-size="12" fill="#5c6b63">Worsted wool spinning &amp; weaving</text>
+    <circle cx="430" cy="210" r="8" fill="#8b5a2b"/>
+    <text x="450" y="206" font-size="16" font-weight="600" fill="#1f2a24">Prato</text>
+    <text x="450" y="224" font-size="12" fill="#5c6b63">Regenerated / cardato wool</text>
+    <circle cx="455" cy="175" r="8" fill="#5a6f8b"/>
+    <text x="475" y="171" font-size="16" font-weight="600" fill="#1f2a24">Como</text>
+    <text x="475" y="189" font-size="12" fill="#5c6b63">Silk weaving &amp; printing</text>
+  </g>
+  <rect x="32" y="300" width="240" height="88" rx="8" fill="#e7eee9" stroke="#6d8f7b"/>
+  <text x="48" y="328" font-family="system-ui, sans-serif" font-size="13" font-weight="600" fill="#2f5d4a">Biella</text>
+  <text x="48" y="348" font-family="system-ui, sans-serif" font-size="12" fill="#1f2a24">Fine worsted cloth &amp; yarns.</text>
+  <text x="48" y="366" font-family="system-ui, sans-serif" font-size="12" fill="#5c6b63">AU/NZ merino often finished here.</text>
+  <rect x="300" y="300" width="240" height="88" rx="8" fill="#f0e8df" stroke="#8b5a2b"/>
+  <text x="316" y="328" font-family="system-ui, sans-serif" font-size="13" font-weight="600" fill="#8b5a2b">Prato</text>
+  <text x="316" y="348" font-family="system-ui, sans-serif" font-size="12" fill="#1f2a24">Mechanical wool regeneration.</text>
+  <text x="316" y="366" font-family="system-ui, sans-serif" font-size="12" fill="#5c6b63">Sorting rags → cardato yarns.</text>
+  <rect x="568" y="300" width="240" height="88" rx="8" fill="#e4e8ef" stroke="#5a6f8b"/>
+  <text x="584" y="328" font-family="system-ui, sans-serif" font-size="13" font-weight="600" fill="#5a6f8b">Como</text>
+  <text x="584" y="348" font-family="system-ui, sans-serif" font-size="12" fill="#1f2a24">Silk weave, print, finish.</text>
+  <text x="584" y="366" font-family="system-ui, sans-serif" font-size="12" fill="#5c6b63">Yarn may be reeled elsewhere.</text>
+</svg>
