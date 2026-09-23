@@ -1,1 +1,26 @@
-PLACEHOLDER
+{
+  "name": "fibersofearth",
+  "version": "2.5.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node scripts/serve.mjs",
+    "build": "node scripts/build.mjs",
+    "test": "node --test tests/data.test.mjs",
+    "test:browser": "node scripts/test-browser.mjs"
+  },
+  "dependencies": {
+    "d3-geo": "3.1.1",
+    "topojson-client": "3.1.0",
+    "world-atlas": "2.0.2"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "^4.10.2",
+    "acorn": "8.15.0",
+    "esbuild": "0.25.9",
+    "playwright": "1.55.1"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}
