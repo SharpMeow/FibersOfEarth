@@ -1,6 +1,6 @@
 # Content and evidence
 
-The catalog contains 100 entries: 80 fiber/material references and 20 proprietary-brand or technology entries. These counts include named silk variants, fillings and historical materials. They are not 100 distinct chemical fiber classes.
+The catalog contains 101 entries: 80 fiber/material references and 21 proprietary-brand or technology entries. These counts include named silk variants, fillings and historical materials. They are not 101 distinct chemical fiber classes.
 
 Thirty material networks yield 115 named illustrative paths. Networks retain approximate geographic concepts from an earlier standalone atlas, with five added educational models. Routes are derived from connected origin-to-destination paths and curated for origin variation. They do not represent recorded transactions or actual transport itineraries.
 
@@ -36,6 +36,6 @@ Every catalog entry has a research profile in `src/data/details.json` with seven
 Each profile carries an evidence level:
 
 - **verified** (96 entries): specific numbers, dates, names, ownership events and legal points were checked against the listed references. Sources are primary and institutional where possible: eCFR and FTC pages for US rules (16 CFR Parts 260, 300, 301 and 303), EUR-Lex for Regulation (EU) No 1007/2011, CITES, IWTO and Woolmark technical pages, Textile Exchange standards, museums and peer-reviewed literature. Producer statements are attributed to the producer.
-- **editorial** (4 entries: PVC, PBI, Nuyarn and ZQ): conservative, textbook-level context where public primary evidence is thin. These entries avoid unsupported dates and figures and say what could not be verified.
+- **editorial** (5 entries: PVC, PBI, Nuyarn, ZQ and Wolf vs Goat): conservative, textbook-level context where public primary evidence is thin, or where the entry is a reference brand used to teach materials language. These entries avoid unsupported dates and figures and say what could not be verified.
 
 Research took place on September 22, 2026. Web searches verified the first part of the pass. When the session's search allowance was exhausted, verification continued against PubMed records (abstracts and, where available, full text) and a pool of sources already confirmed in the same pass. Facts that could not be checked either way were omitted or stated qualitatively; several entries say explicitly what remains unverified (for example, some rare trade names, some Annex I name assignments and some craft histories). Key figures are approximate, drawn from cited studies or rules, and depend on the stated conditions and product. Legal descriptions explain what a rule covers; they are not legal advice, and current rule text controls. Corporate ownership reflects sources available in September 2026 and can change.
