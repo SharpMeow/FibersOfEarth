@@ -4,9 +4,7 @@
   <rect width="840" height="420" fill="#f7f4ef"/>
   <text x="32" y="40" font-family="Georgia, serif" font-size="22" fill="#1f2a24">Italian textile districts</text>
   <text x="32" y="64" font-family="system-ui, sans-serif" font-size="13" fill="#5c6b63">Educational sketch. Mill name ≠ fiber origin. Routes on the atlas remain illustrative.</text>
-  <!-- simple Italy-ish boot using paths (very simplified) -->
   <path d="M360 70 l40 10 30 40 10 50 -10 40 20 30 10 50 -20 40 -30 20 -20 40 10 30 -40 10 -30 -40 10 -40 -20 -30 -40 -20 -20 -50 20 -60 30 -40 40 -20 z" fill="#dce6df" stroke="#6d8f7b" stroke-width="2"/>
-  <!-- markers -->
   <g font-family="system-ui, sans-serif">
     <circle cx="390" cy="120" r="8" fill="#2f5d4a"/>
     <text x="410" y="116" font-size="16" font-weight="600" fill="#1f2a24">Biella</text>
@@ -18,7 +16,6 @@
     <text x="475" y="171" font-size="16" font-weight="600" fill="#1f2a24">Como</text>
     <text x="475" y="189" font-size="12" fill="#5c6b63">Silk weaving &amp; printing</text>
   </g>
-  <!-- callouts -->
   <rect x="32" y="300" width="240" height="88" rx="8" fill="#e7eee9" stroke="#6d8f7b"/>
   <text x="48" y="328" font-family="system-ui, sans-serif" font-size="13" font-weight="600" fill="#2f5d4a">Biella</text>
   <text x="48" y="348" font-family="system-ui, sans-serif" font-size="12" fill="#1f2a24">Fine worsted cloth &amp; yarns.</text>
