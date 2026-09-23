@@ -62,3 +62,27 @@ export function processNote(n,m){
  if(n.role==='Destination')return 'A possible market for finished textiles. The map does not identify a retailer or establish that a shipment reached this destination.';
  if(n.role==='Origin')return 'The model begins with '+m.name.toLowerCase()+' at this approximate location. Confirm the actual producer, collection method and material grade before treating an origin as traceable.';
  if(/scour|combing/i.test(n.sub))return 'Raw material is cleaned and prepared for yarn production. Washing removes contaminants; combing aligns longer fibers and removes shorter material in a worsted route.';
+ if(/dehair/i.test(n.sub))return 'Fine undercoat is separated from coarse guard hairs. Clean yield and fiber length affect what can be spun into the next product.';
+ if(/auction|consolidation|collection|market/i.test(n.sub))return 'Material may be sorted, aggregated and traded before further processing. Ask what records preserve the link between original lots and the outgoing product.';
+ if(/spinning|knitting|weaving|yarn|fabric/i.test(n.sub))return 'Prepared fiber becomes yarn and then fabric, or arrives as an intermediate material for the next operation. Dyeing and finishing can occur at several points and are simplified in this model.';
+ return 'This marker represents '+n.sub.toLowerCase()+'. The exact facility, process inputs, energy source and handling records would need to be established for a real supply chain.';
+}
+// Comparable property columns. Values are normalized to one unit per column so the table can sort;
+// a value in an unexpected unit is shown as published but left out of numeric sorting.
+export const propertyColumns=[
+ {key:'density',label:'Density',unit:'g/cm3'},
+ {key:'moisture_regain',label:'Moisture regain',unit:'%'},
+ {key:'tenacity',label:'Tenacity',unit:'cN/tex'},
+ {key:'elongation',label:'Elongation at break',unit:'%'},
+ {key:'heat',label:'Melting or decomposition',unit:'C'},
+ {key:'loi',label:'Limiting oxygen index',unit:'%'}
+];
+const UNIT_FACTORS={density:{'g/cm3':1,'g/cc':1,'kg/m3':.001},tenacity:{'cn/tex':1,'g/den':8.83,'g/denier':8.83,'gf/den':8.83,'n/tex':100},moisture_regain:{'%':1},elongation:{'%':1},heat:{'c':1,'degrees c':1},loi:{'%':1,'':1}};
+function numbers(text){return [...String(text).replace(/,/g,'').matchAll(/-?\d+(?:\.\d+)?/g)].map(x=>Number(x[0]));}
+// One comparable cell per column: the first matching property row, its midpoint in the column's unit, and its source.
+export function propertyCell(m,col){
+ const rows=m.data?.properties||[];const row=col.key==='heat'?rows.find(p=>p.key==='melting_point')||rows.find(p=>p.key==='decomposition'):rows.find(p=>p.key===col.key);
+ if(!row)return null;const factor=UNIT_FACTORS[col.key]?.[row.unit.toLowerCase().trim()];const ns=numbers(row.value);
+ const mid=factor!=null&&ns.length?(Math.min(...ns.slice(0,2))+Math.max(...ns.slice(0,2)))/2*factor:NaN;
+ return {row,value:Number.isFinite(mid)?mid:NaN,normalized:factor!=null&&factor!==1,ref:m.data.refs[row.ref],kind:col.key==='heat'?(row.key==='melting_point'?'melts':'decomposes'):''};
+}
